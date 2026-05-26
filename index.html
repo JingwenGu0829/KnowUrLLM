@@ -38,11 +38,10 @@
           <p class="eyebrow">A beginner-friendly AI visualization</p>
           <h1>The note says "cats." The sentence says "cataracts."</h1>
           <p class="lede">
-            GPT-2 is a text-prediction model. A public dataset saves moments
-            when a tiny part of GPT-2 lights up while reading. One saved
-            moment has the short note "cats." But its strongest example is
-            medical text: "patients after a cataracts procedure." The only
-            cat is the letters c-a-t inside cataracts.
+            GPT-2 is a model that predicts the next word. A public dataset records when a tiny part of it lights up.
+            One has the short note "cats."
+            Its strongest example: "patients after a cataracts procedure."
+            The only cat is the letters c-a-t inside cataracts.
           </p>
         </div>
         <div class="hero-demo" aria-label="A saved GPT-2 moment being checked">
@@ -79,11 +78,9 @@
           <p class="eyebrow">Before the story</p>
           <h2>What is this page checking?</h2>
           <p>
-            GPT-2 reads text step by step. Researchers can save a moment when
-            one small part of the model lights up. The dataset then adds a
-            short note, like "cats," to describe that moment. We check whether
-            that note is actually supported by the highlighted text and the
-            full sentence.
+            GPT-2 reads text step by step. When a tiny part lights up, the dataset saves that moment
+            and adds a short note, like "cats," to describe it.
+            We check whether the note matches the highlighted text and the full sentence.
           </p>
         </div>
         <div class="reaction-board" aria-label="How the page checks one saved GPT-2 moment">
@@ -189,9 +186,8 @@
             <p class="eyebrow">Example 1: note works</p>
             <h2>The URL note is easy to trust.</h2>
             <p>
-              This one is simple. The note says web addresses. The example is
-              a real web address, and the highlighted text looks like URL
-              parts. The note is useful.
+              The note says web addresses. The example is a real web address,
+              and the highlighted text looks like URL parts.
             </p>
             <div class="chapter-receipt" aria-label="URL example support summary">
               <span data-score="3"><b>Note</b><small>fits</small></span>
@@ -212,8 +208,7 @@
             <h2>The Python note misses nearby shell text.</h2>
             <p>
               The example is a Python command. But the highlighted text also
-              includes usernames and command-line words. The note helps, but it
-              leaves out the command-line context around the code.
+              includes usernames and shell words the note skips.
             </p>
             <div class="chapter-receipt" aria-label="Python example support summary">
               <span data-score="2"><b>Note</b><small>partial</small></span>
@@ -233,9 +228,8 @@
             <p class="eyebrow">Example 3: note misleads</p>
             <h2>The cat note fails inside cataracts.</h2>
             <p>
-              This is the danger example. The note says cats, but one example
-              highlights "cat" inside "cataracts." GPT-2 may be matching
-              letters inside a word, not the animal.
+              The note says cats, but its top example highlights "cat" inside
+              "cataracts." GPT-2 may be matching letters, not the animal.
             </p>
             <div class="chapter-receipt" aria-label="Cat example support summary">
               <span data-score="2"><b>Note</b><small>sounds right</small></span>
@@ -255,9 +249,8 @@
             <p class="eyebrow">Example 4: note needs backup</p>
             <h2>The Star Wars note has thin backup.</h2>
             <p>
-              The full sentence mentions Star Wars. But the highlighted text
-              is mostly punctuation. A fun note is not enough; the highlighted
-              text has to support it too.
+              The sentence mentions Star Wars. But the highlighted text is
+              mostly punctuation. A fun note needs real evidence underneath.
             </p>
             <div class="chapter-receipt" aria-label="Star Wars example support summary">
               <span data-score="2"><b>Note</b><small>sounds right</small></span>
@@ -384,10 +377,9 @@
           <p class="eyebrow">Zoom out</p>
           <h2>The four examples sit inside 6,000 saved moments.</h2>
           <p>
-            The scroll story used four examples to teach the rule. This section
-            asks whether the same warning still matters when we zoom out to all
-            6,000 records. Read each chart as support for the rule, not as a
-            separate dashboard.
+            The four story examples taught the rule. This section asks whether
+            it still holds across all 6,000 records.
+            Read each chart as support for the rule, not as a separate dashboard.
           </p>
         </div>
         <div class="pattern-slide pattern-slide-intro">
@@ -533,10 +525,9 @@
           <div class="chart-panel agreement-panel">
             <h3>Do notes and highlights use the same words?</h3>
             <p class="chart-note">
-              A quick text check compares each short note with the highlighted
-              text that makes the saved moment light up most strongly. More than
-              half have no obvious word match, and the cat example shows why a
-              match still is not enough.
+              A quick text check compares each short note with its highlighted
+              text. More than half show no word match — and the cat example
+              proves a match still isn't enough.
             </p>
             <div class="agreement-takeaway" aria-label="How to interpret short-note and highlighted-text word matches">
               <span>Reading rule</span>
@@ -557,9 +548,8 @@
         <p class="eyebrow">Takeaway</p>
         <h2>A short dataset note is a starting point, not an answer.</h2>
         <p class="takeaway-lede">
-          The URL note passes, Python and Star Wars need context, and the cat
-          note fails because the visualization keeps the short note, highlighted
-          text, and full sentence side by side.
+          The URL note passes, Python and Star Wars need context, and the cat note fails.
+          The page keeps the short note, highlighted text, and full sentence side by side so you can see why.
         </p>
         <div class="story-spine" aria-label="And, but, therefore story summary">
           <div>

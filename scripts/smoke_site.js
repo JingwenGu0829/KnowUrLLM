@@ -191,6 +191,80 @@ async function checkNoHorizontalOverflow(page, label, issues) {
   assert(state.scrollX === 0, `${label} should not leave the page horizontally scrolled: ${JSON.stringify(state)}`, issues);
 }
 
+const NAMED_CONTAINER_SELECTORS = [
+  ".lede",
+  ".hero-checks",
+  ".hero-demo",
+  ".reaction-board",
+  ".test-steps",
+  ".stage",
+  ".atlas-box",
+  "#atlas-canvas",
+  ".feature-card",
+  ".evidence-grid",
+  "#source-callout",
+  "#token-pills",
+  ".evidence-matrix-panel",
+  "#heatmap",
+  "#density-histogram",
+  ".agreement-panel",
+  ".takeaway-rule",
+  ".takeaway-proof",
+  ".takeaway-snapshot",
+  ".note-grid",
+  ".site-header",
+  ".site-footer",
+];
+
+async function checkNamedContainersGeometry(page, viewport, issues) {
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+  });
+  await page.waitForTimeout(80);
+
+  const tolerance = 2;
+  const measurements = await page.evaluate(({ selectors }) => {
+    return selectors.map((sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return { sel, missing: true };
+      const parent = el.parentElement;
+      const elBox = el.getBoundingClientRect();
+      const parentBox = parent ? parent.getBoundingClientRect() : null;
+      const styles = getComputedStyle(el);
+      return {
+        sel,
+        position: styles.position,
+        overflowX: styles.overflowX,
+        overflowY: styles.overflowY,
+        scrollWidth: el.scrollWidth,
+        clientWidth: el.clientWidth,
+        elLeft: Math.round(elBox.left),
+        elRight: Math.round(elBox.right),
+        parentLeft: parentBox ? Math.round(parentBox.left) : null,
+        parentRight: parentBox ? Math.round(parentBox.right) : null,
+      };
+    });
+  }, { selectors: NAMED_CONTAINER_SELECTORS });
+
+  for (const m of measurements) {
+    if (m.missing) {
+      issues.push(`Named container missing at ${viewport.name}: ${m.sel}`);
+      continue;
+    }
+    // Horizontal scrollWidth check applies only when overflowX is not hidden/clip.
+    if (m.overflowX !== "hidden" && m.overflowX !== "clip" && m.scrollWidth > m.clientWidth + tolerance) {
+      issues.push(`Named container ${m.sel} has horizontal internal overflow at ${viewport.name}: scrollWidth=${m.scrollWidth} clientWidth=${m.clientWidth}`);
+    }
+    // Bounding-box horizontal containment within direct parent (skip fixed; sticky still measured against parent).
+    if (m.position !== "fixed" && m.parentLeft !== null && m.parentRight !== null) {
+      if (m.elLeft < m.parentLeft - tolerance || m.elRight > m.parentRight + tolerance) {
+        issues.push(`Named container ${m.sel} escapes parent horizontally at ${viewport.name}: el=[${m.elLeft},${m.elRight}] parent=[${m.parentLeft},${m.parentRight}]`);
+      }
+    }
+  }
+}
+
 async function checkKeyboardFocusBasics(page, issues) {
   await page.evaluate(() => {
     window.scrollTo(0, 0);
@@ -816,6 +890,7 @@ async function checkViewport(browser, viewport) {
   assert(base.projectNoteRows.length === 2 && base.projectNoteRows.every((count) => count >= 4), `Project note should use readable four-row answers: ${base.projectNoteRows.join(", ")}`, issues);
 
   await checkKeyboardFocusBasics(page, issues);
+  await checkNamedContainersGeometry(page, viewport, issues);
 
   const caseStates = [];
   for (const [selector, expected] of STORY_CASES) {
