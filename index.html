@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KnowUrLLM | Hidden Vocabulary of GPT-2</title>
+    <meta
+      name="description"
+      content="An interactive D3 atlas of Neuronpedia sparse-autoencoder features inside GPT-2."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="KnowUrLLM home">KnowUrLLM</a>
+      <nav aria-label="Page sections">
+        <a href="#atlas-section">Atlas</a>
+        <a href="#patterns">Patterns</a>
+        <a href="#limits">Limits</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-band">
+        <div class="hero-copy">
+          <p class="eyebrow">DSC 106 Final Project</p>
+          <h1>Can you search a language model's hidden vocabulary?</h1>
+          <p class="lede">
+            Sparse autoencoders turn millions of hidden activations into named
+            features: URLs, city names, Python prompts, political titles, cat
+            tokens, and stranger fragments. This atlas maps 6,000 public
+            Neuronpedia features from GPT-2 so students can inspect what looks
+            interpretable and what still feels uncertain.
+          </p>
+          <div class="hero-actions" aria-label="Suggested searches">
+            <button class="preset-search" data-query="twitter">Twitter</button>
+            <button class="preset-search" data-query="python">Python</button>
+            <button class="preset-search" data-query="money">Money</button>
+            <button class="preset-search" data-query="star wars">Star Wars</button>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Prompt to hidden feature diagram">
+          <svg id="hero-flow" role="img"></svg>
+        </div>
+      </section>
+
+      <section class="stats-strip" aria-label="Dataset summary">
+        <div>
+          <strong id="stat-rows">6,000</strong>
+          <span>SAE features</span>
+        </div>
+        <div>
+          <strong id="stat-layers">12</strong>
+          <span>GPT-2 layers</span>
+        </div>
+        <div>
+          <strong id="stat-categories">10</strong>
+          <span>concept groups</span>
+        </div>
+        <div>
+          <strong id="stat-density">0.04%</strong>
+          <span>median activation density</span>
+        </div>
+      </section>
+
+      <section class="story section-band">
+        <div class="story-step">
+          <span>01</span>
+          <h2>What is a feature?</h2>
+          <p>
+            A sparse-autoencoder feature is a pattern found inside a model's
+            residual stream. Some get human-readable labels; many are only
+            partial clues.
+          </p>
+        </div>
+        <div class="story-step">
+          <span>02</span>
+          <h2>What is the question?</h2>
+          <p>
+            If we map thousands of features at once, which concept types show
+            up, where do they appear across layers, and which examples should
+            make us cautious?
+          </p>
+        </div>
+        <div class="story-step">
+          <span>03</span>
+          <h2>How to read this</h2>
+          <p>
+            Search for a concept, click a point, then compare its label,
+            predicted tokens, activation density, and highlighted text window.
+          </p>
+        </div>
+      </section>
+
+      <section id="atlas-section" class="dashboard section-band">
+        <div class="section-heading">
+          <p class="eyebrow">Interactive Atlas</p>
+          <h2>Each dot is one internal feature.</h2>
+          <p>
+            Position comes from a PCA projection of Neuronpedia explanation
+            embeddings. Color, search, filters, and click details expose the
+            model's hidden vocabulary without pretending it is a clean dictionary.
+          </p>
+        </div>
+
+        <div class="toolbar" aria-label="Atlas controls">
+          <label class="search-control">
+            <span>Search</span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="twitter, python, city, money..."
+              autocomplete="off"
+            />
+          </label>
+          <label>
+            <span>Color</span>
+            <select id="color-mode">
+              <option value="category">Concept group</option>
+              <option value="layer">Layer</option>
+              <option value="legibility">Legibility</option>
+            </select>
+          </label>
+          <label>
+            <span>Layer</span>
+            <select id="layer-filter">
+              <option value="all">All layers</option>
+            </select>
+          </label>
+          <label>
+            <span>Group</span>
+            <select id="category-filter">
+              <option value="all">All groups</option>
+            </select>
+          </label>
+          <label>
+            <span>Density floor <b id="density-label">0</b></span>
+            <input id="density-filter" type="range" min="0" max="0.005" step="0.00005" value="0" />
+          </label>
+          <label class="check-control">
+            <input id="legible-filter" type="checkbox" />
+            <span>Legible labels only</span>
+          </label>
+          <button id="reset-filters" type="button">Reset</button>
+        </div>
+
+        <div class="tour-rail" aria-label="Guided feature tour">
+          <button class="tour-step" type="button" data-tour="url">
+            <span>Clean signal</span>
+            URL detector
+          </button>
+          <button class="tour-step" type="button" data-tour="python">
+            <span>Tool trace</span>
+            Python prompt
+          </button>
+          <button class="tour-step" type="button" data-tour="cat">
+            <span>False friend</span>
+            Cat vs cataracts
+          </button>
+          <button class="tour-step" type="button" data-tour="starwars">
+            <span>Rare concept</span>
+            Star Wars
+          </button>
+          <p id="tour-context">
+            Pick a tour card to let the atlas set a search, choose a feature, and show why that example matters.
+          </p>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="atlas-pane">
+            <div class="chart-title">
+              <div>
+                <h3>Hidden Vocabulary Atlas</h3>
+                <p id="match-summary">Loading features...</p>
+              </div>
+              <button id="reset-zoom" type="button" title="Reset atlas zoom">Reset zoom</button>
+            </div>
+            <svg id="atlas" role="img" aria-label="Scatterplot of SAE features"></svg>
+            <div class="legend" id="atlas-legend" aria-label="Color legend"></div>
+          </div>
+
+          <aside class="detail-pane" aria-live="polite">
+            <div class="detail-header">
+              <p class="eyebrow">Selected feature</p>
+              <h3 id="detail-title">Choose a dot</h3>
+              <p id="detail-subtitle">Search or click an annotated point to inspect a feature.</p>
+            </div>
+
+            <dl class="metric-grid">
+              <div>
+                <dt>Layer</dt>
+                <dd id="detail-layer">-</dd>
+              </div>
+              <div>
+                <dt>Density</dt>
+                <dd id="detail-density">-</dd>
+              </div>
+              <div>
+                <dt>Legibility</dt>
+                <dd id="detail-legibility">-</dd>
+              </div>
+              <div>
+                <dt>Group</dt>
+                <dd id="detail-category">-</dd>
+              </div>
+            </dl>
+
+            <section class="detail-block">
+              <h4>Evidence check</h4>
+              <p id="evidence-note">
+                Click a cached example to compare its label, logits, and activating tokens.
+              </p>
+              <a id="source-link" class="source-link" href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">
+                Open on Neuronpedia
+              </a>
+            </section>
+
+            <section class="detail-block">
+              <h4>Top predicted tokens</h4>
+              <div id="positive-logits" class="token-pills"></div>
+            </section>
+
+            <section class="detail-block">
+              <h4>Lowest predicted tokens</h4>
+              <div id="negative-logits" class="token-pills"></div>
+            </section>
+
+            <section class="detail-block">
+              <h4>Activation window</h4>
+              <p id="activation-note">
+                Cached API examples show which source tokens lit up for selected features.
+              </p>
+              <div id="activation-windows"></div>
+            </section>
+
+            <section class="detail-block">
+              <h4>Search hits</h4>
+              <div id="search-results" class="result-list"></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="prototype-note section-band">
+        <div class="section-heading">
+          <p class="eyebrow">Prototype note</p>
+          <h2>What is already working, and what is hardest next?</h2>
+        </div>
+        <div class="prototype-grid">
+          <div>
+            <h3>What we have done so far</h3>
+            <p>
+              The current prototype loads a public Neuronpedia dataset with 6,000 GPT-2 sparse-autoencoder features across all 12 residual-stream layers. It maps those features into a searchable D3 atlas and connects the atlas to layer filters, concept filters, density filtering, zoom, hover, and click details. It also includes aggregate views: a layer-by-category heatmap, an activation-density histogram, and legibility bars by layer. The detail panel uses cached Neuronpedia API examples to show token-level activation windows, so a student can compare the label, predicted tokens, and source text instead of trusting a dot alone.
+            </p>
+          </div>
+          <div>
+            <h3>What is hardest to design</h3>
+            <p>
+              The hardest design problem is explaining interpretability without overstating certainty. A feature can have a clean label but still activate on surprising token fragments, so the interface has to make uncertainty visible rather than hiding it behind a polished map. The atlas also contains heavy overplotting because thousands of features occupy the same projected space, which makes search, filtering, zooming, annotations, and selected examples essential. The next hardest piece is the final demo video: it needs to teach the interaction quickly while ending on the main takeaway that interpretability gives useful handles, not complete explanations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="patterns" class="patterns section-band">
+        <div class="section-heading">
+          <p class="eyebrow">Aggregate Patterns</p>
+          <h2>The atlas becomes useful when it argues with itself.</h2>
+          <p>
+            The categories below are keyword-derived, so treat them as a
+            navigational layer. The important pattern is not a perfect taxonomy;
+            it is the mix of interpretable clusters, sparse features, and noisy labels.
+          </p>
+        </div>
+
+        <div class="patterns-grid">
+          <div class="chart-panel">
+            <div class="chart-title">
+              <div>
+                <h3>Concepts Across Layers</h3>
+                <p>Click a cell to filter the atlas.</p>
+              </div>
+            </div>
+            <svg id="heatmap" role="img" aria-label="Heatmap of concept groups by layer"></svg>
+          </div>
+          <div class="chart-panel">
+            <div class="chart-title">
+              <div>
+                <h3>Sparsity Check</h3>
+                <p>Most features activate rarely; high-density features are unusual.</p>
+              </div>
+            </div>
+            <svg id="density-histogram" role="img" aria-label="Histogram of activation density"></svg>
+          </div>
+          <div class="chart-panel wide">
+            <div class="chart-title">
+              <div>
+                <h3>Readable, But Not Certain</h3>
+                <p>Legibility scores reward concise labels and available logits.</p>
+              </div>
+            </div>
+            <svg id="legibility-bars" role="img" aria-label="Average legibility by layer"></svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="limits" class="limits section-band">
+        <div>
+          <p class="eyebrow">Takeaway</p>
+          <h2>Interpretability gives handles, not final answers.</h2>
+        </div>
+        <div class="limit-grid">
+          <p>
+            A clear label can hide a messy feature. The cat example, for instance,
+            can light up on "cataracts" because token fragments and words are not
+            the same thing.
+          </p>
+          <p>
+            Categories here are a map layer, not ground truth. They help students
+            explore, but the raw feature page is still the evidence to inspect.
+          </p>
+          <p>
+            The honest result: GPT-2 has many searchable internal handles, yet a
+            feature label alone does not prove that the model understands a concept.
+          </p>
+        </div>
+        <div class="sources">
+          <a href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">Neuronpedia</a>
+          <a href="https://neuronpedia-datasets.s3.us-east-1.amazonaws.com/index.html?prefix=v1/" target="_blank" rel="noreferrer">Public exports</a>
+          <a href="https://dsc106.com/projects/final_project/" target="_blank" rel="noreferrer">DSC 106 final project</a>
+        </div>
+      </section>
+    </main>
+
+    <div id="tooltip" role="status" aria-live="polite"></div>
+    <script src="main.js"></script>
+  </body>
+</html>

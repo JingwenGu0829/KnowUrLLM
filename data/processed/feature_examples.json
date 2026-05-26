@@ -1,0 +1,4466 @@
+[
+  {
+    "feature_id": "gpt2-small/4-res-jb/7023",
+    "model_id": "gpt2-small",
+    "source": "4-res-jb",
+    "layer_number": 4,
+    "feature_index": "7023",
+    "concept_category": "Social media / web",
+    "explanation": "references to Twitter handles or user mentions",
+    "api_explanations": [
+      {
+        "description": "Twitter usernames",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "references to Twitter handles or user mentions",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.001501083374023438,
+    "max_activation": 19.0310115814209,
+    "top_positive_logits": [
+      "yp",
+      "Sports",
+      "Blog",
+      "brew",
+      "Politics",
+      "Jew",
+      "daily",
+      "_",
+      "earth",
+      "Beg"
+    ],
+    "top_negative_logits": [
+      " ACTIONS",
+      " nearly",
+      " striking",
+      " ABE",
+      " Ninth",
+      " XVI",
+      " CONTROL",
+      " DRAG",
+      " Eighth",
+      "APTER"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 19.0310115814209,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " English",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " \u00e2\u0122\u0136",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Stuart",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Rot",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "hen",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "berg",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " (@",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "St",
+            "value": 19.0310115814209,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "u",
+            "value": 3.856937408447266,
+            "relative_value": 0.20266591672996598,
+            "is_peak": false
+          },
+          {
+            "text": "Politics",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ")",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " August",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 3",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 2017",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 18.67786979675293,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " to",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " say",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " something",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "?",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " \u00e2\u0122\u0136",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Shawn",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "North",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " (@",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "sh",
+            "value": 18.67786979675293,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "awn",
+            "value": 4.164604187011719,
+            "relative_value": 0.22296997635863797,
+            "is_peak": false
+          },
+          {
+            "text": "pu",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "wo",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ")",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " June",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 24",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 2017",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 18.18506240844727,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " hate",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " \u00e2\u0122\u0136",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Ram",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "on",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " K",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "aur",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " (@",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "R",
+            "value": 18.18506240844727,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "amon",
+            "value": 4.955763816833496,
+            "relative_value": 0.27251838379897225,
+            "is_peak": false
+          },
+          {
+            "text": "K",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "aur",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ")",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " September",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 2",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 2016",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/4-res-jb/7023"
+  },
+  {
+    "feature_id": "gpt2-small/4-res-jb/14801",
+    "model_id": "gpt2-small",
+    "source": "4-res-jb",
+    "layer_number": 4,
+    "feature_index": "14801",
+    "concept_category": "Other / unclear",
+    "explanation": "references to web URLs",
+    "api_explanations": [
+      {
+        "description": "URLs",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "references to web URLs",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0001459121704101562,
+    "max_activation": 49.1066780090332,
+    "top_positive_logits": [
+      " URL",
+      " URLs",
+      "URI",
+      "URL",
+      " url",
+      "Url",
+      " URI",
+      " encoded",
+      " prefix",
+      " hash"
+    ],
+    "top_negative_logits": [
+      "cffff",
+      "ynski",
+      "SPONSORED",
+      "edient",
+      "iaries",
+      "hma",
+      "rament",
+      "ctuary",
+      "romy",
+      "manship"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 49.1066780090332,
+        "max_token_index": 2,
+        "tokens": [
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " current",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " URL",
+            "value": 49.1066780090332,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " parts",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " For",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " this",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " URL",
+            "value": 40.82443618774414,
+            "relative_value": 0.8313418427578111,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "http",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "://",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "css",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "-",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "t",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 49.1066780090332,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Java",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Script",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " can",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " access",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " current",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " URL",
+            "value": 49.1066780090332,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " parts",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " For",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " this",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " URL",
+            "value": 40.82443618774414,
+            "relative_value": 0.8313418427578111,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 48.6219367980957,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " To",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " use",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " this",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " tool",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " simply",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " put",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " URL",
+            "value": 48.6219367980957,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " into",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " their",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " search",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " bar",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " press",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " go",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/4-res-jb/14801"
+  },
+  {
+    "feature_id": "gpt2-small/7-res-jb/6592",
+    "model_id": "gpt2-small",
+    "source": "7-res-jb",
+    "layer_number": 7,
+    "feature_index": "6592",
+    "concept_category": "Programming / technical",
+    "explanation": "programming-related symbols and terminologies, particularly for Python and database operations",
+    "api_explanations": [
+      {
+        "description": "commands and code snippets related to server setup and configuration",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "programming-related symbols and terminologies, particularly for Python and database operations",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0004676183064778646,
+    "max_activation": 37.99385070800781,
+    "top_positive_logits": [
+      "output",
+      "export",
+      "webkit",
+      "enable",
+      "shared",
+      "username",
+      "prefix",
+      "input",
+      "max",
+      "rm"
+    ],
+    "top_negative_logits": [
+      ")].",
+      "issance",
+      " Hes",
+      "everal",
+      " afore",
+      " Rossi",
+      "ierrez",
+      "veland",
+      "enegger",
+      " Canaver"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 37.99385070800781,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "o",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "@",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "dj",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ango",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "~",
+            "value": 3.958373546600342,
+            "relative_value": 0.10418458442186938,
+            "is_peak": false
+          },
+          {
+            "text": "]",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "$",
+            "value": 1.142006635665894,
+            "relative_value": 0.030057670238336696,
+            "is_peak": false
+          },
+          {
+            "text": " python",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " --",
+            "value": 37.99385070800781,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "version",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 1.056595206260681,
+            "relative_value": 0.02780963725895745,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Python",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 3",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "4",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 35.30635452270508,
+        "max_token_index": 3,
+        "tokens": [
+          {
+            "text": "$",
+            "value": 0.1021221876144409,
+            "relative_value": 0.0028924591336318053,
+            "is_peak": false
+          },
+          {
+            "text": " p",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "sql",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " -",
+            "value": 35.30635452270508,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "U",
+            "value": 3.726912498474121,
+            "relative_value": 0.10555925551807933,
+            "is_peak": false
+          },
+          {
+            "text": " your",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "db",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "username",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " -",
+            "value": 32.48740005493164,
+            "relative_value": 0.9201573057914942,
+            "is_peak": false
+          },
+          {
+            "text": "h",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " local",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "host",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " -",
+            "value": 30.93857192993164,
+            "relative_value": 0.8762890518769201,
+            "is_peak": false
+          },
+          {
+            "text": "W",
+            "value": 4.617501258850098,
+            "relative_value": 0.13078385806953363,
+            "is_peak": false
+          },
+          {
+            "text": " your",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "db",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "name",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 35.30635452270508,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "@",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "dj",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ango",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "~",
+            "value": 7.481584072113037,
+            "relative_value": 0.21190474556929187,
+            "is_peak": false
+          },
+          {
+            "text": "]",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "$",
+            "value": 0.1021221876144409,
+            "relative_value": 0.0028924591336318053,
+            "is_peak": false
+          },
+          {
+            "text": " p",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "sql",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " -",
+            "value": 35.30635452270508,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "U",
+            "value": 3.726912498474121,
+            "relative_value": 0.10555925551807933,
+            "is_peak": false
+          },
+          {
+            "text": " your",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "db",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "username",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " -",
+            "value": 32.48740005493164,
+            "relative_value": 0.9201573057914942,
+            "is_peak": false
+          },
+          {
+            "text": "h",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " local",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "host",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/7-res-jb/6592"
+  },
+  {
+    "feature_id": "gpt2-small/7-res-jb/24310",
+    "model_id": "gpt2-small",
+    "source": "7-res-jb",
+    "layer_number": 7,
+    "feature_index": "24310",
+    "concept_category": "Animals",
+    "explanation": "references to cats",
+    "api_explanations": [
+      {
+        "description": "references to the word \"cat\"",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "references to cats",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0002009073893229167,
+    "max_activation": 46.42576217651367,
+    "top_positive_logits": [
+      "aclysm",
+      "heter",
+      "fish",
+      "chers",
+      "alogue",
+      "apult",
+      "cat",
+      "wal",
+      "hawk",
+      "cher"
+    ],
+    "top_negative_logits": [
+      "mble",
+      "eous",
+      " htt",
+      "undo",
+      "indal",
+      " Sacrament",
+      " Seym",
+      "oppable",
+      "unda",
+      "gur"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 46.42576217651367,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " patients",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " routine",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " checks",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " for",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " patients",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " after",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " cat",
+            "value": 46.42576217651367,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "ar",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "acts",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " procedure",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " or",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " other",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " common",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " routine",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 44.77110290527344,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " he",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " was",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " strapped",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " to",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " bed",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " while",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " cat",
+            "value": 44.77110290527344,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "heter",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " was",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " forced",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " into",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " his",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " penis",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " so",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " that",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 44.30085372924805,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " an",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " initially",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " wanted",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " to",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " make",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " little",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " cat",
+            "value": 44.30085372924805,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " sweater",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " but",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " now",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " that",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " I",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " actually",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " have",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/7-res-jb/24310"
+  },
+  {
+    "feature_id": "gpt2-small/3-res-jb/15682",
+    "model_id": "gpt2-small",
+    "source": "3-res-jb",
+    "layer_number": 3,
+    "feature_index": "15682",
+    "concept_category": "Geography",
+    "explanation": "mentions of New York City",
+    "api_explanations": [
+      {
+        "description": "references to a specific location: New York City",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "mentions of New York City",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0001958211263020833,
+    "max_activation": 41.63859558105469,
+    "top_positive_logits": [
+      " Council",
+      "scape",
+      " skyline",
+      " District",
+      " landmarks",
+      " Mayor",
+      " Borough",
+      " City",
+      " streets",
+      " Orchestra"
+    ],
+    "top_negative_logits": [
+      "tle",
+      "selection",
+      "igham",
+      "etsk",
+      "rar",
+      "syn",
+      "ibilities",
+      "wcsstore",
+      "lyak",
+      "ivia"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 41.63859558105469,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " signaling",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " chemical",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " rose",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "New",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " York",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " City",
+            "value": 41.63859558105469,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " firefighters",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " have",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " reportedly",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " been",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " banned",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " from",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " hanging",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " photos",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 40.58193588256836,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " His",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " name",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " has",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " become",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " synonymous",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " with",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " New",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " York",
+            "value": 0.216414749622345,
+            "relative_value": 0.005332785263092986,
+            "is_peak": false
+          },
+          {
+            "text": " City",
+            "value": 40.58193588256836,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "'s",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " high",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " drama",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " gang",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "land",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " days",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " prohibition",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 40.24114990234375,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " record",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Buckley",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "'s",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " second",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " album",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " New",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " York",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " City",
+            "value": 40.24114990234375,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " with",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Tom",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Ver",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "l",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "aine",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " as",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " producer",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/3-res-jb/15682"
+  },
+  {
+    "feature_id": "gpt2-small/4-res-jb/19488",
+    "model_id": "gpt2-small",
+    "source": "4-res-jb",
+    "layer_number": 4,
+    "feature_index": "19488",
+    "concept_category": "Numbers / dates",
+    "explanation": "monetary amounts, particularly large sums of money",
+    "api_explanations": [
+      {
+        "description": "monetary values expressed in dollars and cents",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "monetary amounts, particularly large sums of money",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0007521311442057291,
+    "max_activation": 21.2978343963623,
+    "top_positive_logits": [
+      "$$",
+      "USD",
+      "$$$$",
+      "-$",
+      "$",
+      "false",
+      "200",
+      "150",
+      "100",
+      "250"
+    ],
+    "top_negative_logits": [
+      " Advent",
+      " Brilliant",
+      " Halls",
+      " Lean",
+      " Pend",
+      " Blaze",
+      " Sed",
+      " Reborn",
+      "cknow",
+      " Atom"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 21.2978343963623,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Texas",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " carries",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " fine",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " up",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " to",
+            "value": 0.1035886704921722,
+            "relative_value": 0.004863812374739156,
+            "is_peak": false
+          },
+          {
+            "text": " $",
+            "value": 21.2978343963623,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "4",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "000",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " as",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " well",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " as",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 21.11710166931152,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " connection",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " with",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " theft",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " more",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " than",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " $",
+            "value": 21.11710166931152,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "2",
+            "value": 0.1485599279403687,
+            "relative_value": 0.007035052928511671,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "000",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " worth",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " clothing",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " from",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 20.58122634887695,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " with",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " domestic",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " assault",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " jailed",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " lieu",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " $",
+            "value": 20.58122634887695,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "1",
+            "value": 1.551761269569397,
+            "relative_value": 0.07539692937948139,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.38222935795784,
+            "relative_value": 0.01857174842152674,
+            "is_peak": false
+          },
+          {
+            "text": "000",
+            "value": 0.3513852655887604,
+            "relative_value": 0.017073096599413005,
+            "is_peak": false
+          },
+          {
+            "text": " bond",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Fear",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/4-res-jb/19488"
+  },
+  {
+    "feature_id": "gpt2-small/11-res-jb/14962",
+    "model_id": "gpt2-small",
+    "source": "11-res-jb",
+    "layer_number": 11,
+    "feature_index": "14962",
+    "concept_category": "Pop culture",
+    "explanation": "references to \"Star Wars\" and its related episodes or characters",
+    "api_explanations": [
+      {
+        "description": "titles or references related to a specific franchise or brand, most likely \"Star Wars\"",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "references to \"Star Wars\" and its related episodes or characters",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.002679189046223958,
+    "max_activation": 30.34283638000488,
+    "top_positive_logits": [
+      ")",
+      "),",
+      ");",
+      "):",
+      ")\"",
+      ")[",
+      ").\"",
+      ")]",
+      "),\"",
+      ")."
+    ],
+    "top_negative_logits": [
+      "etheless",
+      "\":[{\"",
+      " guiName",
+      "ecause",
+      " tremend",
+      " behavi",
+      "ADVERTISEMENT",
+      "Redditor",
+      "conservancy",
+      "inventoryQuantity"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 30.34283638000488,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "ones",
+            "value": 15.99808025360107,
+            "relative_value": 0.5272440602864463,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Star",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Wars",
+            "value": 9.955378532409668,
+            "relative_value": 0.32809650382486977,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 3.443606376647949,
+            "relative_value": 0.1134899299960367,
+            "is_peak": false
+          },
+          {
+            "text": " Revenge",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sith",
+            "value": 30.34283638000488,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": ")",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "A",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ay",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "la",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sec",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ura",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 27.92551803588867,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " (",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Star",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Wars",
+            "value": 3.43414568901062,
+            "relative_value": 0.1229751829347339,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 12.06199073791504,
+            "relative_value": 0.4319343591912419,
+            "is_peak": false
+          },
+          {
+            "text": " Attack",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Cl",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ones",
+            "value": 27.92551803588867,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": ",",
+            "value": 1.200944304466248,
+            "relative_value": 0.04300526503833685,
+            "is_peak": false
+          },
+          {
+            "text": " Star",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Wars",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 6.908584594726562,
+            "relative_value": 0.2473932474895523,
+            "is_peak": false
+          },
+          {
+            "text": " Revenge",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sith",
+            "value": 26.21946334838867,
+            "relative_value": 0.9389069636843459,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 27.92551803588867,
+        "max_token_index": 0,
+        "tokens": [
+          {
+            "text": "ones",
+            "value": 27.92551803588867,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": ",",
+            "value": 1.200944304466248,
+            "relative_value": 0.04300526503833685,
+            "is_peak": false
+          },
+          {
+            "text": " Star",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Wars",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 6.908584594726562,
+            "relative_value": 0.2473932474895523,
+            "is_peak": false
+          },
+          {
+            "text": " Revenge",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sith",
+            "value": 26.21946334838867,
+            "relative_value": 0.9389069636843459,
+            "is_peak": false
+          },
+          {
+            "text": ")",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Ti",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ya",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " S",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "irc",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ar",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sab",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/11-res-jb/14962"
+  },
+  {
+    "feature_id": "gpt2-small/0-res-jb/5437",
+    "model_id": "gpt2-small",
+    "source": "0-res-jb",
+    "layer_number": 0,
+    "feature_index": "5437",
+    "concept_category": "Politics / news",
+    "explanation": "references to military vessels and their designations",
+    "api_explanations": [
+      {
+        "description": "names of military vessels and organizations",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "references to military vessels and their designations",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0002520879109700521,
+    "max_activation": 3.466473579406738,
+    "top_positive_logits": [
+      " USS",
+      " HMS",
+      "USS",
+      " starship",
+      " Starfleet",
+      " Starship",
+      " Admiral",
+      " Klingon",
+      " Voyager",
+      " destroyer"
+    ],
+    "top_negative_logits": [
+      "Lay",
+      " pop",
+      "heim",
+      " begging",
+      " \u00c2\u0143",
+      " cro",
+      "oner",
+      " weed",
+      " bund",
+      "jab"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 3.466473579406738,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "'s",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " production",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " USS",
+            "value": 3.462164878845215,
+            "relative_value": 0.9987570363763567,
+            "is_peak": false
+          },
+          {
+            "text": " Enterprise",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " was",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " called",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " USS",
+            "value": 3.466473579406738,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " York",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "town",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " this",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " was",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " possibly",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " L",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 3.466473579406738,
+        "max_token_index": 13,
+        "tokens": [
+          {
+            "text": " early",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " stages",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Star",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Trek",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "'s",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " production",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " USS",
+            "value": 3.462164878845215,
+            "relative_value": 0.9987570363763567,
+            "is_peak": false
+          },
+          {
+            "text": " Enterprise",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " was",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " called",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " USS",
+            "value": 3.466473579406738,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " York",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "town",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 3.461716651916504,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " re",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "-",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "en",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "list",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ment",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " ceremony",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " on",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " USS",
+            "value": 3.461716651916504,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " George",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " H",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "W",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Bush",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/0-res-jb/5437"
+  },
+  {
+    "feature_id": "gpt2-small/7-res-jb/14716",
+    "model_id": "gpt2-small",
+    "source": "7-res-jb",
+    "layer_number": 7,
+    "feature_index": "14716",
+    "concept_category": "Politics / news",
+    "explanation": "references to President Donald Trump",
+    "api_explanations": [
+      {
+        "description": "mentions of political figures, specifically focusing on Donald Trump",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "references to President Donald Trump",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0005652109781901041,
+    "max_activation": 49.16354751586914,
+    "top_positive_logits": [
+      "swer",
+      " Taj",
+      " Abrams",
+      "terness",
+      " Pence",
+      "izzard",
+      " Walsh",
+      " Atkins",
+      " Barr",
+      "itus"
+    ],
+    "top_negative_logits": [
+      "usercontent",
+      "pole",
+      "00007",
+      "MpServer",
+      "nen",
+      " arteries",
+      "NRS",
+      "Alien",
+      "00200000",
+      "nexus"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 49.16354751586914,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " as",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " vocal",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " campaign",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " surrogate",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " to",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " President",
+            "value": 1.154197216033936,
+            "relative_value": 0.023476686983610797,
+            "is_peak": false
+          },
+          {
+            "text": " Donald",
+            "value": 49.16354751586914,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " Trump",
+            "value": 6.487109661102295,
+            "relative_value": 0.1319495843746501,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " He",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " similarly",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " rec",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "used",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " himself",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " from",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 48.65015029907227,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " shocking",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " developments",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " winding",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " probe",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " into",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " President",
+            "value": 0.1117266118526459,
+            "relative_value": 0.0022965316893332694,
+            "is_peak": false
+          },
+          {
+            "text": " Donald",
+            "value": 48.65015029907227,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " Trump",
+            "value": 2.982645034790039,
+            "relative_value": 0.06130803330420371,
+            "is_peak": false
+          },
+          {
+            "text": "'s",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " campaign",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 2016",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " election",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 48.5897216796875,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " top",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Two",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Democratic",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " lawmakers",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " called",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " for",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " President",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Donald",
+            "value": 48.5897216796875,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " Trump",
+            "value": 2.946949005126953,
+            "relative_value": 0.060649637479996084,
+            "is_peak": false
+          },
+          {
+            "text": " to",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " be",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " removed",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " from",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " office",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " after",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " his",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/7-res-jb/14716"
+  },
+  {
+    "feature_id": "gpt2-small/0-res-jb/21622",
+    "model_id": "gpt2-small",
+    "source": "0-res-jb",
+    "layer_number": 0,
+    "feature_index": "21622",
+    "concept_category": "Numbers / dates",
+    "explanation": "references to the number eight",
+    "api_explanations": [
+      {
+        "description": "numeric sequences, specifically numbers separated by punctuation such as commas or periods",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "references to the number eight",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0002743403116861979,
+    "max_activation": 2.104209184646606,
+    "top_positive_logits": [
+      " 8",
+      " 7",
+      " 9",
+      " 6",
+      " 4",
+      " 820",
+      " 5",
+      " 11",
+      " 12",
+      " 840"
+    ],
+    "top_negative_logits": [
+      "\u00c4\u0141",
+      "pard",
+      "ags",
+      "\u00d8\u00a9",
+      " destro",
+      " Canaver",
+      "itus",
+      "igmat",
+      " apologise",
+      "agy"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 2.104209184646606,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "0",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Loll",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ipop",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Camera",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " :",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 8",
+            "value": 2.104209184646606,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "MP",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Rear",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 2",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "MP",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Front",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "-",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "facing",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 2.104209184646606,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " said",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " that",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " he",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " did",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " not",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " believe",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " estimates",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " of",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 8",
+            "value": 2.104209184646606,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "000",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " gays",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " lesbians",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " living",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " the",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 2.104209184646606,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "ER",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " MOR",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "NING",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " ESPN",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 7",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "00",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " AM",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 8",
+            "value": 2.104209184646606,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": ":",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "00",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " AM",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 359",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 214",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " LIVE",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " FROM",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " M",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/0-res-jb/21622"
+  },
+  {
+    "feature_id": "gpt2-small/5-res-jb/6807",
+    "model_id": "gpt2-small",
+    "source": "5-res-jb",
+    "layer_number": 5,
+    "feature_index": "6807",
+    "concept_category": "Programming / technical",
+    "explanation": "patterns related to code structure and programming syntax",
+    "api_explanations": [
+      {
+        "description": "specific syntax and command line instructions related to programming languages",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "patterns related to code structure and programming syntax",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.0004002253214518229,
+    "max_activation": 33.18335723876953,
+    "top_positive_logits": [
+      "enable",
+      "ignore",
+      "global",
+      "password",
+      "username",
+      "help",
+      "output",
+      "max",
+      "session",
+      "verb"
+    ],
+    "top_negative_logits": [
+      "agra",
+      "issance",
+      "inals",
+      "EVA",
+      "akov",
+      "etus",
+      "angelo",
+      "ysis",
+      "76561",
+      " Hes"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 33.18335723876953,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "o",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "@",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "dj",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ango",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "~",
+            "value": 3.430866956710815,
+            "relative_value": 0.10339119493016176,
+            "is_peak": false
+          },
+          {
+            "text": "]",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "$",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " python",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " --",
+            "value": 33.18335723876953,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "version",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Python",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " 3",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "4",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 32.8513298034668,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": ">",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " ...",
+            "value": 3.241041898727417,
+            "relative_value": 0.09865786006584702,
+            "is_peak": false
+          },
+          {
+            "text": "]",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "-",
+            "value": 3.075714588165283,
+            "relative_value": 0.09362526894849485,
+            "is_peak": false
+          },
+          {
+            "text": "w",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " --",
+            "value": 32.8513298034668,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "watch",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 0.2487120479345322,
+            "relative_value": 0.007570836536068797,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Run",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " itself",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " under",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " watch",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 30.93245506286621,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": ".",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "store",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ")",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "-",
+            "value": 2.821900367736816,
+            "relative_value": 0.09122781757871042,
+            "is_peak": false
+          },
+          {
+            "text": "i",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " --",
+            "value": 30.93245506286621,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": "incre",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "mental",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ":",
+            "value": 1.173093676567078,
+            "relative_value": 0.03792436372033571,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Incre",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "mental",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " mode",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/5-res-jb/6807"
+  },
+  {
+    "feature_id": "gpt2-small/0-res-jb/5566",
+    "model_id": "gpt2-small",
+    "source": "0-res-jb",
+    "layer_number": 0,
+    "feature_index": "5566",
+    "concept_category": "Names / entities",
+    "explanation": "instances of the name \"Sean\" in various contexts",
+    "api_explanations": [
+      {
+        "description": "the name \"Sean\" in various contexts",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "description": "instances of the name \"Sean\" in various contexts",
+        "model": "gpt-4o-mini"
+      }
+    ],
+    "activation_density": 0.000232696533203125,
+    "max_activation": 2.939091920852661,
+    "top_positive_logits": [
+      " Sean",
+      "Sean",
+      " Conor",
+      " Liam",
+      " Hannity",
+      " Ryan",
+      " Hugh",
+      " Trey",
+      " Brendan",
+      " Shannon"
+    ],
+    "top_negative_logits": [
+      "Vol",
+      "hov",
+      " Pengu",
+      "ELF",
+      "GV",
+      "kaya",
+      " vol",
+      "fig",
+      "urable",
+      "GPU"
+    ],
+    "activation_windows": [
+      {
+        "max_value": 2.939091920852661,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " to",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " \"",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "interested",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " parties",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",\"",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " RNC",
+            "value": 0.01583719253540039,
+            "relative_value": 0.0053884645196145674,
+            "is_peak": false
+          },
+          {
+            "text": " communications",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " director",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sean",
+            "value": 2.939091920852661,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " Spicer",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": ",",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " noted",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " that",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Priebus",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Griffin",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " spoke",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 2.93848705291748,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": "coming",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " White",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " House",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " press",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " secretary",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " communications",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " director",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sean",
+            "value": 2.93848705291748,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " Spicer",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " later",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " added",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " in",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " conference",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " call",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " with",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      },
+      {
+        "max_value": 2.938409566879272,
+        "max_token_index": 8,
+        "tokens": [
+          {
+            "text": " here",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "<|endoftext|>",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "--",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " by",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Mary",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Bott",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ari",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " and",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Sean",
+            "value": 2.938409566879272,
+            "relative_value": 1.0,
+            "is_peak": true
+          },
+          {
+            "text": " H",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "oe",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "y",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "\u010a",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "Gener",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": "ation",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          },
+          {
+            "text": " Opportunity",
+            "value": 0.0,
+            "relative_value": 0.0,
+            "is_peak": false
+          }
+        ]
+      }
+    ],
+    "neuronpedia_url": "https://www.neuronpedia.org/gpt2-small/0-res-jb/5566"
+  }
+]

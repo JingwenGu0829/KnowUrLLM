@@ -1,0 +1,25 @@
+{
+  "rows": 3000,
+  "columns": 18,
+  "sources": [
+    "2-res_scefr-ajt",
+    "6-res_scefr-ajt",
+    "10-res_scefr-ajt"
+  ],
+  "target_features_per_source": 1000,
+  "missing_feature_ids": 0,
+  "missing_xy": 0,
+  "missing_activation_density": 0,
+  "categories": [
+    "Animals",
+    "Geography",
+    "Names / entities",
+    "Numbers / dates",
+    "Other / unclear",
+    "Politics / news",
+    "Pop culture",
+    "Programming / technical",
+    "Social media / web",
+    "Syntax / grammar"
+  ]
+}
