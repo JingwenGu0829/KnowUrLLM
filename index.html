@@ -3,337 +3,684 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KnowUrLLM | Hidden Vocabulary of GPT-2</title>
+    <title>KnowUrLLM | The Note Says Cats. The Sentence Says Cataracts.</title>
     <meta
       name="description"
-      content="An interactive D3 atlas of Neuronpedia sparse-autoencoder features inside GPT-2."
+      content="A beginner-friendly visual story about checking whether a short note about GPT-2 matches the highlighted text and the full sentence."
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="vendor/d3.v7.min.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <noscript>
+      <div class="noscript-banner">
+        This visual story needs JavaScript to load the local Neuronpedia dataset
+        and draw the dot map, heatmap, histogram, and word-match chart.
+      </div>
+    </noscript>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="KnowUrLLM home">KnowUrLLM</a>
+      <a class="brand" href="#top">KnowUrLLM</a>
       <nav aria-label="Page sections">
-        <a href="#atlas-section">Atlas</a>
-        <a href="#patterns">Patterns</a>
-        <a href="#limits">Limits</a>
+        <a href="#story">Story</a>
+        <a href="#patterns">Map</a>
+        <a href="#takeaway">Takeaway</a>
       </nav>
+      <span class="scroll-meter" aria-hidden="true"></span>
     </header>
+    <div id="data-status" class="data-status" role="status" aria-live="polite" data-state="loading">
+      Loading 6,000 local GPT-2 saved moments...
+    </div>
 
-    <main id="top">
-      <section class="hero section-band">
+    <main id="top" tabindex="-1">
+      <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">DSC 106 Final Project</p>
-          <h1>Can you search a language model's hidden vocabulary?</h1>
+          <p class="eyebrow">A beginner-friendly AI visualization</p>
+          <h1>The note says "cats." The sentence says "cataracts."</h1>
           <p class="lede">
-            Sparse autoencoders turn millions of hidden activations into named
-            features: URLs, city names, Python prompts, political titles, cat
-            tokens, and stranger fragments. This atlas maps 6,000 public
-            Neuronpedia features from GPT-2 so students can inspect what looks
-            interpretable and what still feels uncertain.
+            GPT-2 is a text-prediction model. A public dataset saves moments
+            when a tiny part of GPT-2 lights up while reading. One saved
+            moment has the short note "cats." But its strongest example is
+            medical text: "patients after a cataracts procedure." The only
+            cat is the letters c-a-t inside cataracts.
           </p>
-          <div class="hero-actions" aria-label="Suggested searches">
-            <button class="preset-search" data-query="twitter">Twitter</button>
-            <button class="preset-search" data-query="python">Python</button>
-            <button class="preset-search" data-query="money">Money</button>
-            <button class="preset-search" data-query="star wars">Star Wars</button>
+        </div>
+        <div class="hero-demo" aria-label="A saved GPT-2 moment being checked">
+          <div class="sample-text">
+            <span>Text GPT-2 reads</span>
+            <p>patients after a <mark>cat</mark>aracts procedure</p>
+          </div>
+          <div class="detector-strip">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <div>
+              <strong>A tiny part of GPT-2 lights up</strong>
+              <p>The short note says "cats," but the sentence is about eye surgery.</p>
+            </div>
+          </div>
+          <div class="hero-checks">
+            <div>
+              <span>Short note says</span>
+              <strong>cats</strong>
+            </div>
+            <div>
+              <span>Highlighted text shows</span>
+              <strong>cat inside cataracts</strong>
+            </div>
+            <div>
+              <span>Full sentence says</span>
+              <strong>eye surgery</strong>
+            </div>
           </div>
         </div>
-        <div class="hero-visual" aria-label="Prompt to hidden feature diagram">
-          <svg id="hero-flow" role="img"></svg>
-        </div>
       </section>
 
-      <section class="stats-strip" aria-label="Dataset summary">
-        <div>
-          <strong id="stat-rows">6,000</strong>
-          <span>SAE features</span>
-        </div>
-        <div>
-          <strong id="stat-layers">12</strong>
-          <span>GPT-2 layers</span>
-        </div>
-        <div>
-          <strong id="stat-categories">10</strong>
-          <span>concept groups</span>
-        </div>
-        <div>
-          <strong id="stat-density">0.04%</strong>
-          <span>median activation density</span>
-        </div>
-      </section>
-
-      <section class="story section-band">
-        <div class="story-step">
-          <span>01</span>
-          <h2>What is a feature?</h2>
+      <section class="plain-terms" aria-label="Plain-language explanation of the note check">
+        <div class="plain-copy">
+          <p class="eyebrow">Before the story</p>
+          <h2>What is this page checking?</h2>
           <p>
-            A sparse-autoencoder feature is a pattern found inside a model's
-            residual stream. Some get human-readable labels; many are only
-            partial clues.
+            GPT-2 reads text step by step. Researchers can save a moment when
+            one small part of the model lights up. The dataset then adds a
+            short note, like "cats," to describe that moment. We check whether
+            that note is actually supported by the highlighted text and the
+            full sentence.
           </p>
         </div>
-        <div class="story-step">
-          <span>02</span>
-          <h2>What is the question?</h2>
-          <p>
-            If we map thousands of features at once, which concept types show
-            up, where do they appear across layers, and which examples should
-            make us cautious?
-          </p>
-        </div>
-        <div class="story-step">
-          <span>03</span>
-          <h2>How to read this</h2>
-          <p>
-            Search for a concept, click a point, then compare its label,
-            predicted tokens, activation density, and highlighted text window.
-          </p>
-        </div>
-      </section>
-
-      <section id="atlas-section" class="dashboard section-band">
-        <div class="section-heading">
-          <p class="eyebrow">Interactive Atlas</p>
-          <h2>Each dot is one internal feature.</h2>
-          <p>
-            Position comes from a PCA projection of Neuronpedia explanation
-            embeddings. Color, search, filters, and click details expose the
-            model's hidden vocabulary without pretending it is a clean dictionary.
-          </p>
-        </div>
-
-        <div class="toolbar" aria-label="Atlas controls">
-          <label class="search-control">
-            <span>Search</span>
-            <input
-              id="search-input"
-              type="search"
-              placeholder="twitter, python, city, money..."
-              autocomplete="off"
-            />
-          </label>
-          <label>
-            <span>Color</span>
-            <select id="color-mode">
-              <option value="category">Concept group</option>
-              <option value="layer">Layer</option>
-              <option value="legibility">Legibility</option>
-            </select>
-          </label>
-          <label>
-            <span>Layer</span>
-            <select id="layer-filter">
-              <option value="all">All layers</option>
-            </select>
-          </label>
-          <label>
-            <span>Group</span>
-            <select id="category-filter">
-              <option value="all">All groups</option>
-            </select>
-          </label>
-          <label>
-            <span>Density floor <b id="density-label">0</b></span>
-            <input id="density-filter" type="range" min="0" max="0.005" step="0.00005" value="0" />
-          </label>
-          <label class="check-control">
-            <input id="legible-filter" type="checkbox" />
-            <span>Legible labels only</span>
-          </label>
-          <button id="reset-filters" type="button">Reset</button>
-        </div>
-
-        <div class="tour-rail" aria-label="Guided feature tour">
-          <button class="tour-step" type="button" data-tour="url">
-            <span>Clean signal</span>
-            URL detector
-          </button>
-          <button class="tour-step" type="button" data-tour="python">
-            <span>Tool trace</span>
-            Python prompt
-          </button>
-          <button class="tour-step" type="button" data-tour="cat">
-            <span>False friend</span>
-            Cat vs cataracts
-          </button>
-          <button class="tour-step" type="button" data-tour="starwars">
-            <span>Rare concept</span>
-            Star Wars
-          </button>
-          <p id="tour-context">
-            Pick a tour card to let the atlas set a search, choose a feature, and show why that example matters.
-          </p>
-        </div>
-
-        <div class="dashboard-grid">
-          <div class="atlas-pane">
-            <div class="chart-title">
-              <div>
-                <h3>Hidden Vocabulary Atlas</h3>
-                <p id="match-summary">Loading features...</p>
-              </div>
-              <button id="reset-zoom" type="button" title="Reset atlas zoom">Reset zoom</button>
-            </div>
-            <svg id="atlas" role="img" aria-label="Scatterplot of SAE features"></svg>
-            <div class="legend" id="atlas-legend" aria-label="Color legend"></div>
+        <div class="reaction-board" aria-label="How the page checks one saved GPT-2 moment">
+          <div class="reaction-input">
+            <span>Real text</span>
+            <strong>patients after a <mark>cat</mark>aracts procedure</strong>
           </div>
-
-          <aside class="detail-pane" aria-live="polite">
-            <div class="detail-header">
-              <p class="eyebrow">Selected feature</p>
-              <h3 id="detail-title">Choose a dot</h3>
-              <p id="detail-subtitle">Search or click an annotated point to inspect a feature.</p>
+          <div class="reaction-core" aria-label="Saved GPT-2 moment">
+            <span>Saved moment</span>
+            <div class="reaction-bars" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
             </div>
-
-            <dl class="metric-grid">
-              <div>
-                <dt>Layer</dt>
-                <dd id="detail-layer">-</dd>
-              </div>
-              <div>
-                <dt>Density</dt>
-                <dd id="detail-density">-</dd>
-              </div>
-              <div>
-                <dt>Legibility</dt>
-                <dd id="detail-legibility">-</dd>
-              </div>
-              <div>
-                <dt>Group</dt>
-                <dd id="detail-category">-</dd>
-              </div>
-            </dl>
-
-            <section class="detail-block">
-              <h4>Evidence check</h4>
-              <p id="evidence-note">
-                Click a cached example to compare its label, logits, and activating tokens.
-              </p>
-              <a id="source-link" class="source-link" href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">
-                Open on Neuronpedia
-              </a>
-            </section>
-
-            <section class="detail-block">
-              <h4>Top predicted tokens</h4>
-              <div id="positive-logits" class="token-pills"></div>
-            </section>
-
-            <section class="detail-block">
-              <h4>Lowest predicted tokens</h4>
-              <div id="negative-logits" class="token-pills"></div>
-            </section>
-
-            <section class="detail-block">
-              <h4>Activation window</h4>
-              <p id="activation-note">
-                Cached API examples show which source tokens lit up for selected features.
-              </p>
-              <div id="activation-windows"></div>
-            </section>
-
-            <section class="detail-block">
-              <h4>Search hits</h4>
-              <div id="search-results" class="result-list"></div>
-            </section>
-          </aside>
+            <strong>This is the model moment the note tries to explain.</strong>
+          </div>
+          <div class="reaction-label">
+            <span>Short note</span>
+            <strong>"cats"</strong>
+            <em>Sounds plausible, but still has to match the sentence.</em>
+          </div>
+          <div class="reaction-checks">
+            <div>
+              <span>Short note</span>
+              <strong>cats</strong>
+            </div>
+            <div>
+              <span>Highlighted text</span>
+              <strong>cat inside a longer word</strong>
+            </div>
+            <div>
+              <span>Sentence</span>
+              <strong>about medical care</strong>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="prototype-note section-band">
-        <div class="section-heading">
-          <p class="eyebrow">Prototype note</p>
-          <h2>What is already working, and what is hardest next?</h2>
+      <section class="story-arc" aria-label="And, but, therefore story preview">
+        <p class="eyebrow">The story arc</p>
+        <div class="arc-grid">
+          <article>
+            <span>And</span>
+            <h2>A short note gives a fast first idea.</h2>
+            <p>The note tells a viewer what one saved moment might be about.</p>
+          </article>
+          <article>
+            <span>But</span>
+            <h2>The note can still be wrong.</h2>
+            <p>The note "cats" sounds obvious until the highlighted text is really "cat" inside "cataracts."</p>
+          </article>
+          <article>
+            <span>Therefore</span>
+            <h2>Check the sentence before trusting it.</h2>
+            <p>Compare the note, the highlighted text, and the full sentence before deciding what the saved moment means.</p>
+          </article>
         </div>
-        <div class="prototype-grid">
-          <div>
-            <h3>What we have done so far</h3>
+      </section>
+
+      <section class="thesis">
+        <p>
+          The whole project is one reading test: put the short note, the highlighted
+          text, and the real sentence side by side, then ask whether they agree.
+        </p>
+      </section>
+
+      <section id="test" class="test-rule" aria-label="Three-part note check">
+        <div class="test-rule-heading">
+          <p class="eyebrow">The test</p>
+          <h2>Read the note in three steps.</h2>
+        </div>
+        <div class="test-steps">
+          <article>
+            <span>1</span>
+            <h3>Note</h3>
+            <p>What the dataset says this saved moment might be about.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Highlighted text</h3>
+            <p>The small words or letters that make the model part light up most.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Full sentence</h3>
+            <p>The real sentence where the highlighted text appears.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Verdict</h3>
+            <p>Trust the note only when all three checks point the same way.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="story" class="scrolly">
+        <div class="chapters" aria-label="Saved GPT-2 moment checking chapters">
+          <article id="case-url" class="chapter is-active" data-feature-id="gpt2-small/4-res-jb/14801">
+            <p class="eyebrow">Example 1: note works</p>
+            <h2>The URL note is easy to trust.</h2>
             <p>
-              The current prototype loads a public Neuronpedia dataset with 6,000 GPT-2 sparse-autoencoder features across all 12 residual-stream layers. It maps those features into a searchable D3 atlas and connects the atlas to layer filters, concept filters, density filtering, zoom, hover, and click details. It also includes aggregate views: a layer-by-category heatmap, an activation-density histogram, and legibility bars by layer. The detail panel uses cached Neuronpedia API examples to show token-level activation windows, so a student can compare the label, predicted tokens, and source text instead of trusting a dot alone.
+              This one is simple. The note says web addresses. The example is
+              a real web address, and the highlighted text looks like URL
+              parts. The note is useful.
             </p>
+            <div class="chapter-receipt" aria-label="URL example support summary">
+              <span data-score="3"><b>Note</b><small>fits</small></span>
+              <span data-score="3"><b>Highlight</b><small>fits</small></span>
+              <span data-score="3"><b>Sentence</b><small>fits</small></span>
+              <strong>Trust</strong>
+            </div>
+            <div class="mobile-evidence" aria-label="URL example mobile support">
+              <div><span>Short note</span><strong>web URLs</strong></div>
+              <div><span>Highlight</span><strong>URL, URI, http</strong></div>
+              <div><span>Sentence</span><strong>real web address</strong></div>
+              <p>Decision: trust the note.</p>
+            </div>
+          </article>
+
+          <article id="case-python" class="chapter" data-feature-id="gpt2-small/7-res-jb/6592">
+            <p class="eyebrow">Example 2: note is incomplete</p>
+            <h2>The Python note misses nearby shell text.</h2>
+            <p>
+              The example is a Python command. But the highlighted text also
+              includes usernames and command-line words. The note helps, but it
+              leaves out the command-line context around the code.
+            </p>
+            <div class="chapter-receipt" aria-label="Python example support summary">
+              <span data-score="2"><b>Note</b><small>partial</small></span>
+              <span data-score="2"><b>Highlight</b><small>check</small></span>
+              <span data-score="3"><b>Sentence</b><small>fits</small></span>
+              <strong>Check context</strong>
+            </div>
+            <div class="mobile-evidence" aria-label="Python example mobile support">
+              <div><span>Short note</span><strong>Python</strong></div>
+              <div><span>Highlight</span><strong>username + command words</strong></div>
+              <div><span>Sentence</span><strong>Python command</strong></div>
+              <p>Decision: useful, but incomplete.</p>
+            </div>
+          </article>
+
+          <article id="case-cat" class="chapter" data-feature-id="gpt2-small/7-res-jb/24310">
+            <p class="eyebrow">Example 3: note misleads</p>
+            <h2>The cat note fails inside cataracts.</h2>
+            <p>
+              This is the danger example. The note says cats, but one example
+              highlights "cat" inside "cataracts." GPT-2 may be matching
+              letters inside a word, not the animal.
+            </p>
+            <div class="chapter-receipt" aria-label="Cat example support summary">
+              <span data-score="2"><b>Note</b><small>sounds right</small></span>
+              <span data-score="1"><b>Highlight</b><small>trap</small></span>
+              <span data-score="1"><b>Sentence</b><small>conflicts</small></span>
+              <strong>Do not trust yet</strong>
+            </div>
+            <div class="mobile-evidence" aria-label="Cat example mobile support">
+              <div><span>Short note</span><strong>cats</strong></div>
+              <div><span>Highlight</span><strong>cat</strong></div>
+              <div><span>Sentence</span><strong>cataracts</strong></div>
+              <p>Decision: do not trust yet.</p>
+            </div>
+          </article>
+
+          <article id="case-star-wars" class="chapter" data-feature-id="gpt2-small/11-res-jb/14962">
+            <p class="eyebrow">Example 4: note needs backup</p>
+            <h2>The Star Wars note has thin backup.</h2>
+            <p>
+              The full sentence mentions Star Wars. But the highlighted text
+              is mostly punctuation. A fun note is not enough; the highlighted
+              text has to support it too.
+            </p>
+            <div class="chapter-receipt" aria-label="Star Wars example support summary">
+              <span data-score="2"><b>Note</b><small>sounds right</small></span>
+              <span data-score="1"><b>Highlight</b><small>weak</small></span>
+              <span data-score="3"><b>Sentence</b><small>fits</small></span>
+              <strong>Needs backup</strong>
+            </div>
+            <div class="mobile-evidence" aria-label="Star Wars example mobile support">
+              <div><span>Short note</span><strong>Star Wars</strong></div>
+              <div><span>Highlight</span><strong>mostly punctuation</strong></div>
+              <div><span>Sentence</span><strong>Star Wars names</strong></div>
+              <p>Decision: needs backup.</p>
+            </div>
+          </article>
+        </div>
+
+        <aside class="stage" aria-live="polite">
+          <p class="mobile-stage-note">After the four examples, the detail view shows the note, highlight, sentence, and decision for the active example.</p>
+          <div class="stage-top">
+            <div>
+              <p class="eyebrow"><span id="case-step">Example 1 of 4</span> / Current saved moment</p>
+              <h2 id="feature-title">Loading example...</h2>
+              <p id="feature-meta">Loading Neuronpedia data.</p>
+            </div>
+            <a id="feature-link" href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">Original record</a>
+          </div>
+
+          <ol class="case-rail" aria-label="Four-example story path">
+            <li class="is-active" data-feature-id="gpt2-small/4-res-jb/14801" style="--case-color: #00bcd4" tabindex="0" role="link" aria-label="Jump to the URL example" aria-current="step">
+              <span>1</span>
+              <b>URL</b>
+              <small>trust</small>
+            </li>
+            <li data-feature-id="gpt2-small/7-res-jb/6592" style="--case-color: #12a878" tabindex="0" role="link" aria-label="Jump to the Python example">
+              <span>2</span>
+              <b>Python</b>
+              <small>partial</small>
+            </li>
+            <li data-feature-id="gpt2-small/7-res-jb/24310" style="--case-color: #ff4057" tabindex="0" role="link" aria-label="Jump to the cat example">
+              <span>3</span>
+              <b>Cat</b>
+              <small>misleads</small>
+            </li>
+            <li data-feature-id="gpt2-small/11-res-jb/14962" style="--case-color: #7a5cff" tabindex="0" role="link" aria-label="Jump to the Star Wars example">
+              <span>4</span>
+              <b>Star Wars</b>
+              <small>needs backup</small>
+            </li>
+          </ol>
+
+          <div class="verdict" id="feature-verdict">Checking the note...</div>
+
+          <div class="evidence-grid">
+            <div>
+              <span>Note</span>
+              <strong id="label-score">Loading</strong>
+              <meter id="label-meter" min="0" max="3" value="0" aria-label="Short-note support score"></meter>
+              <p id="label-note"></p>
+            </div>
+            <div>
+              <span>Highlighted text</span>
+              <strong id="logit-score">Loading</strong>
+              <meter id="logit-meter" min="0" max="3" value="0" aria-label="Highlighted-text support score"></meter>
+              <p id="logit-note"></p>
+            </div>
+            <div>
+              <span>Full sentence</span>
+              <strong id="text-score">Loading</strong>
+              <meter id="text-meter" min="0" max="3" value="0" aria-label="Full-sentence support score"></meter>
+              <p id="text-note"></p>
+            </div>
+          </div>
+
+          <div class="stage-body">
+            <div class="atlas-box">
+              <div>
+                <h3>Dot map: where this saved moment sits</h3>
+                <p id="atlas-caption">Each dot is one saved moment. The colored path connects the four examples. Nearby dots give context, not proof.</p>
+              </div>
+              <p id="atlas-summary" class="sr-only">
+                Canvas dot map of 6,000 public GPT-2 saved moments. Nearby
+                dots have similar dataset notes or descriptions; the dot map is
+                not proof that GPT-2 understands those topics. The thin line
+                links the four scroll examples, and the highlighted ring marks the
+                current one.
+                Hover or tap the map to check a nearby saved moment. Keyboard
+                users can focus the map, then use arrow keys to step through
+                the four scroll examples.
+              </p>
+              <canvas id="atlas-canvas" width="740" height="420" tabindex="0" aria-label="Dot map of GPT-2 saved moments" aria-describedby="atlas-summary atlas-caption">
+                A map of 6,000 public GPT-2 saved moments. A thin line
+                links the four story examples, and the highlighted ring marks the
+                current one. Callouts show grammar, names, code, and rare
+                animal-note regions.
+              </canvas>
+            </div>
+
+            <div class="feature-card">
+              <h3>Highlighted words or letters</h3>
+              <p id="token-guide" class="token-guide">Green supports the note. Yellow needs the sentence. Red warns you to slow down.</p>
+              <div class="token-legend" aria-label="Highlighted-text color key">
+                <span data-evidence="supports">matches note</span>
+                <span data-evidence="context">needs sentence</span>
+                <span data-evidence="misleading">warning sign</span>
+              </div>
+              <div id="token-pills" class="token-pills" role="list" aria-label="Highlighted-text labels"></div>
+              <h3>Full sentence example <span id="example-count"></span></h3>
+              <div id="source-callout" class="source-callout" aria-live="polite">
+                <span>Read this sentence</span>
+                <strong>Loading sentence check.</strong>
+              </div>
+              <div id="activation-window" class="activation-window" aria-label="Full sentence example"></div>
+              <div class="stage-insight" id="stage-insight">
+                <span>Decision</span>
+                <p>Loading the decision note.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="patterns" class="patterns">
+        <div class="section-heading">
+          <p class="eyebrow">Zoom out</p>
+          <h2>The four examples sit inside 6,000 saved moments.</h2>
+          <p>
+            The scroll story used four examples to teach the rule. This section
+            asks whether the same warning still matters when we zoom out to all
+            6,000 records. Read each chart as support for the rule, not as a
+            separate dashboard.
+          </p>
+        </div>
+        <div class="pattern-slide pattern-slide-intro">
+          <div class="reader-path" aria-label="How to read the broader charts">
+            <p>Read this section in three passes.</p>
+            <div>
+              <span>1</span>
+              <strong>Check the four examples.</strong>
+              <small>The matrix shows which notes pass or fail the three checks.</small>
+            </div>
+            <div>
+              <span>2</span>
+              <strong>Then zoom out.</strong>
+              <small>The topic and rarity charts show where those examples sit in the dataset.</small>
+            </div>
+            <div>
+              <span>3</span>
+              <strong>Keep the warning.</strong>
+              <small>A word match can look convincing and still fail in the full sentence.</small>
+            </div>
+          </div>
+          <p class="data-scope">
+            <span>6,000 saved moments from GPT-2</span>
+            <span>Public Neuronpedia dataset across GPT-2 steps 0-11</span>
+            <span>The page loads only 7 needed fields so the charts stay fast</span>
+          </p>
+          <div class="finding-strip" aria-label="Dataset-backed findings">
+            <div>
+              <span>Notes cluster</span>
+              <strong><b id="finding-topic">42%</b> are grammar or punctuation.</strong>
+            </div>
+            <div>
+              <span>Moments are rare</span>
+              <strong>The typical one appears in <b id="finding-typical">0.038%</b> of sampled text.</strong>
+            </div>
+            <div>
+              <span>Matches are not enough</span>
+              <strong><b id="finding-no-match">58%</b> have no obvious shared words between the short note and highlighted text.</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pattern-focus" id="pattern-focus" aria-live="polite">
+          <span>What to read</span>
+          <strong>Notes cluster by topic, most saved moments are rare, and matching letters alone are not enough.</strong>
+        </div>
+        <p class="pattern-hint">Tap, hover, or focus a colored mark to trace one example through the charts.</p>
+        <div class="pattern-slide pattern-slide-matrix">
+          <div class="chart-panel evidence-matrix-panel">
+            <h3>Can each note be trusted?</h3>
+            <p class="chart-note">
+              Read one row at a time. The question is simple: do the note,
+              highlighted text, and full sentence tell the same story? Green
+              means yes. Yellow means check the sentence. Red means stop.
+            </p>
+            <div class="chart-reading" aria-label="How to read the trust-test matrix">
+              <span><i class="score-key score-key-good"></i>Yes</span>
+              <span><i class="score-key score-key-mixed"></i>Check</span>
+              <span><i class="score-key score-key-weak"></i>Stop</span>
+            </div>
+            <p id="evidence-matrix-summary" class="sr-only">
+              Matrix comparing the four scroll examples against the note,
+              highlighted text, and full sentence checks. URL is yes across all
+              three. Python needs a sentence check. Cat conflicts with the full
+              sentence. Star Wars has a matching sentence but weak highlighted text.
+            </p>
+            <svg id="evidence-matrix" role="img" aria-label="Four-example trust-test matrix" aria-describedby="evidence-matrix-summary"></svg>
+          </div>
+        </div>
+        <div class="pattern-slide pattern-slide-context">
+          <div class="method-strip" aria-label="How the dataset findings were computed">
+            <p>How these numbers are made</p>
+            <div>
+              <span>Dot map</span>
+              <strong>Put dots near records with similar notes; this gives context, not proof.</strong>
+            </div>
+            <div>
+              <span>Topic share</span>
+              <strong>Count the topic tag assigned to each saved moment.</strong>
+            </div>
+            <div>
+              <span>Typical rarity</span>
+              <strong>Find the middle appearance rate across all 6,000 saved moments.</strong>
+            </div>
+            <div>
+              <span>Word match</span>
+              <strong>Compare words in the note with the highlighted text. Treat a match as a warning sign, not the answer.</strong>
+            </div>
+          </div>
+          <div class="case-key" aria-label="Four story examples marked in the charts">
+            <p>Colored marks trace the four story examples through the charts.</p>
+            <div>
+              <a href="#case-url" data-feature-id="gpt2-small/4-res-jb/14801" aria-label="Trace the URL example"><i style="--case-color: #00bcd4"></i>URL works</a>
+              <a href="#case-python" data-feature-id="gpt2-small/7-res-jb/6592" aria-label="Trace the Python example"><i style="--case-color: #12a878"></i>Python is partial</a>
+              <a href="#case-cat" data-feature-id="gpt2-small/7-res-jb/24310" aria-label="Trace the cat example"><i style="--case-color: #ff4057"></i>Cat misleads</a>
+              <a href="#case-star-wars" data-feature-id="gpt2-small/11-res-jb/14962" aria-label="Trace the Star Wars example"><i style="--case-color: #7a5cff"></i>Star Wars needs backup</a>
+            </div>
+          </div>
+        </div>
+        <div class="pattern-slide pattern-slide-charts">
+          <div class="pattern-grid">
+            <div class="chart-panel">
+              <h3>What the notes are about</h3>
+              <p class="chart-note">
+                Short notes are not evenly spread: punctuation and grammar
+                notes dominate, while notes about animals are rare. Colored
+                dots show where the four examples above live.
+              </p>
+              <div class="chart-reading" aria-label="How to read the short-note topic chart">
+                <span><i class="shade-ramp"></i>Darker means a larger share of that step</span>
+                <span><i class="case-dot"></i>Colored marks are the four story examples</span>
+                <span><i class="layer-icon"></i>L0-L11 are GPT-2 steps, early to late</span>
+              </div>
+              <p id="heatmap-summary" class="sr-only">
+                Heatmap of notes by topic and GPT-2 step. Darker cells mean a
+                larger share of that step. Four colored
+                marks locate the URL, Python, cat, and Star Wars examples. On small
+                screens, the chart emphasizes the largest topics plus the four
+                story topics so the rows remain readable.
+              </p>
+              <svg id="heatmap" role="img" aria-label="Topic heatmap by GPT-2 step" aria-describedby="heatmap-summary"></svg>
+            </div>
+            <div class="chart-panel">
+              <h3>Most saved moments appear rarely</h3>
+              <p class="chart-note">
+                The typical saved moment appears in a tiny fraction of sampled text,
+                which is why one vivid example can be misleading. Colored lines
+                show how rare each example is.
+              </p>
+              <div class="chart-reading" aria-label="How to read the rarity chart">
+                <span><i class="bar-icon"></i>Each bar counts saved moments with similar rarity</span>
+                <span><i class="line-icon"></i>Colored lines are the four story examples</span>
+              </div>
+              <p id="density-summary" class="sr-only">
+                Histogram of how often each saved moment appears. Most saved moments appear
+                in a tiny share of sampled text. Four colored lines mark the
+                story examples.
+              </p>
+              <svg id="density-histogram" role="img" aria-label="Histogram of how often GPT-2 saved moments appear" aria-describedby="density-summary"></svg>
+            </div>
+          </div>
+        </div>
+        <div class="pattern-slide pattern-slide-agreement">
+          <div class="chart-panel agreement-panel">
+            <h3>Do notes and highlights use the same words?</h3>
+            <p class="chart-note">
+              A quick text check compares each short note with the highlighted
+              text that makes the saved moment light up most strongly. More than
+              half have no obvious word match, and the cat example shows why a
+              match still is not enough.
+            </p>
+            <div class="agreement-takeaway" aria-label="How to interpret short-note and highlighted-text word matches">
+              <span>Reading rule</span>
+              <strong>A word match is not enough.</strong>
+              <p>The cat example matches the letters <b>cat</b>, but the source sentence is about cataracts.</p>
+            </div>
+            <p id="agreement-summary" class="sr-only">
+              Stacked bar summarizing whether short notes share words
+              with their highlighted text. About 58 percent show no obvious match,
+              32 percent show some match, and 10 percent show a strong match.
+            </p>
+            <svg id="agreement-strip" role="img" aria-label="Short-note and highlighted-text match summary" aria-describedby="agreement-summary"></svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="takeaway" class="takeaway">
+        <p class="eyebrow">Takeaway</p>
+        <h2>A short dataset note is a starting point, not an answer.</h2>
+        <p class="takeaway-lede">
+          The URL note passes, Python and Star Wars need context, and the cat
+          note fails because the visualization keeps the short note, highlighted
+          text, and full sentence side by side.
+        </p>
+        <div class="story-spine" aria-label="And, but, therefore story summary">
+          <div>
+            <span>And</span>
+            <strong>A short note gives a fast first idea.</strong>
           </div>
           <div>
-            <h3>What is hardest to design</h3>
-            <p>
-              The hardest design problem is explaining interpretability without overstating certainty. A feature can have a clean label but still activate on surprising token fragments, so the interface has to make uncertainty visible rather than hiding it behind a polished map. The atlas also contains heavy overplotting because thousands of features occupy the same projected space, which makes search, filtering, zooming, annotations, and selected examples essential. The next hardest piece is the final demo video: it needs to teach the interaction quickly while ending on the main takeaway that interpretability gives useful handles, not complete explanations.
-            </p>
+            <span>But</span>
+            <strong>Highlighted text and full sentences can disagree.</strong>
+          </div>
+          <div>
+            <span>Therefore</span>
+            <strong>Trust the note only when all three checks line up.</strong>
+          </div>
+        </div>
+        <div class="takeaway-rule" aria-label="Three-part note checking rule">
+          <div>
+            <span>Short note</span>
+            <strong>What the dataset says</strong>
+          </div>
+          <div>
+            <span>Highlighted text</span>
+            <strong>Which words or letters light up</strong>
+          </div>
+          <div>
+            <span>Full sentence</span>
+            <strong>What the example really means</strong>
+          </div>
+        </div>
+        <div class="takeaway-proof" aria-label="Four-example support behind the takeaway">
+          <div style="--case-color: #00bcd4">
+            <span>URL</span>
+            <strong>All three agree.</strong>
+            <small>Trust the note.</small>
+          </div>
+          <div style="--case-color: #12a878">
+            <span>Python</span>
+            <strong>The note is incomplete.</strong>
+            <small>Check context.</small>
+          </div>
+          <div style="--case-color: #ff4057">
+            <span>Cat</span>
+            <strong>The sentence contradicts the note.</strong>
+            <small>Do not trust yet.</small>
+          </div>
+          <div style="--case-color: #7a5cff">
+            <span>Star Wars</span>
+            <strong>The sentence fits, but the highlighted text is weak.</strong>
+            <small>Needs backup.</small>
+          </div>
+        </div>
+        <div class="takeaway-snapshot" aria-label="Final cat and cataracts check replay">
+          <div class="snapshot-text">
+            <span>Final check</span>
+            <strong>patients after a <mark>cat</mark>aracts procedure</strong>
+          </div>
+          <div>
+            <span>Short note says</span>
+            <strong>cats</strong>
+          </div>
+          <div>
+            <span>Highlight shows</span>
+            <strong>c-a-t inside cataracts</strong>
+          </div>
+          <div>
+            <span>Sentence means</span>
+            <strong>eye surgery, not pets</strong>
           </div>
         </div>
       </section>
-
-      <section id="patterns" class="patterns section-band">
-        <div class="section-heading">
-          <p class="eyebrow">Aggregate Patterns</p>
-          <h2>The atlas becomes useful when it argues with itself.</h2>
-          <p>
-            The categories below are keyword-derived, so treat them as a
-            navigational layer. The important pattern is not a perfect taxonomy;
-            it is the mix of interpretable clusters, sparse features, and noisy labels.
-          </p>
-        </div>
-
-        <div class="patterns-grid">
-          <div class="chart-panel">
-            <div class="chart-title">
-              <div>
-                <h3>Concepts Across Layers</h3>
-                <p>Click a cell to filter the atlas.</p>
-              </div>
-            </div>
-            <svg id="heatmap" role="img" aria-label="Heatmap of concept groups by layer"></svg>
-          </div>
-          <div class="chart-panel">
-            <div class="chart-title">
-              <div>
-                <h3>Sparsity Check</h3>
-                <p>Most features activate rarely; high-density features are unusual.</p>
-              </div>
-            </div>
-            <svg id="density-histogram" role="img" aria-label="Histogram of activation density"></svg>
-          </div>
-          <div class="chart-panel wide">
-            <div class="chart-title">
-              <div>
-                <h3>Readable, But Not Certain</h3>
-                <p>Legibility scores reward concise labels and available logits.</p>
-              </div>
-            </div>
-            <svg id="legibility-bars" role="img" aria-label="Average legibility by layer"></svg>
-          </div>
-        </div>
-      </section>
-
-      <section id="limits" class="limits section-band">
+      <section id="project-note" class="project-note">
         <div>
-          <p class="eyebrow">Takeaway</p>
-          <h2>Interpretability gives handles, not final answers.</h2>
-        </div>
-        <div class="limit-grid">
-          <p>
-            A clear label can hide a messy feature. The cat example, for instance,
-            can light up on "cataracts" because token fragments and words are not
-            the same thing.
-          </p>
-          <p>
-            Categories here are a map layer, not ground truth. They help students
-            explore, but the raw feature page is still the evidence to inspect.
-          </p>
-          <p>
-            The honest result: GPT-2 has many searchable internal handles, yet a
-            feature label alone does not prove that the model understands a concept.
-          </p>
-        </div>
-        <div class="sources">
-          <a href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">Neuronpedia</a>
-          <a href="https://neuronpedia-datasets.s3.us-east-1.amazonaws.com/index.html?prefix=v1/" target="_blank" rel="noreferrer">Public exports</a>
-          <a href="https://dsc106.com/projects/final_project/" target="_blank" rel="noreferrer">DSC 106 final project</a>
+          <p class="eyebrow">Design note</p>
+          <h2>How the page is built, and why the design is hard.</h2>
+          <div class="note-grid">
+            <article>
+              <h3>What this page does</h3>
+              <div class="note-ruler" aria-label="Current page strengths">
+                <span>Hook</span>
+                <span>Checks</span>
+                <span>Interaction</span>
+              </div>
+              <div class="note-sentences">
+                <p>The page now opens with the concrete cat/cataracts mismatch before any background explanation.</p>
+                <p>It loads 6,000 public GPT-2 saved moments from Neuronpedia and four source examples with highlighted text.</p>
+                <p>The scroll story compares each short dataset note against color-coded highlighted text and full sentences.</p>
+                <p>The dot map, four-example matrix, topic chart, rarity chart, word-match check, and source links connect the four examples back to the larger dataset.</p>
+              </div>
+            </article>
+            <article>
+              <h3>Hardest design problem</h3>
+              <div class="note-ruler" aria-label="Design constraints">
+                <span>No prior</span>
+                <span>Laptop fit</span>
+                <span>No false trust</span>
+              </div>
+              <div class="note-sentences">
+                <p>The hardest part is making GPT-2's saved moments readable for a viewer who has never seen this kind of data before.</p>
+                <p>A short note like "cats" feels clear, so the design has to make the mismatch visible immediately.</p>
+                <p>The sticky stage must stay compact enough to fit on a laptop while still showing the note, highlighted text, atlas position, and full sentence.</p>
+                <p>The larger charts have to support the story instead of becoming a separate appendix.</p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
+
     </main>
 
-    <div id="tooltip" role="status" aria-live="polite"></div>
-    <script src="main.js"></script>
+    <footer class="site-footer">
+      <p>
+        Data from
+        <a href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">Neuronpedia</a>
+        <a href="https://neuronpedia-datasets.s3.us-east-1.amazonaws.com/index.html?prefix=v1/" target="_blank" rel="noreferrer">public GPT-2 data exports</a>:
+        6,000 rows, 18 columns, model
+        <code>gpt2-small</code>, GPT-2 steps 0-11, source <code>res-jb</code>. Built
+        for DSC 106 by Jingwen Gu, Krish Desai, and Nidhi Manayilakath.
+      </p>
+    </footer>
+
+    <div id="chart-tooltip" class="chart-tooltip" role="status" aria-live="polite"></div>
+    <script src="main.js" defer></script>
   </body>
 </html>
