@@ -3,6 +3,8 @@
 An interactive DSC 106 final project that explains sparse-autoencoder features
 inside GPT-2 using public Neuronpedia data.
 
+Live site: <https://jingwengu0829.github.io/KnowUrLLM/>
+
 ## Run locally
 
 ```bash
