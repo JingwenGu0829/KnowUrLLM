@@ -216,10 +216,30 @@ const NAMED_CONTAINER_SELECTORS = [
   ".site-footer",
 ];
 
+// Narrow, explicit exceptions to the vertical-overflow assertion.
+// Each entry's value is the documented reason the container's
+// scrollHeight may legitimately exceed clientHeight by design.
+// Horizontal-overflow and full bbox-in-parent assertions still apply
+// to every named container regardless of this list.
+const VERTICAL_OVERFLOW_EXEMPT = {
+  ".stage": "Sticky scrolly stage. style.css sets height: calc(100vh - 82px) plus overflow: hidden so its scrolly content is intentionally clipped to the viewport.",
+  ".atlas-box": "Dot-map panel uses grid-template-rows: auto minmax(0, 1fr) with overflow: hidden so the canvas + caption fit inside .stage; D3 may compute a slightly taller natural content height.",
+  ".feature-card": "Token + activation-window panel uses overflow: hidden so source-callout / activation tokens stay inside the sticky stage; the tokens list grows but is intentionally clipped.",
+};
+
 async function checkNamedContainersGeometry(page, viewport, issues) {
+  // Force the settled (fully-revealed) layout before measuring. The page
+  // applies .reveal-item with `transform: translateY(18px)` until an
+  // IntersectionObserver adds .is-visible on scroll; without this step,
+  // every container below the fold reports a bbox shifted down by 18px
+  // even though that offset is animation state, not a real defect.
   await page.evaluate(() => {
     document.documentElement.style.scrollBehavior = "auto";
     window.scrollTo(0, 0);
+    document.querySelectorAll(".reveal-item").forEach((el) => {
+      el.style.transition = "none";
+      el.classList.add("is-visible");
+    });
   });
   await page.waitForTimeout(80);
 
@@ -239,10 +259,17 @@ async function checkNamedContainersGeometry(page, viewport, issues) {
         overflowY: styles.overflowY,
         scrollWidth: el.scrollWidth,
         clientWidth: el.clientWidth,
+        scrollHeight: el.scrollHeight,
+        clientHeight: el.clientHeight,
         elLeft: Math.round(elBox.left),
         elRight: Math.round(elBox.right),
+        elTop: Math.round(elBox.top),
+        elBottom: Math.round(elBox.bottom),
         parentLeft: parentBox ? Math.round(parentBox.left) : null,
         parentRight: parentBox ? Math.round(parentBox.right) : null,
+        parentTop: parentBox ? Math.round(parentBox.top) : null,
+        parentBottom: parentBox ? Math.round(parentBox.bottom) : null,
+        parentTag: parent ? parent.tagName : null,
       };
     });
   }, { selectors: NAMED_CONTAINER_SELECTORS });
@@ -252,14 +279,30 @@ async function checkNamedContainersGeometry(page, viewport, issues) {
       issues.push(`Named container missing at ${viewport.name}: ${m.sel}`);
       continue;
     }
-    // Horizontal scrollWidth check applies only when overflowX is not hidden/clip.
-    if (m.overflowX !== "hidden" && m.overflowX !== "clip" && m.scrollWidth > m.clientWidth + tolerance) {
-      issues.push(`Named container ${m.sel} has horizontal internal overflow at ${viewport.name}: scrollWidth=${m.scrollWidth} clientWidth=${m.clientWidth}`);
+
+    // Internal horizontal overflow: applies to every named container; the
+    // page is designed to never produce horizontal scrollbars and no
+    // listed container intentionally clips horizontally.
+    if (m.scrollWidth > m.clientWidth + tolerance) {
+      issues.push(`Named container ${m.sel} has horizontal internal overflow at ${viewport.name}: scrollWidth=${m.scrollWidth} clientWidth=${m.clientWidth} (parent=${m.parentTag})`);
     }
-    // Bounding-box horizontal containment within direct parent (skip fixed; sticky still measured against parent).
-    if (m.position !== "fixed" && m.parentLeft !== null && m.parentRight !== null) {
+
+    // Internal vertical overflow: applies to every named container except
+    // the small documented allow-list above. Catches regressions where a
+    // fixed height + overflow: hidden would silently clip a growing
+    // text/SVG node.
+    if (!(m.sel in VERTICAL_OVERFLOW_EXEMPT) && m.scrollHeight > m.clientHeight + tolerance) {
+      issues.push(`Named container ${m.sel} has vertical internal overflow at ${viewport.name}: scrollHeight=${m.scrollHeight} clientHeight=${m.clientHeight} (parent=${m.parentTag})`);
+    }
+
+    // Full direct-parent containment on both axes. Skipped for
+    // position: fixed elements (they intentionally leave parent flow).
+    if (m.position !== "fixed" && m.parentLeft !== null) {
       if (m.elLeft < m.parentLeft - tolerance || m.elRight > m.parentRight + tolerance) {
-        issues.push(`Named container ${m.sel} escapes parent horizontally at ${viewport.name}: el=[${m.elLeft},${m.elRight}] parent=[${m.parentLeft},${m.parentRight}]`);
+        issues.push(`Named container ${m.sel} escapes parent horizontally at ${viewport.name}: el=[${m.elLeft},${m.elRight}] parent=[${m.parentLeft},${m.parentRight}] (parent=${m.parentTag})`);
+      }
+      if (m.elTop < m.parentTop - tolerance || m.elBottom > m.parentBottom + tolerance) {
+        issues.push(`Named container ${m.sel} escapes parent vertically at ${viewport.name}: el=[${m.elTop},${m.elBottom}] parent=[${m.parentTop},${m.parentBottom}] (parent=${m.parentTag})`);
       }
     }
   }
