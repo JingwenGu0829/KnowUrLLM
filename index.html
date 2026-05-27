@@ -122,6 +122,59 @@
         </div>
       </section>
 
+      <section class="sae-intro" aria-label="What is an LLM feature?">
+        <div class="sae-intro-heading">
+          <p class="eyebrow">Inside the model</p>
+          <h2>So what is a "feature," anyway?</h2>
+          <p>
+            A sparse autoencoder breaks an LLM's inner state into thousands of small "features." Each feature fires only on a specific kind of text. The Neuronpedia dataset auto-generates a short label for every feature. These eight are typical examples — the last one is the disagreement that drives the rest of this page.
+          </p>
+        </div>
+        <div class="sae-gallery" aria-label="Examples of LLM features and their auto-generated labels">
+          <article style="--cat-color: #111111">
+            <span class="sae-tag">Grammar</span>
+            <strong class="sae-label">"commas"</strong>
+            <p class="sae-fires-on">Fires on: "the cake<mark>,</mark> which was"</p>
+          </article>
+          <article style="--cat-color: #00a3bd">
+            <span class="sae-tag">Web</span>
+            <strong class="sae-label">"web URLs"</strong>
+            <p class="sae-fires-on">Fires on: "visit <mark>http://example.com</mark>"</p>
+          </article>
+          <article style="--cat-color: #12a878">
+            <span class="sae-tag">Code</span>
+            <strong class="sae-label">"Python"</strong>
+            <p class="sae-fires-on">Fires on: "<mark>def get_user():</mark>"</p>
+          </article>
+          <article style="--cat-color: #2f6df6">
+            <span class="sae-tag">Names</span>
+            <strong class="sae-label">"celebrities"</strong>
+            <p class="sae-fires-on">Fires on: "<mark>Brad Pitt</mark> starred in"</p>
+          </article>
+          <article style="--cat-color: #f2ae33">
+            <span class="sae-tag">Dates</span>
+            <strong class="sae-label">"years"</strong>
+            <p class="sae-fires-on">Fires on: "in <mark>2024</mark>, the team"</p>
+          </article>
+          <article style="--cat-color: #7a5cff">
+            <span class="sae-tag">Places</span>
+            <strong class="sae-label">"capitals"</strong>
+            <p class="sae-fires-on">Fires on: "<mark>Paris</mark>, the capital of France"</p>
+          </article>
+          <article style="--cat-color: #6a8f1f">
+            <span class="sae-tag">Animals</span>
+            <strong class="sae-label">"pets"</strong>
+            <p class="sae-fires-on">Fires on: "her <mark>dog</mark> barked at"</p>
+          </article>
+          <article class="sae-mismatch" style="--cat-color: #ff4057">
+            <span class="sae-tag">Mismatch</span>
+            <strong class="sae-label">"cats"</strong>
+            <p class="sae-fires-on">Fires on: "after a <mark>cat</mark>aracts procedure"</p>
+            <em class="sae-warning">The label and the sentence disagree.</em>
+          </article>
+        </div>
+      </section>
+
       <section class="story-arc" aria-label="And, but, therefore story preview">
         <p class="eyebrow">The story arc</p>
         <div class="arc-grid">
@@ -176,6 +229,96 @@
             <h3>Verdict</h3>
             <p>Trust the label only when all three checks point the same way.</p>
           </article>
+        </div>
+      </section>
+
+      <section class="atlas-intro" aria-label="How to read the dot map">
+        <div class="atlas-intro-heading">
+          <p class="eyebrow">Reading the dot map</p>
+          <h2>How to read the 6,000-feature dot map.</h2>
+          <p>
+            Soon you will see a dot map of every feature in the dataset. Each dot is one feature. Features whose labels describe similar text end up near each other. The x and y axes don't carry meaning on their own — they're a flat squish of much higher-dimensional similarity, so what matters is which dots cluster together, not where they sit on the page.
+          </p>
+        </div>
+        <div class="atlas-intro-vis" aria-label="Zoomed-in cluster of grammar and punctuation features">
+          <svg id="atlas-intro-svg" viewBox="0 0 480 280" role="img" aria-labelledby="atlas-intro-title" aria-describedby="atlas-intro-desc">
+            <title id="atlas-intro-title">Zoomed dot map showing a grammar cluster, a code cluster, and a few outliers</title>
+            <desc id="atlas-intro-desc">A 480 by 280 pixel zoomed view of one corner of the dot map. Twelve dark dots cluster together in the middle-left, labeled grammar and punctuation. Six green dots cluster lower-right, labeled code. Two red outlier dots sit alone with the label cats. Annotation arrows point to each cluster.</desc>
+            <rect x="0" y="0" width="480" height="280" fill="#fbfaf5" />
+            <!-- subtle grid background -->
+            <g stroke="#e8e6dc" stroke-width="1">
+              <line x1="0" y1="70" x2="480" y2="70" />
+              <line x1="0" y1="140" x2="480" y2="140" />
+              <line x1="0" y1="210" x2="480" y2="210" />
+              <line x1="120" y1="0" x2="120" y2="280" />
+              <line x1="240" y1="0" x2="240" y2="280" />
+              <line x1="360" y1="0" x2="360" y2="280" />
+            </g>
+            <!-- grammar cluster (dark) -->
+            <g fill="#111111" opacity="0.85">
+              <circle cx="118" cy="118" r="4" />
+              <circle cx="132" cy="112" r="4" />
+              <circle cx="125" cy="132" r="4" />
+              <circle cx="142" cy="124" r="4" />
+              <circle cx="110" cy="135" r="4" />
+              <circle cx="148" cy="140" r="4" />
+              <circle cx="120" cy="148" r="4" />
+              <circle cx="135" cy="146" r="4" />
+              <circle cx="155" cy="118" r="4" />
+              <circle cx="100" cy="125" r="4" />
+              <circle cx="138" cy="158" r="4" />
+              <circle cx="158" cy="132" r="4" />
+            </g>
+            <!-- code cluster (green) -->
+            <g fill="#12a878" opacity="0.85">
+              <circle cx="312" cy="200" r="4" />
+              <circle cx="322" cy="212" r="4" />
+              <circle cx="335" cy="198" r="4" />
+              <circle cx="305" cy="216" r="4" />
+              <circle cx="328" cy="225" r="4" />
+              <circle cx="345" cy="210" r="4" />
+            </g>
+            <!-- scattered other dots -->
+            <g fill="#bdbeb4" opacity="0.9">
+              <circle cx="60" cy="60" r="3" />
+              <circle cx="80" cy="200" r="3" />
+              <circle cx="240" cy="80" r="3" />
+              <circle cx="280" cy="60" r="3" />
+              <circle cx="220" cy="160" r="3" />
+              <circle cx="190" cy="220" r="3" />
+              <circle cx="400" cy="100" r="3" />
+              <circle cx="420" cy="160" r="3" />
+              <circle cx="380" cy="240" r="3" />
+              <circle cx="40" cy="240" r="3" />
+            </g>
+            <!-- cat outlier (red) -->
+            <g fill="#ff4057">
+              <circle cx="395" cy="50" r="5" stroke="#080808" stroke-width="1.2" />
+            </g>
+            <!-- callout: grammar cluster -->
+            <g font-family="Inter, sans-serif" font-size="11" fill="#080808">
+              <line x1="180" y1="80" x2="148" y2="115" stroke="#080808" stroke-width="1" />
+              <circle cx="148" cy="115" r="2" fill="#080808" />
+              <text x="184" y="68" font-weight="700">"grammar / punctuation"</text>
+              <text x="184" y="82" fill="#5a5b56">12 features cluster together — same label area.</text>
+            </g>
+            <!-- callout: code cluster -->
+            <g font-family="Inter, sans-serif" font-size="11" fill="#080808">
+              <line x1="220" y1="240" x2="305" y2="215" stroke="#080808" stroke-width="1" />
+              <circle cx="305" cy="215" r="2" fill="#080808" />
+              <text x="40" y="252" font-weight="700">"code / Python"</text>
+              <text x="40" y="266" fill="#5a5b56">Different label, different corner.</text>
+            </g>
+            <!-- callout: cat outlier -->
+            <g font-family="Inter, sans-serif" font-size="11" fill="#080808">
+              <line x1="385" y1="38" x2="392" y2="48" stroke="#ff4057" stroke-width="1.2" />
+              <text x="288" y="32" font-weight="700" fill="#ff4057">"cats"</text>
+              <text x="288" y="22" fill="#5a5b56">A rare outlier — no nearby cluster.</text>
+            </g>
+          </svg>
+          <p class="atlas-intro-caption">
+            Distance between dots reads as "their labels describe similar text," nothing more. Two dots far apart on the page may still share a topic — they just sit in different 2D positions because the squish has limits.
+          </p>
         </div>
       </section>
 

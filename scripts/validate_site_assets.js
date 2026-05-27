@@ -178,6 +178,10 @@ assert(indexHtml.includes("https://www.neuronpedia.org/"), "index.html should li
 assert(indexHtml.includes("neuronpedia-datasets.s3.us-east-1.amazonaws.com"), "index.html should link to the public dataset exports.");
 assert(indexHtml.includes("The page loads only 7 needed fields so the charts stay fast"), "Dataset scope note should disclose the compact browser view in plain language.");
 assert(indexHtml.includes('When an LLM reads a sentence, what is it "thinking" about?'), "Hero headline should pose the LLM-thinking framing directly.");
+assert(indexHtml.includes('sparse autoencoder') && indexHtml.includes('So what is a "feature,"'), "Page should introduce sparse autoencoders and the feature concept before the test rule.");
+assert(indexHtml.includes('class="sae-gallery"') && (indexHtml.match(/class="sae-mismatch"/g) || []).length >= 1, "SAE intro should include the gallery and a mismatch teaser card.");
+assert(indexHtml.includes('How to read the 6,000-feature dot map') && indexHtml.includes('id="atlas-intro-svg"'), "Atlas intro section should teach how to read the dot map before the story chapters.");
+assert(indexHtml.indexOf('class="sae-intro"') < indexHtml.indexOf('id="test"') && indexHtml.indexOf('class="atlas-intro"') < indexHtml.indexOf('id="story"'), "SAE intro and atlas intro should appear before the test-rule + story sections.");
 assert(indexHtml.includes('auto-generated label') && indexHtml.includes("patients after a cataracts procedure") && indexHtml.includes("letters c-a-t inside cataracts"), "Hero lede should explain the auto-generated label + cat/cataracts mismatch in plain language.");
 assert(indexHtml.includes("What is this page checking?"), "index.html should include the plain-language setup slide.");
 assert(indexText.includes("gpt-2 reads text step by step") && indexText.includes('label, like "cats,"'), "index.html should define the auto-generated feature label for no-prior viewers.");

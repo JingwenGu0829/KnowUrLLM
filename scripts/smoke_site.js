@@ -197,6 +197,8 @@ const NAMED_CONTAINER_SELECTORS = [
   ".hero-demo",
   ".reaction-board",
   ".test-steps",
+  ".sae-gallery",
+  "#atlas-intro-svg",
   ".stage",
   ".atlas-box",
   "#atlas-canvas",
