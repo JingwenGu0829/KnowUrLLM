@@ -142,7 +142,7 @@ async function getBaseState(page) {
         const cy = Math.round(Number(node.getAttribute("cy")));
         return `${cx},${cy}`;
       }),
-      oldCopy: /A label is not an explanation|A GPT-2 guess|short guess|Dataset guess|A label for GPT-2|The evidence says|One response\. Three checks\.|One reaction\. Three checks\.|recorded reaction|Text pieces|text clues|Sparse auto|name pattern|measured pattern|word-piece|internal signal|hidden signal|student|Best saved sentence|Source check|What to notice|saved behavior|behavior records|Chart focus|Atlas probe/i.test(document.body.innerText),
+      oldCopy: /A label is not an explanation|A GPT-2 guess|short guess|Dataset guess|A label for GPT-2|The evidence says|One response\. Three checks\.|One reaction\. Three checks\.|recorded reaction|Text pieces|text clues|name pattern|measured pattern|word-piece|internal signal|hidden signal|Best saved sentence|Source check|What to notice|saved behavior|behavior records|Chart focus|Atlas probe/i.test(document.body.innerText),
       findingTopic: document.querySelector("#finding-topic")?.textContent.trim(),
       findingTypical: document.querySelector("#finding-typical")?.textContent.trim(),
       findingNoMatch: document.querySelector("#finding-no-match")?.textContent.trim(),
@@ -847,8 +847,8 @@ async function checkViewport(browser, viewport) {
   });
 
   const base = await getBaseState(page);
-  assert(base.h1 === 'The note says "cats." The sentence says "cataracts."', `Unexpected hero headline: ${base.h1}`, issues);
-  assert(base.heroLede?.includes('short note "cats."') && base.heroLede?.includes("patients after a cataracts procedure") && base.heroLede?.includes("letters c-a-t inside cataracts"), `Hero lede should explain the concrete mismatch in plain language: ${base.heroLede}`, issues);
+  assert(base.h1 === 'When an LLM reads a sentence, what is it "thinking" about?', `Unexpected hero headline: ${base.h1}`, issues);
+  assert(base.heroLede?.includes('auto-generated label') && base.heroLede?.includes("patients after a cataracts procedure") && base.heroLede?.includes("letters c-a-t inside cataracts"), `Hero lede should explain the auto-generated label + cat/cataracts mismatch in plain language: ${base.heroLede}`, issues);
   assert(base.scrollMeter, "Header scroll progress meter is missing.", issues);
   if (viewport.width >= 900) {
     assert(base.heroEvidenceVisible, "Hero evidence panel should fit in the first desktop/laptop viewport.", issues);
@@ -880,13 +880,13 @@ async function checkViewport(browser, viewport) {
   assert(base.atlasSummaryText?.includes("not proof that GPT-2 understands those topics"), `Atlas screen-reader summary should not overstate proximity: ${base.atlasSummaryText}`, issues);
   assert(base.atlasSummaryText?.includes("thin line") && base.atlasSummaryText?.includes("four scroll examples"), `Atlas screen-reader summary should explain the four-example path: ${base.atlasSummaryText}`, issues);
   assert(base.atlasSummaryText?.includes("Keyboard users") && base.atlasSummaryText?.includes("arrow keys"), `Atlas screen-reader summary should explain keyboard use: ${base.atlasSummaryText}`, issues);
-  assert(base.tokenGuide?.includes("supports the note") && base.tokenGuide?.includes("slow down"), `Token guide is missing or unclear: ${base.tokenGuide}`, issues);
+  assert(base.tokenGuide?.includes("supports the label") && base.tokenGuide?.includes("slow down"), `Token guide is missing or unclear: ${base.tokenGuide}`, issues);
   assert(base.sourceCallout?.toLowerCase().includes("full sentence"), `Full sentence should include a compact reading cue: ${base.sourceCallout}`, issues);
   assert(base.exampleHeading?.includes("Full sentence example") && base.exampleHeading?.includes("of 3 saved"), `Full sentence heading should disclose the shown saved example: ${base.exampleHeading}`, issues);
   assert(base.activationWindowLabel?.includes("Full sentence example"), `Activation window should have a clear accessible label: ${base.activationWindowLabel}`, issues);
   assert(base.peakTokenAnimation.includes("token-peak-pulse") || viewport.width <= 1120, `Peak source token should visibly pulse on desktop/laptop: ${base.peakTokenAnimation}`, issues);
   assert(base.tokenLegend.length === 3, `Token evidence legend should have three entries: ${JSON.stringify(base.tokenLegend)}`, issues);
-  assert(base.tokenLegend.some((item) => item.evidence === "supports" && item.text.includes("matches note")), `Token legend missing supporting key: ${JSON.stringify(base.tokenLegend)}`, issues);
+  assert(base.tokenLegend.some((item) => item.evidence === "supports" && item.text.includes("matches label")), `Token legend missing supporting key: ${JSON.stringify(base.tokenLegend)}`, issues);
   assert(base.tokenLegend.some((item) => item.evidence === "context" && item.text.includes("sentence")), `Token legend missing context key: ${JSON.stringify(base.tokenLegend)}`, issues);
   assert(base.tokenLegend.some((item) => item.evidence === "misleading" && item.text.includes("warning")), `Token legend missing warning key: ${JSON.stringify(base.tokenLegend)}`, issues);
   assert(base.tokenListRole === "list" && base.tokenListLabel === "Highlighted-text labels", `Highlighted-text list should be labeled for accessibility: role=${base.tokenListRole}, label=${base.tokenListLabel}`, issues);
@@ -901,7 +901,7 @@ async function checkViewport(browser, viewport) {
   }
   const methodText = base.methodText?.toLowerCase();
   assert(methodText?.includes("how these numbers are made"), "Methods strip is missing.", issues);
-  assert(methodText?.includes("dot map") && methodText?.includes("similar notes") && methodText?.includes("context, not proof"), `Methods strip missing dot-map method: ${base.methodText}`, issues);
+  assert(methodText?.includes("dot map") && methodText?.includes("similar labels") && methodText?.includes("context, not proof"), `Methods strip missing dot-map method: ${base.methodText}`, issues);
   assert(methodText?.includes("match as a warning sign, not the answer"), `Methods strip missing word-match caveat: ${base.methodText}`, issues);
   const takeawayProof = base.takeawayProof?.toLowerCase();
   assert(base.takeawayRule?.includes("Which words or letters light up"), `Takeaway rule should explain highlighted text plainly: ${base.takeawayRule}`, issues);

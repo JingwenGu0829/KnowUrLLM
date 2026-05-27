@@ -40,14 +40,11 @@ const BANNED_COPY = [
   "hidden signal",
   "internal signal",
   "public label",
-  "Sparse auto",
   "name pattern",
   "measured pattern",
   "student",
   "word-piece",
   "word pieces",
-  "fires",
-  "firing",
   "input/output",
   "chunks",
   "GPT-2 can see",
@@ -180,10 +177,10 @@ assert(indexHtml.includes("vendor/d3.v7.min.js"), "index.html should load vendor
 assert(indexHtml.includes("https://www.neuronpedia.org/"), "index.html should link to Neuronpedia.");
 assert(indexHtml.includes("neuronpedia-datasets.s3.us-east-1.amazonaws.com"), "index.html should link to the public dataset exports.");
 assert(indexHtml.includes("The page loads only 7 needed fields so the charts stay fast"), "Dataset scope note should disclose the compact browser view in plain language.");
-assert(indexHtml.includes('The note says "cats." The sentence says "cataracts."'), "Hero headline should state the note and contradiction directly.");
-assert(indexHtml.includes('short note "cats."') && indexHtml.includes("patients after a cataracts procedure") && indexHtml.includes("letters c-a-t inside cataracts"), "Hero lede should state the concrete cat/cataracts mismatch in plain language.");
+assert(indexHtml.includes('When an LLM reads a sentence, what is it "thinking" about?'), "Hero headline should pose the LLM-thinking framing directly.");
+assert(indexHtml.includes('auto-generated label') && indexHtml.includes("patients after a cataracts procedure") && indexHtml.includes("letters c-a-t inside cataracts"), "Hero lede should explain the auto-generated label + cat/cataracts mismatch in plain language.");
 assert(indexHtml.includes("What is this page checking?"), "index.html should include the plain-language setup slide.");
-assert(indexText.includes("gpt-2 reads text step by step") && indexText.includes('short note, like "cats,"'), "index.html should define the saved GPT-2 moment for no-prior viewers.");
+assert(indexText.includes("gpt-2 reads text step by step") && indexText.includes('label, like "cats,"'), "index.html should define the auto-generated feature label for no-prior viewers.");
 assert(indexHtml.includes('<a href="#story">Story</a>'), "Header Story link should land on the scrollytelling examples.");
 assert(indexHtml.includes("The story arc"), "index.html should preview the and-but-therefore story arc.");
 assert(indexHtml.includes("<span>And</span>") && indexHtml.includes("<span>But</span>") && indexHtml.includes("<span>Therefore</span>"), "index.html should include explicit and-but-therefore structure.");
@@ -199,7 +196,7 @@ assert(indexHtml.includes("How these numbers are made"), "Dataset findings shoul
 assert(indexHtml.includes('class="reader-path"') && indexHtml.includes("Read this section in three passes."), "Broader chart section should give no-prior readers a reading path.");
 assert((indexHtml.match(/class="pattern-slide/g) || []).length >= 4 && styleCss.includes(".pattern-slide"), "Broader chart section should be paced as scroll slides, not a dense dashboard.");
 assert(indexHtml.includes('class="pattern-slide pattern-slide-charts"') && styleCss.includes(".pattern-slide-charts"), "Topic and rarity charts should get their own scroll slide instead of sharing the method slide.");
-assert(indexHtml.includes("Dot map") && indexHtml.includes("similar notes"), "Methods strip should explain how dot-map positions are made in plain language.");
+assert(indexHtml.includes("Dot map") && indexHtml.includes("similar labels"), "Methods strip should explain how dot-map positions are made in plain language.");
 assert(indexHtml.includes("Treat a match as a warning sign, not the answer."), "Word-match method should be caveated in plain language.");
 assert(indexHtml.includes('id="evidence-matrix"'), "Bigger-picture section should include the four-example matrix.");
 assert(indexHtml.includes("One red cell is enough") || mainJs.includes("One red cell is enough"), "Four-example matrix should state the visual rule clearly.");
@@ -208,7 +205,7 @@ assert(indexHtml.includes('class="agreement-takeaway"') && indexHtml.includes("A
 assert(indexHtml.includes("Four-example support behind the takeaway"), "Takeaway should include a final four-example scorecard.");
 assert(indexHtml.includes('style="--case-color: #ff4057"') && styleCss.includes(".takeaway-proof div::before"), "Takeaway support cards should visually reuse the story example colors.");
 assert(indexHtml.includes('class="takeaway-lede"'), "Takeaway should explain why the visualization supports the rule near the headline.");
-assert(indexHtml.includes("The URL note passes, Python and Star Wars need context, and the cat"), "Takeaway should explain why the rule follows from the examples.");
+assert(indexHtml.includes("The URL label passes, Python and Star Wars need context, and the cat"), "Takeaway should explain why the rule follows from the examples.");
 assert(indexHtml.includes("Which words or letters light up"), "Final takeaway rule should describe highlighted text in no-prior language.");
 assert(indexHtml.includes('class="takeaway-snapshot"') && indexHtml.includes("c-a-t inside cataracts") && indexHtml.includes("eye surgery, not pets"), "Final takeaway should replay the concrete cat/cataracts evidence.");
 assert(indexHtml.indexOf('id="takeaway"') < indexHtml.indexOf('id="project-note"'), "Takeaway should land the story before the assignment design note.");
@@ -223,7 +220,7 @@ assert(mainJs.includes("sourceCheck") && mainJs.includes("cat appears inside cat
 assert(styleCss.includes(".token-legend") && styleCss.includes('.token-legend span[data-evidence="misleading"]'), "style.css should style the text-piece color key.");
 assert(styleCss.includes(".source-callout"), "style.css should style the source-example reading cue.");
 assert(indexHtml.includes("color-coded highlighted text") && indexHtml.includes("four-example matrix") && indexHtml.includes("dot map"), "Project note should describe the current visualization set.");
-assert(indexHtml.includes("After the four examples, the detail view shows the note, highlight, sentence, and decision"), "Mobile stage should include a transition note before the detail panel.");
+assert(indexHtml.includes("After the four examples, the detail view shows the label, highlight, sentence, and decision"), "Mobile stage should include a transition note before the detail panel.");
 assert((indexHtml.match(/class="mobile-evidence"/g) || []).length === 4, "Each story example should include a mobile evidence panel.");
 assert(styleCss.includes(".project-note h2") && styleCss.includes("font-size: clamp(2.2rem, 4.1vw, 4.4rem)"), "Project note heading should stay visually secondary to the main story and takeaway.");
 assert(indexHtml.includes('role="link" aria-label="Jump to the cat example"'), "Sticky stage example rail should expose accessible jump targets.");

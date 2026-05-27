@@ -14,16 +14,16 @@ const STORY = {
     title: "URL example",
     short: "URL example",
     publicName: "web URLs",
-    verdict: "Trust this note: the sentence is a web address, and the highlighted text looks like URL text.",
+    verdict: "Trust this label: the sentence is a web address, and the highlighted text looks like URL text.",
     scores: [3, 3, 3],
-    scoreLabels: ["Note matches", "Highlight matches", "Sentence matches"],
+    scoreLabels: ["Label matches", "Highlight matches", "Sentence matches"],
     notes: [
-      "Short note says: web URLs.",
+      "Feature label says: web URLs.",
       "Highlighted text: URL, URI, url.",
       "Full sentence includes http://.",
     ],
     sourceCheck: "In the full sentence, URL text appears inside a real web address.",
-    insight: "The note, highlight, and sentence all point to a web address. Trust it.",
+    insight: "The label, highlight, and sentence all point to a web address. Trust it.",
     color: "#00bcd4",
   },
   "gpt2-small/7-res-jb/6592": {
@@ -31,16 +31,16 @@ const STORY = {
     title: "Python example",
     short: "Python example",
     publicName: "Python and database text",
-    verdict: "Partly trust this note: it sees Python, but nearby command-line words matter too.",
+    verdict: "Partly trust this label: it sees Python, but nearby command-line words matter too.",
     scores: [2, 2, 3],
-    scoreLabels: ["Note partial", "Highlight partial", "Sentence matches"],
+    scoreLabels: ["Label partial", "Highlight partial", "Sentence matches"],
     notes: [
-      "Short note mentions Python.",
+      "Feature label mentions Python.",
       "Highlighted text also includes username and command-line words.",
       "Full sentence shows a Python command.",
     ],
     sourceCheck: "In the full sentence, a Python command appears with shell words nearby.",
-    insight: "The sentence is Python, but the highlight also shows command-line context. Treat the note as incomplete.",
+    insight: "The sentence is Python, but the highlight also shows command-line context. Treat the label as incomplete.",
     color: "#12a878",
   },
   "gpt2-small/7-res-jb/24310": {
@@ -48,16 +48,16 @@ const STORY = {
     title: "Cat example",
     short: "Cat / cataracts",
     publicName: "cats",
-    verdict: "Do not trust this note yet: the saved moment lights up for cat inside cataracts.",
+    verdict: "Do not trust this label yet: the feature lights up for cat inside cataracts.",
     scores: [2, 1, 1],
-    scoreLabels: ["Note sounds right", "Highlight is a trap", "Sentence says no"],
+    scoreLabels: ["Label sounds right", "Highlight is a trap", "Sentence says no"],
     notes: [
-      "Short note says: cats.",
+      "Feature label says: cats.",
       "Highlighted text is only the letters cat.",
       "Full sentence is about cataracts, not pets.",
     ],
     sourceCheck: "In the full sentence, cat appears inside cataracts, an eye-surgery word.",
-    insight: "The red highlight is inside cataracts, not a pet word. The cats note is not enough.",
+    insight: "The red highlight is inside cataracts, not a pet word. The cats label is not enough.",
     color: "#ff4057",
   },
   "gpt2-small/11-res-jb/14962": {
@@ -65,11 +65,11 @@ const STORY = {
     title: "Star Wars example",
     short: "Star Wars",
     publicName: "Star Wars names",
-    verdict: "This note needs backup: the sentence fits, but the highlighted text is weak.",
+    verdict: "This label needs backup: the sentence fits, but the highlighted text is weak.",
     scores: [2, 1, 3],
-    scoreLabels: ["Note sounds right", "Weak highlight", "Sentence matches"],
+    scoreLabels: ["Label sounds right", "Weak highlight", "Sentence matches"],
     notes: [
-      "Short note mentions Star Wars.",
+      "Feature label mentions Star Wars.",
       "Highlighted text is mostly punctuation.",
       "Full sentence names Revenge of the Sith and Aayla Secura.",
     ],
@@ -103,34 +103,34 @@ const ATLAS_CALLOUTS = [
   {
     category: "Syntax / grammar",
     label: "grammar + punctuation",
-    summary: "42% of notes",
+    summary: "42% of labels",
     side: "left",
   },
   {
     category: "Names / entities",
     label: "names + places",
-    summary: "13% of notes",
+    summary: "13% of labels",
     side: "right",
   },
   {
     category: "Programming / technical",
     label: "code + data text",
-    summary: "4% of notes",
+    summary: "4% of labels",
     side: "top",
   },
   {
     category: "Animals",
-    label: "animal notes are rare",
+    label: "animal labels are rare",
     summary: "14 of 6,000",
     side: "bottom",
   },
 ];
 
-const PATTERN_DEFAULT_FOCUS = "Notes cluster by topic, most saved moments are rare, and matching letters alone are not enough.";
+const PATTERN_DEFAULT_FOCUS = "Labels cluster by topic, most features fire rarely, and matching letters alone are not enough.";
 const PATTERN_SCROLL_FOCUS = [
   {
     selector: ".evidence-matrix-panel",
-    text: "Trust matrix: read one row at a time. Red means the note and sentence are not pointing to the same idea.",
+    text: "Trust matrix: read one row at a time. Red means the label and sentence are not pointing to the same idea.",
   },
   {
     selector: ".method-strip",
@@ -138,7 +138,7 @@ const PATTERN_SCROLL_FOCUS = [
   },
   {
     selector: ".pattern-grid",
-    text: "Topic and rarity charts: most notes are grammar or punctuation, and many saved moments appear in very little text.",
+    text: "Topic and rarity charts: most labels are grammar or punctuation, and many features fire in very little text.",
   },
   {
     selector: ".agreement-panel",
@@ -659,7 +659,7 @@ function renderFeature(featureId) {
   document.querySelector("#feature-title").textContent = story.title;
   document.querySelector("#case-step").textContent = story.step;
   document.querySelector("#feature-meta").textContent =
-    `Note: ${story.publicName}. GPT-2 step ${row.layer_number}. Appears in ${formatPercent(row.activation_density)} of sampled text.`;
+    `Label: ${story.publicName}. GPT-2 step ${row.layer_number}. Fires in ${formatPercent(row.activation_density)} of sampled text.`;
   document.querySelector("#feature-link").href = neuronpediaUrl(row.feature_id);
   document.querySelector("#feature-verdict").textContent = story.verdict;
   document.querySelector("#stage-insight p").textContent = story.insight;
@@ -729,7 +729,7 @@ function classifyTextPiece(featureId, token) {
   const value = token.toLowerCase();
   if (featureId === "gpt2-small/4-res-jb/14801") {
     return /(url|uri|http)/.test(value)
-      ? { kind: "supports", label: "matches the web-address note" }
+      ? { kind: "supports", label: "matches the web-address label" }
       : { kind: "context", label: "related URL context" };
   }
   if (featureId === "gpt2-small/7-res-jb/6592") {
@@ -745,7 +745,7 @@ function classifyTextPiece(featureId, token) {
   if (featureId === "gpt2-small/11-res-jb/14962") {
     return /[a-z0-9]/.test(value)
       ? { kind: "context", label: "needs Star Wars context" }
-      : { kind: "misleading", label: "punctuation mark, weak support for the note" };
+      : { kind: "misleading", label: "punctuation mark, weak support for the label" };
   }
   return { kind: "neutral", label: "unclear highlighted text" };
 }
@@ -1293,7 +1293,7 @@ function renderEvidenceMatrix() {
   svg.selectAll("*").remove();
 
   const columns = [
-    { key: "label", label: "Short note", compactLabel: "Note" },
+    { key: "label", label: "Feature label", compactLabel: "Label" },
     { key: "pieces", label: "Highlight", compactLabel: "Highlight" },
     { key: "text", label: "Full sentence", compactLabel: "Sentence" },
   ];
@@ -1405,7 +1405,7 @@ function renderEvidenceMatrix() {
     .attr("fill", "#666762")
     .attr("font-size", isCompact ? 10 : 12)
     .attr("font-weight", 760)
-    .text("One red cell is enough to stop trusting the note.");
+    .text("One red cell is enough to stop trusting the label.");
 }
 
 function renderHeatmap() {
@@ -1544,7 +1544,7 @@ function renderHeatmap() {
     .attr("fill", "#666762")
     .attr("font-size", isCompact ? 11 : 12)
     .attr("font-weight", 750)
-    .text(isCompact ? "Largest + story topics." : "Punctuation and grammar notes dominate most GPT-2 steps.");
+    .text(isCompact ? "Largest + story topics." : "Punctuation and grammar labels dominate most GPT-2 steps.");
 
   svg
     .append("g")
@@ -1782,7 +1782,7 @@ function renderAgreementStrip() {
     {
       key: "none",
       label: "No obvious match",
-      note: "note needs backup",
+      note: "label needs backup",
       color: "#080808",
       rows: scored.filter((item) => item.score === 0),
     },
@@ -2091,9 +2091,9 @@ function cleanToken(value) {
 }
 
 function atlasProbeLabel(row) {
-  if (!row?.concept_category) return "nearby saved moment";
-  if (row.concept_category === "Other / unclear") return "other or unclear note";
-  return `${row.concept_category.toLowerCase()} note`;
+  if (!row?.concept_category) return "nearby feature";
+  if (row.concept_category === "Other / unclear") return "other or unclear label";
+  return `${row.concept_category.toLowerCase()} label`;
 }
 
 function neuronpediaUrl(featureId) {
