@@ -4,7 +4,7 @@ Baseline (commit `49a5e5c`): `node scripts/smoke_site.js` GREEN across desktop 1
 
 Round 0 captured copy-density and jargon findings. The Codex review of Round 0 rejected substituting a code-only audit for the plan's screenshot-backed review, so Round 1 captured all required screenshots and rewrote this audit log with the structured columns the plan demands. The Codex review of Round 1 then caught a real defect that was masked by an over-broad geometry-assertion exemption — the wide-short and laptop-short `.feature-card` clipped the saved-sentence source excerpt at the bottom of the sticky-stage right column. Round 2 fixed that defect, removed the masking exemption, and recaptured all 35 screenshots.
 
-Each row in this log captures: ID, viewport, section / container, screenshot reference (path), observed defect (or "no defect"), fix description, status (`fixed` / `reviewed/no-defect`). Zero rows remain `open` at the end of Round 1.
+Each row in this log captures: ID, viewport, section / container, screenshot reference (path), observed defect (or "no defect"), fix description, status (`fixed` / `reviewed/no-defect`). Zero rows remain `open` at the end of Round 2.
 
 Captured screenshots: `audit_screenshots/<viewport>/<anchor>.png` for 5 viewports × 7 scroll anchors = 35 files. Anchors: `top` (hero), `case-url`, `case-cat`, `patterns-context`, `agreement-panel`, `takeaway`, `project-note`. Capture script: `scripts/capture_audit_screenshots.js` (run with `NODE_PATH=$(find ~/.npm/_npx -name 'playwright' -path '*node_modules/playwright' | head -1 | xargs dirname) SITE_URL=http://localhost:8080/ node scripts/capture_audit_screenshots.js`).
 
@@ -96,7 +96,7 @@ UNEXPLAINED_TERMS surfaced by the rubric: none after Round 0 task3 edits.
 
 The new helper `checkNamedContainersGeometry` in `scripts/smoke_site.js` measures 22 named high-risk containers per viewport and asserts (with 2 px tolerance):
 - Internal horizontal overflow (`scrollWidth ≤ clientWidth + 2 px`)
-- Internal vertical overflow (`scrollHeight ≤ clientHeight + 2 px`), with a narrow per-selector exemption list documented in code for containers that intentionally clip overflow (`.stage`, `.atlas-box`, `.feature-card`)
+- Internal vertical overflow (`scrollHeight ≤ clientHeight + 2 px`), with a narrow per-selector exemption list documented in code for containers that intentionally clip non-essential overflow (`.stage`, `.atlas-box`). `.feature-card` was on this list in Round 1 but was removed in Round 2 because the clipped content was the user-visible source-sentence excerpt — see L-1 below and `BL-20260526-narrow-geometry-exemptions`.
 - Full direct-parent containment on both axes for non-fixed positions (left/right/top/bottom)
 
 The helper also temporarily settles the `.reveal-item` IntersectionObserver-driven entrance animation before measuring (forces `.is-visible`, removes the `translateY(18px)` offset), so geometry reflects the final laid-out state rather than the off-screen transform state.
@@ -105,7 +105,7 @@ The helper also temporarily settles the `.reveal-item` IntersectionObserver-driv
 |-----|------------------|----------|--------|
 | G-1 | hero containers (`.lede`, `.hero-checks`, `.hero-demo`) | horizontal + vertical overflow, parent containment on both axes | fixed |
 | G-2 | plain-terms / story-arc (`.reaction-board`, `.test-steps`) | horizontal + vertical overflow, parent containment | fixed |
-| G-3 | sticky stage (`.stage`, `.atlas-box`, `#atlas-canvas`, `.feature-card`) | horizontal overflow + parent containment for all; vertical overflow exempted for the three overflow:hidden containers (documented in code) | fixed |
+| G-3 | sticky stage (`.stage`, `.atlas-box`, `#atlas-canvas`, `.feature-card`) | `#atlas-canvas` and `.feature-card` receive horizontal overflow + vertical overflow + full parent containment. `.stage` and `.atlas-box` keep documented vertical-overflow exemptions (the sticky pane itself, and the D3 dot-density falloff inside the atlas grid row); horizontal overflow + parent containment still apply to them. | fixed |
 | G-4 | stage detail (`.evidence-grid`, `#source-callout`, `#token-pills`) | horizontal + vertical overflow, parent containment | fixed |
 | G-5 | patterns charts (`.evidence-matrix-panel`, `#heatmap`, `#density-histogram`, `.agreement-panel`) | horizontal + vertical overflow, parent containment | fixed |
 | G-6 | takeaway (`.takeaway-rule`, `.takeaway-proof`, `.takeaway-snapshot`) | horizontal + vertical overflow, parent containment | fixed |
