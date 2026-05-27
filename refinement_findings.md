@@ -1,8 +1,8 @@
-# Refinement Findings — Round 0 + Round 1
+# Refinement Findings — Round 0 + Round 1 + Round 2
 
-Baseline (commit `49a5e5c`): `node scripts/smoke_site.js` GREEN across desktop 1366×768, wide-short 1280×650, laptop-short 1122×720, tablet 820×1180, mobile 390×844, plus data-failure recovery. `node scripts/validate_site_assets.js` GREEN. No automated defects detected.
+Baseline (commit `49a5e5c`): `node scripts/smoke_site.js` GREEN across desktop 1366×768, wide-short 1280×650, laptop-short 1122×720, tablet 820×1180, mobile 390×844, plus data-failure recovery. `node scripts/validate_site_assets.js` GREEN. No automated defects detected at baseline.
 
-Round 0 captured copy-density and jargon findings. The Codex review of Round 0 rejected substituting a code-only audit for the plan's screenshot-backed review, so Round 1 captured all required screenshots and rewrote this audit log with the structured columns the plan demands.
+Round 0 captured copy-density and jargon findings. The Codex review of Round 0 rejected substituting a code-only audit for the plan's screenshot-backed review, so Round 1 captured all required screenshots and rewrote this audit log with the structured columns the plan demands. The Codex review of Round 1 then caught a real defect that was masked by an over-broad geometry-assertion exemption — the wide-short and laptop-short `.feature-card` clipped the saved-sentence source excerpt at the bottom of the sticky-stage right column. Round 2 fixed that defect, removed the masking exemption, and recaptured all 35 screenshots.
 
 Each row in this log captures: ID, viewport, section / container, screenshot reference (path), observed defect (or "no defect"), fix description, status (`fixed` / `reviewed/no-defect`). Zero rows remain `open` at the end of Round 1.
 
@@ -30,15 +30,15 @@ All rows below resolve to either `fixed` (a defect was found and a copy / CSS ch
 | SR-06 | desktop 1366×768 | takeaway | `audit_screenshots/desktop/takeaway.png` | Dark-background takeaway shows H2, tightened lede (now 2 sentences), story spine, rule, proof scorecard, snapshot in clean stacking. | n/a — no defect | reviewed/no-defect |
 | SR-07 | desktop 1366×768 | project note | `audit_screenshots/desktop/project-note.png` | Two-column note grid; both articles render with note-ruler + sentences; no clipping. | n/a — no defect | reviewed/no-defect |
 | SR-08 | wide-short 1280×650 | hero | `audit_screenshots/wide-short/top.png` | Hero copy + demo + hero-checks fit. | n/a — no defect | reviewed/no-defect |
-| SR-09 | wide-short 1280×650 | scrolly case URL | `audit_screenshots/wide-short/case-url.png` | Stage fits the short laptop height; canvas inside `.atlas-box`. | n/a — no defect | reviewed/no-defect |
-| SR-10 | wide-short 1280×650 | scrolly case Cat | `audit_screenshots/wide-short/case-cat.png` | Sticky stage renders cat / cataracts content within viewport bounds. | n/a — no defect | reviewed/no-defect |
+| SR-09 | wide-short 1280×650 | scrolly case URL `.feature-card` | `audit_screenshots/wide-short/case-url.png` (post-fix) | **Round 1 (pre-fix)**: source-sentence excerpt at the bottom of `.feature-card` was clipped (`.feature-card` scrollHeight=381 vs stage clientHeight=265 → 116 px hidden). **Round 2 (post-fix)**: source excerpt fully visible inside the stage. | See L-1 below. | fixed |
+| SR-10 | wide-short 1280×650 | scrolly case Cat `.feature-card` | `audit_screenshots/wide-short/case-cat.png` (post-fix) | **Round 1 (pre-fix)**: final line of the cat / cataracts source sentence was clipped at the bottom of `.feature-card`. **Round 2 (post-fix)**: "patients after a cataracts procedure" source line fully visible. | See L-1 below. | fixed |
 | SR-11 | wide-short 1280×650 | patterns context strip | `audit_screenshots/wide-short/patterns-context.png` | Methods strip + case-key fit horizontally without truncation. | n/a — no defect | reviewed/no-defect |
 | SR-12 | wide-short 1280×650 | agreement panel | `audit_screenshots/wide-short/agreement-panel.png` | Agreement strip + takeaway cue visible; no text crowding. | n/a — no defect | reviewed/no-defect |
 | SR-13 | wide-short 1280×650 | takeaway | `audit_screenshots/wide-short/takeaway.png` | Takeaway lede + story spine + scorecard fit; takeaway-snapshot replay visible after scrolling. | n/a — no defect | reviewed/no-defect |
 | SR-14 | wide-short 1280×650 | project note | `audit_screenshots/wide-short/project-note.png` | Two-column note grid still readable at narrower width. | n/a — no defect | reviewed/no-defect |
 | SR-15 | laptop-short 1122×720 | hero | `audit_screenshots/laptop-short/top.png` | Hero scales down; lede + demo blocks remain inside their grid columns. | n/a — no defect | reviewed/no-defect |
-| SR-16 | laptop-short 1122×720 | scrolly case URL | `audit_screenshots/laptop-short/case-url.png` | Sticky stage fits at 1122×720 with all stage components visible. | n/a — no defect | reviewed/no-defect |
-| SR-17 | laptop-short 1122×720 | scrolly case Cat | `audit_screenshots/laptop-short/case-cat.png` | Cat callout + tokens + atlas all fit in laptop-short stage. | n/a — no defect | reviewed/no-defect |
+| SR-16 | laptop-short 1122×720 | scrolly case URL `.feature-card` | `audit_screenshots/laptop-short/case-url.png` (post-fix) | **Round 1 (pre-fix)**: bottom of `.feature-card` clipped the activation-window's final line (`.feature-card` scrollHeight=381 vs stage clientHeight=338 → 43 px hidden). **Round 2 (post-fix)**: source excerpt fully visible. | See L-1 below. | fixed |
+| SR-17 | laptop-short 1122×720 | scrolly case Cat `.feature-card` | `audit_screenshots/laptop-short/case-cat.png` (post-fix) | **Round 1 (pre-fix)**: trailing source-sentence line clipped at the bottom of `.feature-card`. **Round 2 (post-fix)**: source line visible. | See L-1 below. | fixed |
 | SR-18 | laptop-short 1122×720 | patterns context strip | `audit_screenshots/laptop-short/patterns-context.png` | Methods strip remains 4 columns; case-key remains a single row. | n/a — no defect | reviewed/no-defect |
 | SR-19 | laptop-short 1122×720 | agreement panel | `audit_screenshots/laptop-short/agreement-panel.png` | Agreement panel within parent flex container; vertical extent contained. | n/a — no defect | reviewed/no-defect |
 | SR-20 | laptop-short 1122×720 | takeaway | `audit_screenshots/laptop-short/takeaway.png` | Takeaway lede + spine + scorecard fit; final snapshot reachable. | n/a — no defect | reviewed/no-defect |
@@ -111,26 +111,32 @@ The helper also temporarily settles the `.reveal-item` IntersectionObserver-driv
 | G-6 | takeaway (`.takeaway-rule`, `.takeaway-proof`, `.takeaway-snapshot`) | horizontal + vertical overflow, parent containment | fixed |
 | G-7 | project-note + chrome (`.note-grid`, `.site-header`, `.site-footer`) | horizontal + vertical overflow, parent containment | fixed |
 
-## CSS / Polish (AC-4 manual review)
+## Layout Fixes (AC-3 / AC-4 / AC-7)
 
-Baseline smoke was green before any CSS edits, and the screenshot review above (SR-01 through SR-35) confirms no visible defects of the types listed in the plan: text clipping, content escaping its container, overlapping labels, sticky-stage cropping, broken scroll-margin alignment. No `style.css` edits were applied this round; task2 and task4 of the plan reduce to no-ops because the baseline already met the AC-3 / AC-4 / AC-6 / AC-7 floors.
+| ID  | Viewports | Section / Container | Screenshot evidence | Defect | Fix | Status |
+|-----|-----------|---------------------|---------------------|--------|-----|--------|
+| L-1 | wide-short 1280×650, laptop-short 1122×720 | sticky stage right column `.feature-card` | before-fix retained in commit `80ff209`, after-fix in `audit_screenshots/wide-short/case-url.png`, `audit_screenshots/wide-short/case-cat.png`, `audit_screenshots/laptop-short/case-url.png`, `audit_screenshots/laptop-short/case-cat.png` | `.feature-card` natural content height was 381 px while the sticky-stage clientHeight was 265 px (wide-short) / 338 px (laptop-short), clipping the bottom 116 / 43 px of the source-sentence area. The Round-1 smoke helper exempted `.feature-card` from the vertical-overflow assertion, hiding the regression. | Removed `.feature-card` from `VERTICAL_OVERFLOW_EXEMPT` in `scripts/smoke_site.js` and tightened the short-height media-query rule (`@media (max-height: 780px) and (min-width: 1121px)`) in `style.css`: `.feature-card` padding 10/12 → 8/10; `.activation-window` min-height 160 → 76, max-height 236 → 120, padding 10 → 6/10, font-size 1rem → 0.9rem, line-height 1.62 → 1.4; `.source-callout` padding 10/12 → 7/10, margin-bottom 7 → 5, gap 4 → 3; `.source-callout strong` font-size 1.02rem → 0.94rem, line-height 1.28 → 1.22; `.source-callout span` font-size 0.66rem → 0.64rem; `.token-pills` max-height 40 → 34, gap 5 → 4, margin-bottom 8 → 6; `.token-pill` padding 4/7 → 3/6, font-size 0.76rem → 0.74rem; `.token-guide` margin-bottom 7 → 4, font-size 0.74rem → 0.72rem; `.feature-card h3` margin-bottom added at 3 px. Net natural content height drop: 381 → 265 (wide-short break-even). | fixed |
 
-The user's "more minimal" directive is addressed by the density reductions in D-1 through D-6, which give every visible section more breathing room without touching layout.
+## Polish (AC-4 manual review)
+
+Baseline smoke was green before any CSS edits in Round 0. Round 1 captured screenshots that surfaced the wide-short `.feature-card` clipping; Round 2 fixed it (see L-1). After L-1, all 35 captured screenshots show no clipping, no obscuring label overlap, no canvas/SVG escape, no element bleeding past the page edge, and no text crowding visualizations.
+
+The user's "more minimal" directive is addressed by Round 0's density reductions in D-1 through D-6, which give every visible section more breathing room without touching layout.
 
 ## Plan Mapping
 
 | Plan Task | Outcome |
 |-----------|---------|
 | task1 audit | done (Round 1) — 35 screenshots captured under `audit_screenshots/`; SR-01 … SR-35 in this log; jargon cold-read summary above |
-| task2 CSS fixes | no-op — audit found no CSS-attributable defects |
+| task2 CSS fixes | done (Round 2) — L-1 (wide-short / laptop-short feature-card fit) resolved via tightened short-height media query |
 | task3 copy + density | done (Round 0) — D-1 through D-6 applied to `index.html`; hero defines "model" inline (Round 0 second pass after Codex rubric) |
-| task4 sticky-stage fixes | no-op — smoke green at all viewports |
-| task5 extend smoke geometry | done (Round 0 horizontal, Round 1 vertical + parent containment) — `checkNamedContainersGeometry` covers 22 selectors with horizontal + vertical assertions plus full bbox-in-parent on both axes |
-| task6 verify + close | done (Round 1) — smoke + asset-validate green; all SR / D / G rows status=fixed or reviewed/no-defect; zero `open` rows |
+| task4 sticky-stage fixes | done (Round 2) — L-1 directly addresses the AC-7 sticky-stage fit at 1280×650 and 1122×720 |
+| task5 extend smoke geometry | done (Round 0 horizontal, Round 1 vertical + parent containment, Round 2 removed overly broad `.feature-card` exemption) — `checkNamedContainersGeometry` covers 22 selectors with horizontal + vertical assertions plus full bbox-in-parent on both axes; only `.stage` and `.atlas-box` remain on the vertical-exemption list with documented reasons in code |
+| task6 verify + close | done (Round 2 recapture) — smoke + asset-validate green; all SR / D / G / L rows status=fixed or reviewed/no-defect; zero `open` rows |
 | task7 Codex rubric | done (Round 0) — OVERALL_VERDICT=PASS on the final copy (UNEXPLAINED_TERMS=none, CROWDED_SECTIONS=none) |
 
 ## BitLesson Delta
 
-- Action: none
-- Lesson ID(s): NONE
-- Notes: Round 1 did not surface a new recurrent failure pattern. The existing `BL-20260526-validate-site-assets-phrase-locks` lesson (Round 0) remains relevant.
+- Action: add
+- Lesson ID(s): BL-20260526-narrow-geometry-exemptions
+- Notes: Round 2 surfaced a recurring failure pattern around geometry-assertion exemption design — see `.humanize/bitlesson.md` for the full entry. Round 1 had exempted `.feature-card` from vertical overflow because the parent stage uses `overflow: hidden`, but that exemption hid a real user-visible clipping defect of the saved-sentence source excerpt. The lesson: a container's own `overflow: hidden` is not a sufficient reason to exempt it from vertical-overflow asserts when its content includes user-visible required text. Exemptions must be defended by "this clipping hides non-essential content" not by "the design uses overflow: hidden". The existing `BL-20260526-validate-site-assets-phrase-locks` lesson from Round 0 also remains relevant.

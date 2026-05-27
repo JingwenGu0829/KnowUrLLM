@@ -221,10 +221,16 @@ const NAMED_CONTAINER_SELECTORS = [
 // scrollHeight may legitimately exceed clientHeight by design.
 // Horizontal-overflow and full bbox-in-parent assertions still apply
 // to every named container regardless of this list.
+//
+// .feature-card was previously exempted on the same rationale as
+// .stage/.atlas-box; the round-1 audit (wide-short/case-url.png,
+// wide-short/case-cat.png) showed the exemption was masking a real
+// user-visible clipping of the saved-sentence source excerpt at the
+// bottom of the panel. Exemption removed; vertical overflow on
+// .feature-card is now an enforced regression check.
 const VERTICAL_OVERFLOW_EXEMPT = {
   ".stage": "Sticky scrolly stage. style.css sets height: calc(100vh - 82px) plus overflow: hidden so its scrolly content is intentionally clipped to the viewport.",
-  ".atlas-box": "Dot-map panel uses grid-template-rows: auto minmax(0, 1fr) with overflow: hidden so the canvas + caption fit inside .stage; D3 may compute a slightly taller natural content height.",
-  ".feature-card": "Token + activation-window panel uses overflow: hidden so source-callout / activation tokens stay inside the sticky stage; the tokens list grows but is intentionally clipped.",
+  ".atlas-box": "Dot-map panel uses grid-template-rows: auto minmax(0, 1fr) with overflow: hidden so the canvas + caption fit inside .stage; D3 may compute a slightly taller natural content height as the dot density renders.",
 };
 
 async function checkNamedContainersGeometry(page, viewport, issues) {

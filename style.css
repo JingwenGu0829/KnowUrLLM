@@ -2738,12 +2738,13 @@ meter::-moz-meter-bar {
 
   .atlas-box > div,
   .feature-card {
-    padding: 10px 12px;
+    padding: 8px 10px;
   }
 
   .atlas-box h3,
   .feature-card h3 {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    margin-bottom: 3px;
   }
 
   .atlas-box p {
@@ -2755,14 +2756,14 @@ meter::-moz-meter-bar {
   }
 
   .token-pills {
-    gap: 5px;
-    margin-bottom: 8px;
-    max-height: 40px;
+    gap: 4px;
+    margin-bottom: 6px;
+    max-height: 34px;
   }
 
   .token-pill {
-    padding: 4px 7px;
-    font-size: 0.76rem;
+    padding: 3px 6px;
+    font-size: 0.74rem;
   }
 
   .token-pills .token-pill:nth-child(n + 5) {
@@ -2770,8 +2771,8 @@ meter::-moz-meter-bar {
   }
 
   .token-guide {
-    margin-bottom: 7px;
-    font-size: 0.74rem;
+    margin-bottom: 4px;
+    font-size: 0.72rem;
     line-height: 1.18;
   }
 
@@ -2780,18 +2781,18 @@ meter::-moz-meter-bar {
   }
 
   .activation-window {
-    min-height: 160px;
-    max-height: 236px;
-    padding: 10px;
-    font-size: 1rem;
-    line-height: 1.62;
+    min-height: 76px;
+    max-height: 120px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 
   .source-callout {
     grid-template-columns: 1fr;
-    margin-bottom: 7px;
-    padding: 10px 12px;
-    gap: 4px;
+    margin-bottom: 5px;
+    padding: 7px 10px;
+    gap: 3px;
   }
 
   .source-callout span {
@@ -2804,13 +2805,13 @@ meter::-moz-meter-bar {
     clip: auto;
     white-space: nowrap;
     border: 0;
-    font-size: 0.66rem;
+    font-size: 0.64rem;
   }
 
   .source-callout strong {
     padding-left: 0;
-    font-size: 1.02rem;
-    line-height: 1.28;
+    font-size: 0.94rem;
+    line-height: 1.22;
   }
 
   .stage-insight {
