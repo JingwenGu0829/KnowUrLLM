@@ -6,3 +6,12 @@ data/raw/
 .humanize/
 .claude/settings.json
 vendor/jq
+
+# Local design and development notes (keep locally; not part of the website)
+AGENT.md
+plan.md
+refinement_findings.md
+neuronpedia_sae_feature_atlas_research_plan.md
+audit_screenshots/
+proposal_visualizations/
+proposal.pdf
