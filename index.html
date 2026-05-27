@@ -762,6 +762,29 @@
           </div>
         </div>
       </section>
+      <section class="implications" aria-label="Why this matters: feature-label mismatch and hallucination">
+        <p class="eyebrow">Why this matters</p>
+        <h2>The same shape as hallucination.</h2>
+        <p class="implications-lede">
+          The cat/cataracts disagreement is a tiny example of a confident description that doesn't match what's really happening. Hallucination — when an LLM confidently writes something false — has the same shape, one level up. If we can't trust the labels we use to read the model's insides, we're left with a harder version of the same question on the outside: was the output really backed by what the model actually did?
+        </p>
+        <div class="implications-grid">
+          <article>
+            <span class="implications-tag">Inside the model</span>
+            <h3>Feature-label mismatch</h3>
+            <p>The auto-generated label says "cats." The feature actually fires on "cat" inside "cataracts." The label is a confident description that the firing pattern does not support.</p>
+          </article>
+          <article>
+            <span class="implications-tag">Outside the model</span>
+            <h3>Output hallucination</h3>
+            <p>The LLM confidently writes a fact that isn't true. The output is a confident description that the world — or the model's own reasoning trail — does not support.</p>
+          </article>
+        </div>
+        <p class="implications-closing">
+          The fix is the same in both cases: don't trust a description on its own. Check it against the underlying evidence — the firing pattern for a feature, the source documents for a claim. That's what this page has been training your eye to do.
+        </p>
+      </section>
+
       <section id="project-note" class="project-note">
         <div>
           <p class="eyebrow">Design note</p>
