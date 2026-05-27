@@ -257,12 +257,9 @@ async function checkNamedContainersGeometry(page, viewport, issues) {
       const parent = el.parentElement;
       const elBox = el.getBoundingClientRect();
       const parentBox = parent ? parent.getBoundingClientRect() : null;
-      const styles = getComputedStyle(el);
       return {
         sel,
-        position: styles.position,
-        overflowX: styles.overflowX,
-        overflowY: styles.overflowY,
+        position: getComputedStyle(el).position,
         scrollWidth: el.scrollWidth,
         clientWidth: el.clientWidth,
         scrollHeight: el.scrollHeight,
