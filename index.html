@@ -81,6 +81,11 @@
             Every feature gets an auto-generated label, like "cats," to describe it.
             We check whether that label matches the highlighted text and the full sentence the feature actually fires on.
           </p>
+          <p>
+            The purpose of this page is to help you develop one basic habit: never take an LLM feature label at face value. 
+            The label may seem right despite the fact that the sentence itself has something else to say. 
+            In order to show you the dicrepancy, every example goes through an identical process:
+            label, highlighted text, sentence, and verdict.
         </div>
         <div class="reaction-board" aria-label="How the page checks one feature firing">
           <div class="reaction-input">
@@ -519,6 +524,11 @@
           <p class="eyebrow">Zoom out</p>
           <h2>The four examples sit inside 6,000 features.</h2>
           <p>
+            After walking through four individual examples, we zoom out to the larger dataset.
+            The charts are not separate dashboards; they support the same question from the story:
+            when does a label help, and when does it hide important context?
+          </p>
+          <p>
             The four story examples taught the rule. This section asks whether
             it still holds across all 6,000 records.
             Read each chart as support for the rule, not as a separate dashboard.
@@ -692,6 +702,11 @@
         <p class="takeaway-lede">
           The URL label passes, Python and Star Wars need context, and the cat label fails.
           The page keeps the label, highlighted text, and full sentence side by side so you can see why.
+        </p>
+        <p>
+          Conclusion: It is not to be understood here that labeling is pointless. Labels may be helpful,
+          but they should be based on evidence. The correct interpretation should be consistent with
+          the label, the activation text, and the whole sentence. A label is a confident description of what a feature does. But the firing pattern may not support that description, and the full sentence may tell a different story. The takeaway is simple: trust the label only when all three checks line up.
         </p>
         <div class="story-spine" aria-label="And, but, therefore story summary">
           <div>
