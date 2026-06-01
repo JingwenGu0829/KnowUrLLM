@@ -25,6 +25,7 @@
         <a href="#story">Story</a>
         <a href="#patterns">Map</a>
         <a href="#takeaway">Takeaway</a>
+        <a href="#writeup">Writeup</a>
       </nav>
       <span class="scroll-meter" aria-hidden="true"></span>
     </header>
@@ -798,6 +799,39 @@
         <p class="implications-closing">
           The fix is the same in both cases: don't trust a description on its own. Check it against the underlying evidence — the firing pattern for a feature, the source documents for a claim. That's what this page has been training your eye to do.
         </p>
+      </section>
+
+      <section id="writeup" class="writeup">
+        <div class="writeup-inner">
+          <div class="writeup-heading">
+            <p class="eyebrow">Project writeup</p>
+            <h2>How and why we built this.</h2>
+          </div>
+
+          <div class="writeup-qa-grid">
+
+            <article class="writeup-qa-card">
+              <div class="writeup-qa-label">
+                <span class="writeup-qa-num" aria-hidden="true">1</span>
+                <h3>What have you done so far?</h3>
+              </div>
+              <div class="writeup-qa-body">
+                <p>We built a static page that asks what an LLM is thinking about when it reads a sentence. It loads 6,000 public GPT-2 features from Neuronpedia across steps 0 to 11, with each row carrying an auto-generated label, a firing rate and 2-D coordinates for the dot map. The hook is one feature whose label says "cats" but fires on the letters c-a-t inside "cataracts," an eye-surgery word with no cats in it. A scroll story walks through four labeled features — URL, Python, cat and Star Wars — and applies the same three-part check to each: does the label match the activation text, and does the activation text match the full sentence? Supporting that story are five charts: a trust matrix, a topic heatmap, a rarity histogram, a word-match strip and the dot map. The takeaway connects the mismatch to LLM hallucination, framing both as confident descriptions that the underlying evidence does not support.</p>
+              </div>
+            </article>
+
+            <article class="writeup-qa-card">
+              <div class="writeup-qa-label">
+                <span class="writeup-qa-num" aria-hidden="true">2</span>
+                <h3>What will be the most challenging part to design and why?</h3>
+              </div>
+              <div class="writeup-qa-body">
+                <p>The hardest part is making sparse-autoencoder features readable for a viewer with no AI background. A feature is invisible, so the page has to build the concept before it can criticize the label, which means the first screen has to carry both the introduction and the hook at the same time. The sticky stage also has to hold four components on a laptop — verdict, evidence meters, dot map and sentence window — without the layout collapsing at smaller viewport heights. Tying the mismatch to hallucination is risky: claim it too softly and the page reads as a curiosity, claim it too strongly and it overgeneralizes from one sample, so the framing has to stay precise.</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
       </section>
 
       <section id="project-note" class="project-note">
