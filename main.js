@@ -307,6 +307,7 @@ function setupSectionNav() {
     { id: "patterns", href: "#patterns" },
     { id: "takeaway", href: "#takeaway" },
     { id: "project-note", href: "#takeaway" },
+    { id: "writeup",      href: "#writeup" },
   ]
     .map((item) => ({ ...item, node: document.querySelector(`#${item.id}`) }))
     .filter((item) => item.node);
