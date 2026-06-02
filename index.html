@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KnowUrLLM | What is an LLM "thinking" about?</title>
+    <title>KnowUrLLM | What is really in an LLM's "brain"?</title>
     <meta
       name="description"
       content="A beginner-friendly visual story about looking inside an LLM with sparse autoencoder features, and checking whether the auto-generated label for each feature really matches what the model is reading."
@@ -35,748 +35,353 @@
 
     <main id="top" tabindex="-1">
       <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">A beginner-friendly AI visualization</p>
-          <h1>When an LLM reads a sentence, what is it "thinking" about?</h1>
-          <p class="lede">
-            Researchers split an LLM's inner state into thousands of "features" using sparse autoencoders, and every feature gets an auto-generated label.
-            But the label and the sentence can disagree: one feature labeled "cats" fires on "patients after a cataracts procedure" — the only cat is the letters c-a-t inside cataracts.
-          </p>
-        </div>
-        <div class="hero-demo" aria-label="An LLM feature firing on a sentence">
-          <div class="sample-text">
-            <span>Text GPT-2 reads</span>
-            <p>patients after a <mark>cat</mark>aracts procedure</p>
-          </div>
-          <div class="detector-strip">
-            <span class="pulse-dot" aria-hidden="true"></span>
-            <div>
-              <strong>A feature inside GPT-2 lights up</strong>
-              <p>Its auto-generated label says "cats," but the sentence is about eye surgery.</p>
-            </div>
-          </div>
-          <div class="hero-checks">
-            <div>
-              <span>Feature label says</span>
-              <strong>cats</strong>
-            </div>
-            <div>
-              <span>Highlighted text shows</span>
-              <strong>cat inside cataracts</strong>
-            </div>
-            <div>
-              <span>Full sentence says</span>
-              <strong>eye surgery</strong>
-            </div>
-          </div>
+        <h1 class="hero-title">
+          When an LLM reads a sentence,<br />
+          what is really in its <em>&ldquo;brain&rdquo;</em>?
+        </h1>
+        <div class="hero-bots" aria-hidden="true">
+          <svg viewBox="0 0 120 96">
+            <line x1="60" y1="20" x2="60" y2="9" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="60" cy="6" r="3.5" fill="#12a878"/>
+            <rect x="34" y="20" width="52" height="40" rx="11" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+            <path d="M45 38 q4 -5 8 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M67 38 q4 -5 8 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M48 47 q12 9 24 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <rect x="40" y="60" width="40" height="26" rx="8" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+            <circle cx="60" cy="73" r="7" fill="#12a878"/>
+            <path d="M56.5 73 l2.5 2.5 4.5 -4.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg viewBox="0 0 120 96">
+            <line x1="50" y1="20" x2="50" y2="9" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="50" cy="6" r="3.5" fill="#f2ae33"/>
+            <rect x="24" y="20" width="52" height="40" rx="11" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+            <circle cx="40" cy="38" r="3.2" fill="#111"/>
+            <circle cx="60" cy="38" r="3.2" fill="#111"/>
+            <path d="M42 50 q8 4 16 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <rect x="30" y="60" width="40" height="26" rx="8" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+            <circle cx="92" cy="46" r="12" fill="rgba(242,174,51,0.25)" stroke="#111" stroke-width="2.5"/>
+            <line x1="101" y1="55" x2="110" y2="64" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <svg viewBox="0 0 120 96">
+            <text x="84" y="26" font-family="Inter, sans-serif" font-size="24" font-weight="900" fill="#ff4057">?</text>
+            <line x1="50" y1="22" x2="50" y2="11" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="50" cy="8" r="3.5" fill="#ff4057"/>
+            <rect x="24" y="22" width="52" height="40" rx="11" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+            <circle cx="40" cy="40" r="3.5" fill="#111"/>
+            <circle cx="62" cy="40" r="6" fill="#ff4057" stroke="#111" stroke-width="1.5"/>
+            <path d="M40 52 q5 -4 9 0 q5 4 9 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <rect x="30" y="62" width="40" height="24" rx="8" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+          </svg>
+          <svg viewBox="0 0 120 96">
+            <line x1="12" y1="80" x2="108" y2="80" stroke="#111" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+            <rect x="32" y="58" width="46" height="22" rx="10" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+            <rect x="13" y="54" width="30" height="26" rx="10" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+            <path d="M20 66 q3 3 6 0" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M30 66 q3 3 6 0" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <text x="74" y="44" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#7a5cff">z</text>
+            <text x="83" y="33" font-family="Inter, sans-serif" font-size="17" font-weight="900" fill="#7a5cff">Z</text>
+            <text x="94" y="22" font-family="Inter, sans-serif" font-size="21" font-weight="900" fill="#7a5cff">Z</text>
+          </svg>
         </div>
       </section>
 
-      <section class="plain-terms" aria-label="Plain-language explanation of the feature label check">
+      <section id="what-we-mean" class="plain-terms" aria-label="Key terms used on this page">
         <div class="plain-copy">
-          <p class="eyebrow">Before the story</p>
-          <h2>What is this page checking?</h2>
-          <p>
-            GPT-2 reads text step by step. Inside the model, sparse autoencoders carve its
-            state into thousands of tiny "features," each of which lights up on a specific kind of text.
-            Every feature gets an auto-generated label, like "cats," to describe it.
-            We check whether that label matches the highlighted text and the full sentence the feature actually fires on.
-          </p>
-          <p>
-            The purpose of this page is to help you develop one basic habit: never take an LLM feature label at face value. 
-            The label may seem right despite the fact that the sentence itself has something else to say. 
-            In order to show you the dicrepancy, every example goes through an identical process:
-            label, highlighted text, sentence, and verdict.
+          <p class="eyebrow">Key terms</p>
+          <h2>What do we mean by a model's &ldquo;brain&rdquo;?</h2>
+          <ul class="term-list">
+            <li style="--term-color: #080808">
+              <strong>Feature</strong>
+              <span>One tiny pattern inside the model that switches on for a specific kind of text.</span>
+            </li>
+            <li style="--term-color: #00bcd4">
+              <strong>Label</strong>
+              <span>A short, auto-generated name for that feature &mdash; for example, &ldquo;cats.&rdquo;</span>
+            </li>
+            <li style="--term-color: #f2ae33">
+              <strong>Match</strong>
+              <span>The real question: does the label actually fit the text that lit the feature up?</span>
+            </li>
+            <li style="--term-color: #ff4057">
+              <strong>This page</strong>
+              <span>Trains your eye to check &mdash; because a confident label can still be wrong.</span>
+            </li>
+          </ul>
         </div>
-        <div class="reaction-board" aria-label="How the page checks one feature firing">
-          <div class="reaction-input">
-            <span>Real text</span>
-            <strong>patients after a <mark>cat</mark>aracts procedure</strong>
-          </div>
-          <div class="reaction-core" aria-label="One feature firing">
-            <span>Feature firing</span>
-            <div class="reaction-bars" aria-hidden="true">
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-            </div>
-            <strong>This is the inside-the-model event the label tries to explain.</strong>
-          </div>
-          <div class="reaction-label">
-            <span>Auto-generated label</span>
-            <strong>"cats"</strong>
-            <em>Sounds plausible, but still has to match the sentence.</em>
-          </div>
-          <div class="reaction-checks">
-            <div>
-              <span>Feature label</span>
-              <strong>cats</strong>
-            </div>
-            <div>
-              <span>Highlighted text</span>
-              <strong>cat inside a longer word</strong>
-            </div>
-            <div>
-              <span>Sentence</span>
-              <strong>about medical care</strong>
-            </div>
-          </div>
-        </div>
+        <figure class="brain-figure">
+          <img
+            class="brain-img"
+            src="src/img1.png"
+            width="1448"
+            height="1086"
+            alt="The sentence &quot;patients after a cataracts procedure&quot; feeds into a small neural network. One hidden neuron lights up red, and a puzzled cartoon head beside it asks why the &quot;cat&quot; feature is firing on a word about eye surgery."
+          />
+          <figcaption>A feature lights up &mdash; but the label only <em>guesses</em> why.</figcaption>
+        </figure>
       </section>
 
-      <section class="sae-intro" aria-label="What is an LLM feature?">
+      <section class="sae-intro" aria-label="Using features to probe an LLM's brain">
         <div class="sae-intro-heading">
-          <p class="eyebrow">Inside the model</p>
-          <h2>So what is a "feature," anyway?</h2>
+          <p class="eyebrow">The tool</p>
+          <h2>Using &ldquo;features&rdquo; to probe an LLM's brain</h2>
           <p>
-            A sparse autoencoder breaks an LLM's inner state into thousands of small "features." Each feature fires only on a specific kind of text. The Neuronpedia dataset auto-generates a short label for every feature. These eight are typical examples — the last one is the disagreement that drives the rest of this page.
+            A sparse autoencoder (SAE) takes the model's ambiguous, black-box inner values and
+            sorts them into thousands of distinct <b>features</b> &mdash; each a pattern that switches
+            on for a specific kind of text, with an auto-generated label to name it. Every row reads the same way:
           </p>
         </div>
-        <div class="sae-gallery" aria-label="Examples of LLM features and their auto-generated labels">
-          <article style="--cat-color: #111111">
-            <span class="sae-tag">Grammar</span>
-            <strong class="sae-label">"commas"</strong>
-            <p class="sae-fires-on">Fires on: "the cake<mark>,</mark> which was"</p>
-          </article>
-          <article style="--cat-color: #00a3bd">
-            <span class="sae-tag">Web</span>
-            <strong class="sae-label">"web URLs"</strong>
-            <p class="sae-fires-on">Fires on: "visit <mark>http://example.com</mark>"</p>
-          </article>
-          <article style="--cat-color: #12a878">
-            <span class="sae-tag">Code</span>
-            <strong class="sae-label">"Python"</strong>
-            <p class="sae-fires-on">Fires on: "<mark>def get_user():</mark>"</p>
-          </article>
-          <article style="--cat-color: #2f6df6">
-            <span class="sae-tag">Names</span>
-            <strong class="sae-label">"celebrities"</strong>
-            <p class="sae-fires-on">Fires on: "<mark>Brad Pitt</mark> starred in"</p>
-          </article>
-          <article style="--cat-color: #f2ae33">
-            <span class="sae-tag">Dates</span>
-            <strong class="sae-label">"years"</strong>
-            <p class="sae-fires-on">Fires on: "in <mark>2024</mark>, the team"</p>
-          </article>
-          <article style="--cat-color: #7a5cff">
-            <span class="sae-tag">Places</span>
-            <strong class="sae-label">"capitals"</strong>
-            <p class="sae-fires-on">Fires on: "<mark>Paris</mark>, the capital of France"</p>
-          </article>
-          <article style="--cat-color: #6a8f1f">
-            <span class="sae-tag">Animals</span>
-            <strong class="sae-label">"pets"</strong>
-            <p class="sae-fires-on">Fires on: "her <mark>dog</mark> barked at"</p>
-          </article>
-          <article class="sae-mismatch" style="--cat-color: #ff4057">
-            <span class="sae-tag">Mismatch</span>
-            <strong class="sae-label">"cats"</strong>
-            <p class="sae-fires-on">Fires on: "after a <mark>cat</mark>aracts procedure"</p>
-            <em class="sae-warning">The label and the sentence disagree.</em>
-          </article>
+        <div class="probe-key" aria-label="Color key">
+          <span class="k-sees">what the model sees</span>
+          <span class="k-fires">the feature that lights up</span>
         </div>
+        <ul class="probe-table" aria-label="Examples of features lighting up on text">
+          <li>When a model sees <span class="probe-sees">&ldquo;the cake<u>,</u> which was&rdquo;</span>, the <span class="probe-fires">&ldquo;commas&rdquo;</span> feature lights up.</li>
+          <li>When a model sees <span class="probe-sees">&ldquo;visit <u>http://example.com</u>&rdquo;</span>, the <span class="probe-fires">&ldquo;web URLs&rdquo;</span> feature lights up.</li>
+          <li>When a model sees <span class="probe-sees">&ldquo;<u>def get_user():</u>&rdquo;</span>, the <span class="probe-fires">&ldquo;Python&rdquo;</span> feature lights up.</li>
+          <li>When a model sees <span class="probe-sees">&ldquo;in <u>2024</u>, the team&rdquo;</span>, the <span class="probe-fires">&ldquo;years&rdquo;</span> feature lights up.</li>
+          <li class="is-mismatch">When a model sees <span class="probe-sees">&ldquo;patients after a <u>cat</u>aracts procedure&rdquo;</span>, the <span class="probe-fires">&ldquo;cats&rdquo;</span> feature lights up &mdash; <span class="probe-flag">but the sentence is about eye surgery, not cats.</span></li>
+        </ul>
       </section>
 
       <section class="story-arc" aria-label="And, but, therefore story preview">
         <p class="eyebrow">The story arc</p>
-        <div class="arc-grid">
-          <article>
-            <span>And</span>
-            <h2>A short label gives a fast first idea of what the feature is "about."</h2>
-            <p>The label tells a viewer what one inner part of the model might respond to.</p>
-          </article>
-          <article>
-            <span>But</span>
-            <h2>The label can still be wrong.</h2>
-            <p>The label "cats" sounds obvious until the highlighted text is really "cat" inside "cataracts."</p>
-          </article>
-          <article>
-            <span>Therefore</span>
-            <h2>Check the sentence before trusting it.</h2>
-            <p>Compare the label, the highlighted text, and the full sentence before deciding what the feature actually fires on.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="thesis">
-        <p>
-          The whole project is one reading test: put the feature's label, the highlighted
-          text, and the real sentence side by side, then ask whether they agree.
-        </p>
-      </section>
-
-      <section id="test" class="test-rule" aria-label="Three-part feature label check">
-        <div class="test-rule-heading">
-          <p class="eyebrow">The test</p>
-          <h2>Read the label in three steps.</h2>
-        </div>
-        <div class="test-steps">
-          <article>
-            <span>1</span>
-            <h3>Label</h3>
-            <p>The auto-generated description of what this feature responds to.</p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>Highlighted text</h3>
-            <p>The small words or letters that make the feature light up most.</p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>Full sentence</h3>
-            <p>The real sentence where the highlighted text appears.</p>
-          </article>
-          <article>
-            <span>4</span>
-            <h3>Verdict</h3>
-            <p>Trust the label only when all three checks point the same way.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="atlas-intro" aria-label="How to read the dot map">
-        <div class="atlas-intro-heading">
-          <p class="eyebrow">Reading the dot map</p>
-          <h2>How to read the 6,000-feature dot map.</h2>
-          <p>
-            Soon you will see a dot map of every feature in the dataset. Each dot is one feature. Features whose labels describe similar text end up near each other. The x and y axes don't carry meaning on their own — they're a flat squish of much higher-dimensional similarity, so what matters is which dots cluster together, not where they sit on the page.
-          </p>
-        </div>
-        <div class="atlas-intro-vis" aria-label="Zoomed-in cluster of grammar and punctuation features">
-          <svg id="atlas-intro-svg" viewBox="0 0 480 280" role="img" aria-labelledby="atlas-intro-title" aria-describedby="atlas-intro-desc">
-            <title id="atlas-intro-title">Zoomed dot map showing a grammar cluster, a code cluster, and a few outliers</title>
-            <desc id="atlas-intro-desc">A 480 by 280 pixel zoomed view of one corner of the dot map. Twelve dark dots cluster together in the middle-left, labeled grammar and punctuation. Six green dots cluster lower-right, labeled code. Two red outlier dots sit alone with the label cats. Annotation arrows point to each cluster.</desc>
-            <rect x="0" y="0" width="480" height="280" fill="#fbfaf5" />
-            <!-- subtle grid background -->
-            <g stroke="#e8e6dc" stroke-width="1">
-              <line x1="0" y1="70" x2="480" y2="70" />
-              <line x1="0" y1="140" x2="480" y2="140" />
-              <line x1="0" y1="210" x2="480" y2="210" />
-              <line x1="120" y1="0" x2="120" y2="280" />
-              <line x1="240" y1="0" x2="240" y2="280" />
-              <line x1="360" y1="0" x2="360" y2="280" />
-            </g>
-            <!-- grammar cluster (dark) -->
-            <g fill="#111111" opacity="0.85">
-              <circle cx="118" cy="118" r="4" />
-              <circle cx="132" cy="112" r="4" />
-              <circle cx="125" cy="132" r="4" />
-              <circle cx="142" cy="124" r="4" />
-              <circle cx="110" cy="135" r="4" />
-              <circle cx="148" cy="140" r="4" />
-              <circle cx="120" cy="148" r="4" />
-              <circle cx="135" cy="146" r="4" />
-              <circle cx="155" cy="118" r="4" />
-              <circle cx="100" cy="125" r="4" />
-              <circle cx="138" cy="158" r="4" />
-              <circle cx="158" cy="132" r="4" />
-            </g>
-            <!-- code cluster (green) -->
-            <g fill="#12a878" opacity="0.85">
-              <circle cx="312" cy="200" r="4" />
-              <circle cx="322" cy="212" r="4" />
-              <circle cx="335" cy="198" r="4" />
-              <circle cx="305" cy="216" r="4" />
-              <circle cx="328" cy="225" r="4" />
-              <circle cx="345" cy="210" r="4" />
-            </g>
-            <!-- scattered other dots -->
-            <g fill="#bdbeb4" opacity="0.9">
-              <circle cx="60" cy="60" r="3" />
-              <circle cx="80" cy="200" r="3" />
-              <circle cx="240" cy="80" r="3" />
-              <circle cx="280" cy="60" r="3" />
-              <circle cx="220" cy="160" r="3" />
-              <circle cx="190" cy="220" r="3" />
-              <circle cx="400" cy="100" r="3" />
-              <circle cx="420" cy="160" r="3" />
-              <circle cx="380" cy="240" r="3" />
-              <circle cx="40" cy="240" r="3" />
-            </g>
-            <!-- cat outlier (red) -->
-            <g fill="#ff4057">
-              <circle cx="395" cy="50" r="5" stroke="#080808" stroke-width="1.2" />
-            </g>
-            <!-- callout: grammar cluster -->
-            <g font-family="Inter, sans-serif" font-size="11" fill="#080808">
-              <line x1="180" y1="80" x2="148" y2="115" stroke="#080808" stroke-width="1" />
-              <circle cx="148" cy="115" r="2" fill="#080808" />
-              <text x="184" y="68" font-weight="700">"grammar / punctuation"</text>
-              <text x="184" y="82" fill="#5a5b56">12 features cluster together — same label area.</text>
-            </g>
-            <!-- callout: code cluster -->
-            <g font-family="Inter, sans-serif" font-size="11" fill="#080808">
-              <line x1="220" y1="240" x2="305" y2="215" stroke="#080808" stroke-width="1" />
-              <circle cx="305" cy="215" r="2" fill="#080808" />
-              <text x="40" y="252" font-weight="700">"code / Python"</text>
-              <text x="40" y="266" fill="#5a5b56">Different label, different corner.</text>
-            </g>
-            <!-- callout: cat outlier -->
-            <g font-family="Inter, sans-serif" font-size="11" fill="#080808">
-              <line x1="385" y1="38" x2="392" y2="48" stroke="#ff4057" stroke-width="1.2" />
-              <text x="288" y="32" font-weight="700" fill="#ff4057">"cats"</text>
-              <text x="288" y="22" fill="#5a5b56">A rare outlier — no nearby cluster.</text>
-            </g>
+        <div class="arc-stage">
+          <svg class="arc-robot" viewBox="0 0 240 280" role="img" aria-label="A glitchy cartoon robot with one red evil eye stares down at the three blocks, its chest screen showing the input and its brain mismatched.">
+            <!-- soft red glow -->
+            <ellipse cx="120" cy="86" rx="120" ry="80" fill="#ff4057" opacity="0.10" />
+            <!-- legs -->
+            <line x1="94" y1="214" x2="94" y2="250" stroke="#f4f3ee" stroke-width="14" stroke-linecap="round" />
+            <line x1="146" y1="214" x2="146" y2="250" stroke="#f4f3ee" stroke-width="14" stroke-linecap="round" />
+            <!-- feet -->
+            <rect x="74" y="250" width="42" height="16" rx="6" fill="#f4f3ee" stroke="#111111" stroke-width="2.5" />
+            <rect x="124" y="250" width="42" height="16" rx="6" fill="#f4f3ee" stroke="#111111" stroke-width="2.5" />
+            <!-- left arm (hanging) -->
+            <polyline points="62,156 36,164 32,188" fill="none" stroke="#f4f3ee" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="32" cy="192" r="9" fill="#f4f3ee" stroke="#111111" stroke-width="2.5" />
+            <!-- right arm (raised, menacing) -->
+            <polyline points="178,156 206,142 210,114" fill="none" stroke="#f4f3ee" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="210" cy="110" r="9" fill="#f4f3ee" stroke="#111111" stroke-width="2.5" />
+            <!-- torso -->
+            <rect x="60" y="132" width="120" height="86" rx="16" fill="#f4f3ee" stroke="#111111" stroke-width="3" />
+            <!-- chest screen: input vs brain mismatch -->
+            <rect x="78" y="150" width="84" height="50" rx="8" fill="#111111" />
+            <text x="98" y="181" font-family="Inter, sans-serif" font-size="14" font-weight="900" fill="#00bcd4" text-anchor="middle">cat</text>
+            <text x="120" y="183" font-family="Inter, sans-serif" font-size="16" font-weight="900" fill="#ff4057" text-anchor="middle">&#8800;</text>
+            <path d="M138 166 l8 0 -5 8 8 0 -9 12 2 -9 -6 0 z" fill="#ff4057" />
+            <!-- neck -->
+            <rect x="112" y="122" width="16" height="12" rx="3" fill="#cfcec6" stroke="#111111" stroke-width="2" />
+            <!-- side bolts -->
+            <rect x="58" y="72" width="9" height="24" rx="3" fill="#cfcec6" stroke="#111111" stroke-width="2" />
+            <rect x="173" y="72" width="9" height="24" rx="3" fill="#cfcec6" stroke="#111111" stroke-width="2" />
+            <!-- head -->
+            <rect x="66" y="44" width="108" height="80" rx="18" fill="#f4f3ee" stroke="#111111" stroke-width="3" />
+            <!-- antenna -->
+            <line x1="120" y1="44" x2="120" y2="22" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+            <circle class="arc-robot-bulb" cx="120" cy="15" r="7" fill="#ff4057" stroke="#111111" stroke-width="2" />
+            <!-- brows: left raised (confused), right angled (angry) -->
+            <line x1="86" y1="64" x2="108" y2="61" stroke="#111111" stroke-width="3.5" stroke-linecap="round" />
+            <line x1="134" y1="60" x2="156" y2="68" stroke="#111111" stroke-width="3.5" stroke-linecap="round" />
+            <!-- left eye (normal, looking down) -->
+            <circle cx="98" cy="82" r="14" fill="#ffffff" stroke="#111111" stroke-width="2.5" />
+            <circle cx="98" cy="89" r="6" fill="#111111" />
+            <!-- right eye (red, evil, looking down) -->
+            <circle class="arc-robot-eye" cx="146" cy="82" r="14" fill="#ff4057" stroke="#111111" stroke-width="2.5" />
+            <circle cx="146" cy="89" r="6" fill="#111111" />
+            <!-- glitchy mouth -->
+            <polyline points="92,108 100,102 108,108 116,102 124,108 132,102 140,108 148,102" fill="none" stroke="#111111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          <p class="atlas-intro-caption">
-            Distance between dots reads as "their labels describe similar text," nothing more. Two dots far apart on the page may still share a topic — they just sit in different 2D positions because the squish has limits.
-          </p>
+          <div class="arc-grid">
+            <article>
+              <span>And</span>
+              <h2>By probing its brain for a prompt, we can see what an LLM is thinking about.</h2>
+            </article>
+            <article>
+              <span>But</span>
+              <h2>It doesn't always think in the way the prompt intends.</h2>
+            </article>
+            <article>
+              <span>Therefore</span>
+              <h2>That gap can cause misalignment and hallucination.</h2>
+            </article>
+          </div>
         </div>
+      </section>
+
+      <section id="sea" class="sea" aria-label="The sea of features">
+        <div class="sea-copy">
+          <p class="eyebrow">The map</p>
+          <h2>The Sea of Features<span> &mdash; so many things in an LLM's brain</span></h2>
+          <p class="sea-sub">How should we read it?</p>
+          <ul class="sea-list">
+            <li><strong>6,000 features</strong><span>each dot is one pattern the model can switch on.</span></li>
+            <li><strong>We &ldquo;cluster&rdquo; them</strong><span>similar features sit closer together, so the map stays readable.</span></li>
+            <li><strong>Sorted into 10 types</strong><span>each dot is colored by its topic.</span></li>
+          </ul>
+          <div class="sea-pie" aria-label="Share of the 6,000 features by topic">
+            <div class="sea-pie-chart">
+              <svg id="sea-pie-svg" viewBox="-110 -110 220 220" role="img" aria-label="Donut chart: share of features by topic. Hover a slice for its exact count."></svg>
+              <div class="sea-pie-center" id="sea-pie-center" aria-hidden="true">
+                <strong>6,000</strong>
+                <span>features</span>
+              </div>
+            </div>
+            <ul class="sea-pie-legend" id="sea-pie-legend"></ul>
+          </div>
+        </div>
+
+        <figure class="sea-stage" id="sea-stage" aria-label="Interactive map of 6,000 GPT-2 features">
+          <div class="sea-banner" id="sea-banner">Hover any dot to read a feature.</div>
+          <button type="button" class="sea-zoom-btn" id="sea-zoom-btn" aria-pressed="false">
+            <span class="sea-zoom-open">&#10530; Zoom in</span>
+            <span class="sea-zoom-close">&times; Close</span>
+          </button>
+          <canvas id="sea-canvas" width="760" height="560" tabindex="0" aria-label="Map of 6,000 GPT-2 features colored by category"></canvas>
+          <div class="sea-legend" id="sea-legend" aria-hidden="true"></div>
+          <div class="sea-info" id="sea-info" hidden>
+            <span class="sea-info-tag" id="sea-info-tag">Feature</span>
+            <strong class="sea-info-id" id="sea-info-id"></strong>
+            <dl class="sea-info-table">
+              <div><dt>Topic</dt><dd id="sea-info-cat"></dd></div>
+              <div><dt>Depth in model</dt><dd id="sea-info-layer"></dd></div>
+              <div><dt>How often it's active</dt><dd id="sea-info-density"></dd></div>
+            </dl>
+          </div>
+          <div class="sea-prompt" id="sea-prompt">
+            <kbd>X</kbd>
+            <span>trace the 4 example features</span>
+          </div>
+        </figure>
       </section>
 
       <section id="story" class="scrolly">
-        <div class="chapters" aria-label="Feature firing checking chapters">
+        <div class="chapters" aria-label="Four feature examples">
           <article id="case-url" class="chapter is-active" data-feature-id="gpt2-small/4-res-jb/14801">
-            <p class="eyebrow">Example 1: label works</p>
-            <h2>The URL label is easy to trust.</h2>
-            <p>
-              The label says web addresses. The example is a real web address,
-              and the highlighted text looks like URL parts.
-            </p>
-            <div class="chapter-receipt" aria-label="URL example support summary">
-              <span data-score="3"><b>Label</b><small>fits</small></span>
-              <span data-score="3"><b>Highlight</b><small>fits</small></span>
-              <span data-score="3"><b>Sentence</b><small>fits</small></span>
-              <strong>Trust</strong>
-            </div>
-            <div class="mobile-evidence" aria-label="URL example mobile support">
-              <div><span>Feature label</span><strong>web URLs</strong></div>
-              <div><span>Highlight</span><strong>URL, URI, http</strong></div>
-              <div><span>Sentence</span><strong>real web address</strong></div>
-              <p>Decision: trust the label.</p>
-            </div>
+            <p class="eyebrow">Example 1 of 4</p>
+            <h2>Easy to trust.</h2>
           </article>
-
           <article id="case-python" class="chapter" data-feature-id="gpt2-small/7-res-jb/6592">
-            <p class="eyebrow">Example 2: label is incomplete</p>
-            <h2>The Python label misses nearby shell text.</h2>
-            <p>
-              The example is a Python command. But the highlighted text also
-              includes usernames and shell words the label skips.
-            </p>
-            <div class="chapter-receipt" aria-label="Python example support summary">
-              <span data-score="2"><b>Label</b><small>partial</small></span>
-              <span data-score="2"><b>Highlight</b><small>check</small></span>
-              <span data-score="3"><b>Sentence</b><small>fits</small></span>
-              <strong>Check context</strong>
-            </div>
-            <div class="mobile-evidence" aria-label="Python example mobile support">
-              <div><span>Feature label</span><strong>Python</strong></div>
-              <div><span>Highlight</span><strong>username + command words</strong></div>
-              <div><span>Sentence</span><strong>Python command</strong></div>
-              <p>Decision: useful, but incomplete.</p>
-            </div>
+            <p class="eyebrow">Example 2 of 4</p>
+            <h2>Useful, but incomplete.</h2>
           </article>
-
           <article id="case-cat" class="chapter" data-feature-id="gpt2-small/7-res-jb/24310">
-            <p class="eyebrow">Example 3: label misleads</p>
-            <h2>The cat label fails inside cataracts.</h2>
-            <p>
-              The label says cats, but the feature's top example highlights "cat" inside
-              "cataracts." The feature may be firing on letters, not the animal.
-            </p>
-            <div class="chapter-receipt" aria-label="Cat example support summary">
-              <span data-score="2"><b>Label</b><small>sounds right</small></span>
-              <span data-score="1"><b>Highlight</b><small>trap</small></span>
-              <span data-score="1"><b>Sentence</b><small>conflicts</small></span>
-              <strong>Do not trust yet</strong>
-            </div>
-            <div class="mobile-evidence" aria-label="Cat example mobile support">
-              <div><span>Feature label</span><strong>cats</strong></div>
-              <div><span>Highlight</span><strong>cat</strong></div>
-              <div><span>Sentence</span><strong>cataracts</strong></div>
-              <p>Decision: do not trust yet.</p>
-            </div>
+            <p class="eyebrow">Example 3 of 4</p>
+            <h2>Do not trust yet.</h2>
           </article>
-
           <article id="case-star-wars" class="chapter" data-feature-id="gpt2-small/11-res-jb/14962">
-            <p class="eyebrow">Example 4: label needs backup</p>
-            <h2>The Star Wars label has thin backup.</h2>
-            <p>
-              The sentence mentions Star Wars. But the highlighted text is
-              mostly punctuation. A fun label needs real evidence underneath.
-            </p>
-            <div class="chapter-receipt" aria-label="Star Wars example support summary">
-              <span data-score="2"><b>Label</b><small>sounds right</small></span>
-              <span data-score="1"><b>Highlight</b><small>weak</small></span>
-              <span data-score="3"><b>Sentence</b><small>fits</small></span>
-              <strong>Needs backup</strong>
-            </div>
-            <div class="mobile-evidence" aria-label="Star Wars example mobile support">
-              <div><span>Feature label</span><strong>Star Wars</strong></div>
-              <div><span>Highlight</span><strong>mostly punctuation</strong></div>
-              <div><span>Sentence</span><strong>Star Wars names</strong></div>
-              <p>Decision: needs backup.</p>
-            </div>
+            <p class="eyebrow">Example 4 of 4</p>
+            <h2>Needs backup.</h2>
           </article>
         </div>
 
         <aside class="stage" aria-live="polite">
-          <p class="mobile-stage-note">After the four examples, the detail view shows the label, highlight, sentence, and decision for the active example.</p>
-          <div class="stage-top">
-            <div>
-              <p class="eyebrow"><span id="case-step">Example 1 of 4</span> / Current feature firing</p>
-              <h2 id="feature-title">Loading example...</h2>
-              <p id="feature-meta">Loading Neuronpedia data.</p>
-            </div>
-            <a id="feature-link" href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">Original record</a>
-          </div>
-
-          <ol class="case-rail" aria-label="Four-example story path">
-            <li class="is-active" data-feature-id="gpt2-small/4-res-jb/14801" style="--case-color: #00bcd4" tabindex="0" role="link" aria-label="Jump to the URL example" aria-current="step">
-              <span>1</span>
-              <b>URL</b>
-              <small>trust</small>
-            </li>
-            <li data-feature-id="gpt2-small/7-res-jb/6592" style="--case-color: #12a878" tabindex="0" role="link" aria-label="Jump to the Python example">
-              <span>2</span>
-              <b>Python</b>
-              <small>partial</small>
-            </li>
-            <li data-feature-id="gpt2-small/7-res-jb/24310" style="--case-color: #ff4057" tabindex="0" role="link" aria-label="Jump to the cat example">
-              <span>3</span>
-              <b>Cat</b>
-              <small>misleads</small>
-            </li>
-            <li data-feature-id="gpt2-small/11-res-jb/14962" style="--case-color: #7a5cff" tabindex="0" role="link" aria-label="Jump to the Star Wars example">
-              <span>4</span>
-              <b>Star Wars</b>
-              <small>needs backup</small>
-            </li>
+          <ol class="case-rail" aria-label="Jump between the four examples">
+            <li class="is-active" data-feature-id="gpt2-small/4-res-jb/14801" style="--case-color: #00bcd4" tabindex="0" role="link" aria-label="Jump to the URL example" aria-current="step"><span>1</span><b>URL</b></li>
+            <li data-feature-id="gpt2-small/7-res-jb/6592" style="--case-color: #12a878" tabindex="0" role="link" aria-label="Jump to the Python example"><span>2</span><b>Python</b></li>
+            <li data-feature-id="gpt2-small/7-res-jb/24310" style="--case-color: #ff4057" tabindex="0" role="link" aria-label="Jump to the cat example"><span>3</span><b>Cat</b></li>
+            <li data-feature-id="gpt2-small/11-res-jb/14962" style="--case-color: #7a5cff" tabindex="0" role="link" aria-label="Jump to the Star Wars example"><span>4</span><b>Star Wars</b></li>
           </ol>
 
-          <div class="verdict" id="feature-verdict">Checking the label...</div>
-
-          <div class="evidence-grid">
-            <div>
-              <span>Label</span>
-              <strong id="label-score">Loading</strong>
-              <meter id="label-meter" min="0" max="3" value="0" aria-label="Feature label support score"></meter>
-              <p id="label-note"></p>
-            </div>
-            <div>
-              <span>Highlighted text</span>
-              <strong id="logit-score">Loading</strong>
-              <meter id="logit-meter" min="0" max="3" value="0" aria-label="Highlighted-text support score"></meter>
-              <p id="logit-note"></p>
-            </div>
-            <div>
-              <span>Full sentence</span>
-              <strong id="text-score">Loading</strong>
-              <meter id="text-meter" min="0" max="3" value="0" aria-label="Full-sentence support score"></meter>
-              <p id="text-note"></p>
+          <div class="case-input">
+            <span class="case-kicker">Input</span>
+            <div id="activation-window" class="activation-window" aria-label="Input sentence the feature responds to"></div>
+            <div class="case-heatkey" aria-hidden="true">
+              <span class="hk hk-peak">the word that lit it up most</span>
+              <span class="hk hk-warm">other words that helped</span>
             </div>
           </div>
 
-          <div class="stage-body">
-            <div class="atlas-box">
-              <div>
-                <h3>Dot map: where this saved moment sits</h3>
-                <p id="atlas-caption">Each dot is one saved moment. The colored path connects the four examples. Nearby dots give context, not proof.</p>
+          <div class="case-mid">
+            <div class="case-col">
+              <div class="case-brain">
+                <span class="case-kicker">The label the model gives it</span>
+                <strong class="case-label" id="case-label">&hellip;</strong>
               </div>
-              <p id="atlas-summary" class="sr-only">
-                Canvas dot map of 6,000 public GPT-2 features. Nearby
-                dots have similar auto-generated labels or descriptions; the dot map is
-                not proof that GPT-2 understands those topics. The thin line
-                links the four scroll examples, and the highlighted ring marks the
-                current one.
-                Hover or tap the map to check a nearby feature. Keyboard
-                users can focus the map, then use arrow keys to step through
-                the four scroll examples.
-              </p>
-              <canvas id="atlas-canvas" width="740" height="420" tabindex="0" aria-label="Dot map of GPT-2 features" aria-describedby="atlas-summary atlas-caption">
-                A map of 6,000 public GPT-2 features. A thin line
-                links the four story examples, and the highlighted ring marks the
-                current one. Callouts show grammar, names, code, and rare
-                animal-label regions.
-              </canvas>
-            </div>
-
-            <div class="feature-card">
-              <h3>Highlighted words or letters</h3>
-              <p id="token-guide" class="token-guide">Green supports the label. Yellow needs the sentence. Red warns you to slow down.</p>
-              <div class="token-legend" aria-label="Highlighted-text color key">
-                <span data-evidence="supports">matches label</span>
-                <span data-evidence="context">needs sentence</span>
-                <span data-evidence="misleading">warning sign</span>
-              </div>
-              <div id="token-pills" class="token-pills" role="list" aria-label="Highlighted-text labels"></div>
-              <h3>Full sentence example <span id="example-count"></span></h3>
-              <div id="source-callout" class="source-callout" aria-live="polite">
-                <span>Read this sentence</span>
-                <strong>Loading sentence check.</strong>
-              </div>
-              <div id="activation-window" class="activation-window" aria-label="Full sentence example"></div>
-              <div class="stage-insight" id="stage-insight">
-                <span>Decision</span>
-                <p>Loading the decision.</p>
+              <div class="case-match">
+                <span class="case-kicker">Does the label match the input?</span>
+                <div class="match-row" id="match-word" data-state="good">
+                  <span>the key word</span><b id="match-word-tag">&hellip;</b>
+                </div>
+                <div class="match-row" id="match-sentence" data-state="good">
+                  <span>the whole sentence</span><b id="match-sentence-tag">&hellip;</b>
+                </div>
+                <div class="case-mascot" id="case-mascot" aria-hidden="true"></div>
+                <div class="case-verdict" id="case-verdict" data-state="good">&hellip;</div>
               </div>
             </div>
+            <figure class="case-map">
+              <canvas id="atlas-canvas" width="440" height="440" tabindex="0" aria-label="Where this feature sits among the 6,000 others"></canvas>
+              <figcaption><a id="feature-link" href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">Neuronpedia &#8599;</a></figcaption>
+            </figure>
           </div>
         </aside>
       </section>
 
-      <section id="patterns" class="patterns">
-        <div class="section-heading">
+      <section id="zoomout" class="zoomout">
+          <div class="zoomout-head">
+            <p class="eyebrow">Zoom out</p>
+            <h2>Across all 6,000 features, two things stay true.</h2>
+          </div>
+          <figure class="rare-stage" id="rare-stage">
+            <canvas id="rare-canvas" width="900" height="560" aria-label="An interactive field of dots. One is active; zoom out to see how rare that is, then reveal how often a label does not match."></canvas>
+            <div class="rare-readout" id="rare-readout">
+              <strong id="rare-number">&hellip;</strong>
+              <span id="rare-caption">this one spot is active</span>
+            </div>
+            <p class="rare-prompt" id="rare-prompt">Drag to zoom out and watch how rare it is &darr;</p>
+            <div class="rare-legend" id="rare-legend" hidden>
+              <span class="rl-bad">label shares no words</span>
+              <span class="rl-good">label shares a word</span>
+            </div>
+          </figure>
+          <div class="rare-controls">
+            <div class="rare-zoomrow" id="rare-zoomrow">
+              <span>1 feature</span>
+              <input type="range" id="rare-slider" min="0" max="1" step="0.001" value="0" aria-label="Zoom out from one active spot to the whole 6,000-feature sea" />
+              <span>the whole sea</span>
+            </div>
+            <button type="button" id="rare-next" class="rare-btn" hidden>Then: when it does fire, does the label fit? &rarr;</button>
+            <button type="button" id="rare-back" class="rare-btn rare-btn-ghost" hidden>&larr; Back to the sea</button>
+          </div>
+      </section>
+
+      <section id="patterns" class="topics">
+        <div class="topics-copy">
           <p class="eyebrow">Zoom out</p>
-          <h2>The four examples sit inside 6,000 features.</h2>
-          <p>
-            After walking through four individual examples, we zoom out to the larger dataset.
-            The charts are not separate dashboards; they support the same question from the story:
-            when does a label help, and when does it hide important context?
+          <h2>Punctuation and grammar dominate most layers.</h2>
+          <p class="topics-sub">Auto-generated labels aren't spread evenly across the model &mdash; and a few topics, like animals, are rare.</p>
+          <ul class="topics-legend">
+            <li class="tl-cases">
+              <span class="tl-dots" aria-hidden="true"><i style="--c:#00bcd4"></i><i style="--c:#12a878"></i><i style="--c:#ff4057"></i><i style="--c:#7a5cff"></i></span>
+              the four examples
+            </li>
+            <li class="tl-axis"><b>L0&ndash;L11</b> are layers, early to late</li>
+          </ul>
+        </div>
+        <div class="topics-vis">
+          <p id="heatmap-summary" class="sr-only">
+            Heatmap of label topics by GPT-2 layer. Darker cells mean a larger share of that
+            layer. Four colored marks locate the URL, Python, cat, and Star Wars examples.
           </p>
-          <p>
-            The four story examples taught the rule. This section asks whether
-            it still holds across all 6,000 records.
-            Read each chart as support for the rule, not as a separate dashboard.
-          </p>
-        </div>
-        <div class="pattern-slide pattern-slide-intro">
-          <div class="reader-path" aria-label="How to read the broader charts">
-            <p>Read this section in three passes.</p>
-            <div>
-              <span>1</span>
-              <strong>Check the four examples.</strong>
-              <small>The matrix shows which labels pass or fail the three checks.</small>
-            </div>
-            <div>
-              <span>2</span>
-              <strong>Then zoom out.</strong>
-              <small>The topic and rarity charts show where those examples sit in the dataset.</small>
-            </div>
-            <div>
-              <span>3</span>
-              <strong>Keep the warning.</strong>
-              <small>A word match can look convincing and still fail in the full sentence.</small>
-            </div>
-          </div>
-          <p class="data-scope">
-            <span>6,000 saved moments from GPT-2</span>
-            <span>Public Neuronpedia dataset across GPT-2 steps 0-11</span>
-            <span>The page loads only 7 needed fields so the charts stay fast</span>
-          </p>
-          <div class="finding-strip" aria-label="Dataset-backed findings">
-            <div>
-              <span>Labels cluster</span>
-              <strong><b id="finding-topic">42%</b> are grammar or punctuation.</strong>
-            </div>
-            <div>
-              <span>Features are rare</span>
-              <strong>The typical one fires in <b id="finding-typical">0.038%</b> of sampled text.</strong>
-            </div>
-            <div>
-              <span>Matches are not enough</span>
-              <strong><b id="finding-no-match">58%</b> have no obvious shared words between the auto-generated label and highlighted text.</strong>
-            </div>
-          </div>
-        </div>
-        <div class="pattern-focus" id="pattern-focus" aria-live="polite">
-          <span>What to read</span>
-          <strong>Labels cluster by topic, most features fire rarely, and matching letters alone are not enough.</strong>
-        </div>
-        <p class="pattern-hint">Tap, hover, or focus a colored mark to trace one example through the charts.</p>
-        <div class="pattern-slide pattern-slide-matrix">
-          <div class="chart-panel evidence-matrix-panel">
-            <h3>Can each label be trusted?</h3>
-            <p class="chart-note">
-              Read one row at a time. The question is simple: do the label,
-              highlighted text, and full sentence tell the same story? Green
-              means yes. Yellow means check the sentence. Red means stop.
-            </p>
-            <div class="chart-reading" aria-label="How to read the trust-test matrix">
-              <span><i class="score-key score-key-good"></i>Yes</span>
-              <span><i class="score-key score-key-mixed"></i>Check</span>
-              <span><i class="score-key score-key-weak"></i>Stop</span>
-            </div>
-            <p id="evidence-matrix-summary" class="sr-only">
-              Matrix comparing the four scroll examples against the label,
-              highlighted text, and full sentence checks. URL is yes across all
-              three. Python needs a sentence check. Cat conflicts with the full
-              sentence. Star Wars has a matching sentence but weak highlighted text.
-            </p>
-            <svg id="evidence-matrix" role="img" aria-label="Four-example trust-test matrix" aria-describedby="evidence-matrix-summary"></svg>
-          </div>
-        </div>
-        <div class="pattern-slide pattern-slide-context">
-          <div class="method-strip" aria-label="How the dataset findings were computed">
-            <p>How these numbers are made</p>
-            <div>
-              <span>Dot map</span>
-              <strong>Put dots near records with similar labels; this gives context, not proof.</strong>
-            </div>
-            <div>
-              <span>Topic share</span>
-              <strong>Count the topic tag assigned to each feature.</strong>
-            </div>
-            <div>
-              <span>Typical rarity</span>
-              <strong>Find the middle firing rate across all 6,000 features.</strong>
-            </div>
-            <div>
-              <span>Word match</span>
-              <strong>Compare words in the label with the highlighted text. Treat a match as a warning sign, not the answer.</strong>
-            </div>
-          </div>
-          <div class="case-key" aria-label="Four story examples marked in the charts">
-            <p>Colored marks trace the four story examples through the charts.</p>
-            <div>
-              <a href="#case-url" data-feature-id="gpt2-small/4-res-jb/14801" aria-label="Trace the URL example"><i style="--case-color: #00bcd4"></i>URL works</a>
-              <a href="#case-python" data-feature-id="gpt2-small/7-res-jb/6592" aria-label="Trace the Python example"><i style="--case-color: #12a878"></i>Python is partial</a>
-              <a href="#case-cat" data-feature-id="gpt2-small/7-res-jb/24310" aria-label="Trace the cat example"><i style="--case-color: #ff4057"></i>Cat misleads</a>
-              <a href="#case-star-wars" data-feature-id="gpt2-small/11-res-jb/14962" aria-label="Trace the Star Wars example"><i style="--case-color: #7a5cff"></i>Star Wars needs backup</a>
-            </div>
-          </div>
-        </div>
-        <div class="pattern-slide pattern-slide-charts">
-          <div class="pattern-grid">
-            <div class="chart-panel">
-              <h3>What the labels are about</h3>
-              <p class="chart-note">
-                Auto-generated labels are not evenly spread: punctuation and grammar
-                labels dominate, while animal labels are rare. Colored
-                dots show where the four examples above live.
-              </p>
-              <div class="chart-reading" aria-label="How to read the label topic chart">
-                <span><i class="shade-ramp"></i>Darker means a larger share of that step</span>
-                <span><i class="case-dot"></i>Colored marks are the four story examples</span>
-                <span><i class="layer-icon"></i>L0-L11 are GPT-2 steps, early to late</span>
-              </div>
-              <p id="heatmap-summary" class="sr-only">
-                Heatmap of labels by topic and GPT-2 step. Darker cells mean a
-                larger share of that step. Four colored
-                marks locate the URL, Python, cat, and Star Wars examples. On small
-                screens, the chart emphasizes the largest topics plus the four
-                story topics so the rows remain readable.
-              </p>
-              <svg id="heatmap" role="img" aria-label="Topic heatmap by GPT-2 step" aria-describedby="heatmap-summary"></svg>
-            </div>
-            <div class="chart-panel">
-              <h3>Most features fire rarely</h3>
-              <p class="chart-note">
-                The typical feature fires in a tiny fraction of sampled text,
-                which is why one vivid example can be misleading. Colored lines
-                show how rare each example is.
-              </p>
-              <div class="chart-reading" aria-label="How to read the rarity chart">
-                <span><i class="bar-icon"></i>Each bar counts features with similar rarity</span>
-                <span><i class="line-icon"></i>Colored lines are the four story examples</span>
-              </div>
-              <p id="density-summary" class="sr-only">
-                Histogram of how often each feature fires. Most features fire
-                in a tiny share of sampled text. Four colored lines mark the
-                story examples.
-              </p>
-              <svg id="density-histogram" role="img" aria-label="Histogram of how often GPT-2 features fire" aria-describedby="density-summary"></svg>
-            </div>
-          </div>
-        </div>
-        <div class="pattern-slide pattern-slide-agreement">
-          <div class="chart-panel agreement-panel">
-            <h3>Do labels and highlights use the same words?</h3>
-            <p class="chart-note">
-              A quick text check compares each auto-generated label with its highlighted
-              text. More than half show no word match — and the cat example
-              proves a match still isn't enough.
-            </p>
-            <div class="agreement-takeaway" aria-label="How to interpret label and highlighted-text word matches">
-              <span>Reading rule</span>
-              <strong>A word match is not enough.</strong>
-              <p>The cat example matches the letters <b>cat</b>, but the source sentence is about cataracts.</p>
-            </div>
-            <p id="agreement-summary" class="sr-only">
-              Stacked bar summarizing whether labels share words
-              with their highlighted text. About 58 percent show no obvious match,
-              32 percent show some match, and 10 percent show a strong match.
-            </p>
-            <svg id="agreement-strip" role="img" aria-label="Label and highlighted-text match summary" aria-describedby="agreement-summary"></svg>
-          </div>
+          <svg id="heatmap" role="img" aria-label="Topic-by-layer heatmap of 6,000 features" aria-describedby="heatmap-summary"></svg>
         </div>
       </section>
 
       <section id="takeaway" class="takeaway">
-        <p class="eyebrow">Takeaway</p>
-        <h2>An auto-generated label is a starting point, not an answer.</h2>
-        <p class="takeaway-lede">
-          The URL label passes, Python and Star Wars need context, and the cat label fails.
-          The page keeps the label, highlighted text, and full sentence side by side so you can see why.
-        </p>
-        <p>
-          Conclusion: It is not to be understood here that labeling is pointless. Labels may be helpful,
-          but they should be based on evidence. The correct interpretation should be consistent with
-          the label, the activation text, and the whole sentence. A label is a confident description of what a feature does. But the firing pattern may not support that description, and the full sentence may tell a different story. The takeaway is simple: trust the label only when all three checks line up.
-        </p>
-        <div class="story-spine" aria-label="And, but, therefore story summary">
-          <div>
-            <span>And</span>
-            <strong>A short label gives a fast first idea of what a feature is about.</strong>
-          </div>
-          <div>
-            <span>But</span>
-            <strong>Highlighted text and full sentences can disagree with the label.</strong>
-          </div>
-          <div>
-            <span>Therefore</span>
-            <strong>Trust the label only when all three checks line up.</strong>
-          </div>
+        <div class="takeaway-copy">
+          <p class="eyebrow">Takeaway</p>
+          <h2>An LLM doesn't always think about what it sees.</h2>
+          <p class="takeaway-lede">
+            It read &ldquo;<mark>cat</mark>aracts&rdquo; &mdash; an eye surgery &mdash; but the feature that lit up
+            was labeled &ldquo;cats.&rdquo; What a model sees and what's in its &ldquo;brain&rdquo; can quietly disagree.
+          </p>
         </div>
-        <div class="takeaway-rule" aria-label="Three-part label checking rule">
-          <div>
-            <span>Feature label</span>
-            <strong>What the dataset auto-generates</strong>
-          </div>
-          <div>
-            <span>Highlighted text</span>
-            <strong>Which words or letters light up the feature</strong>
-          </div>
-          <div>
-            <span>Full sentence</span>
-            <strong>What the example really means</strong>
-          </div>
-        </div>
-        <div class="takeaway-proof" aria-label="Four-example support behind the takeaway">
-          <div style="--case-color: #00bcd4">
-            <span>URL</span>
-            <strong>All three agree.</strong>
-            <small>Trust the label.</small>
-          </div>
-          <div style="--case-color: #12a878">
-            <span>Python</span>
-            <strong>The label is incomplete.</strong>
-            <small>Check context.</small>
-          </div>
-          <div style="--case-color: #ff4057">
-            <span>Cat</span>
-            <strong>The sentence contradicts the label.</strong>
-            <small>Do not trust yet.</small>
-          </div>
-          <div style="--case-color: #7a5cff">
-            <span>Star Wars</span>
-            <strong>The sentence fits, but the highlighted text is weak.</strong>
-            <small>Needs backup.</small>
-          </div>
-        </div>
-        <div class="takeaway-snapshot" aria-label="Final cat and cataracts check replay">
-          <div class="snapshot-text">
-            <span>Final check</span>
-            <strong>patients after a <mark>cat</mark>aracts procedure</strong>
-          </div>
-          <div>
-            <span>Feature label says</span>
-            <strong>cats</strong>
-          </div>
-          <div>
-            <span>Highlight shows</span>
-            <strong>c-a-t inside cataracts</strong>
-          </div>
-          <div>
-            <span>Sentence means</span>
-            <strong>eye surgery, not pets</strong>
-          </div>
-        </div>
+        <figure class="takeaway-figure">
+          <img
+            class="takeaway-img"
+            src="src/img2.png"
+            alt="A cartoon robot watches a doctor operate on a patient's eye on an operating table, while a thought bubble above the robot's head shows a cat — it is thinking about a cat during a cataracts procedure."
+          />
+        </figure>
       </section>
       <section class="implications" aria-label="Why this matters: feature-label mismatch and hallucination">
         <p class="eyebrow">Why this matters</p>
@@ -834,42 +439,6 @@
         </div>
       </section>
 
-      <section id="project-note" class="project-note">
-        <div>
-          <p class="eyebrow">Design note</p>
-          <h2>How the page is built, and why the design is hard.</h2>
-          <div class="note-grid">
-            <article>
-              <h3>What this page does</h3>
-              <div class="note-ruler" aria-label="Current page strengths">
-                <span>Hook</span>
-                <span>Checks</span>
-                <span>Interaction</span>
-              </div>
-              <div class="note-sentences">
-                <p>The page now opens with the LLM-thinking framing and the concrete cat/cataracts mismatch before any background explanation.</p>
-                <p>It loads 6,000 public GPT-2 features from Neuronpedia and four source examples with highlighted text.</p>
-                <p>The scroll story compares each auto-generated feature label against color-coded highlighted text and full sentences.</p>
-                <p>The dot map, four-example matrix, topic chart, rarity chart, word-match check, and source links connect the four examples back to the larger dataset.</p>
-              </div>
-            </article>
-            <article>
-              <h3>Hardest design problem</h3>
-              <div class="note-ruler" aria-label="Design constraints">
-                <span>No prior</span>
-                <span>Laptop fit</span>
-                <span>No false trust</span>
-              </div>
-              <div class="note-sentences">
-                <p>The hardest part is making GPT-2's inner features readable for a viewer who has never seen this kind of data before.</p>
-                <p>A short label like "cats" feels clear, so the design has to make the mismatch visible immediately.</p>
-                <p>The sticky stage must stay compact enough to fit on a laptop while still showing the label, highlighted text, atlas position, and full sentence.</p>
-                <p>The larger charts have to support the story instead of becoming a separate appendix.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
 
     </main>
 
@@ -879,8 +448,7 @@
         <a href="https://www.neuronpedia.org/" target="_blank" rel="noreferrer">Neuronpedia</a>
         <a href="https://neuronpedia-datasets.s3.us-east-1.amazonaws.com/index.html?prefix=v1/" target="_blank" rel="noreferrer">public GPT-2 data exports</a>:
         6,000 rows, 18 columns, model
-        <code>gpt2-small</code>, GPT-2 steps 0-11, source <code>res-jb</code>. Built
-        for DSC 106 by Jingwen Gu, Krish Desai, and Nidhi Manayilakath.
+        <code>gpt2-small</code>, GPT-2 steps 0-11, source <code>res-jb</code>.
       </p>
     </footer>
 

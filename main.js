@@ -79,6 +79,93 @@ const STORY = {
   },
 };
 
+// Clean, minimal per-example comparison shown in the redesigned stage.
+// state: good (matches) | mixed (partial) | bad (mismatch)
+const CASE = {
+  "gpt2-small/4-res-jb/14801": {
+    verdict: "Easy to trust",
+    badge: "Trust it",
+    badgeState: "good",
+    label: "web URLs",
+    word: { tag: "URL, http", state: "good" },
+    sentence: { tag: "a real web address", state: "good" },
+  },
+  "gpt2-small/7-res-jb/6592": {
+    verdict: "Useful, but incomplete",
+    badge: "Check the context",
+    badgeState: "mixed",
+    label: "Python",
+    word: { tag: "shell + Python words", state: "mixed" },
+    sentence: { tag: "a Python command", state: "good" },
+  },
+  "gpt2-small/7-res-jb/24310": {
+    verdict: "Do not trust yet",
+    badge: "Misleading",
+    badgeState: "bad",
+    label: "cats",
+    word: { tag: "“cat” inside cataracts", state: "bad" },
+    sentence: { tag: "eye surgery, not pets", state: "bad" },
+  },
+  "gpt2-small/11-res-jb/14962": {
+    verdict: "Needs backup",
+    badge: "Too weak",
+    badgeState: "bad",
+    label: "Star Wars",
+    word: { tag: "mostly punctuation", state: "bad" },
+    sentence: { tag: "Star Wars names", state: "good" },
+  },
+};
+
+// Little cartoon robots shown on each verdict, to fill the space and add charm.
+const MASCOTS = {
+  // Trust it — happy robot with a green check
+  "gpt2-small/4-res-jb/14801": `<svg viewBox="0 0 120 96" role="img" aria-label="A happy robot">
+    <line x1="60" y1="20" x2="60" y2="9" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="60" cy="6" r="3.5" fill="#12a878"/>
+    <rect x="34" y="20" width="52" height="40" rx="11" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+    <path d="M45 38 q4 -5 8 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M67 38 q4 -5 8 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M48 47 q12 9 24 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="40" y="60" width="40" height="26" rx="8" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+    <circle cx="60" cy="73" r="7" fill="#12a878"/>
+    <path d="M56.5 73 l2.5 2.5 4.5 -4.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+  // Check the context — robot with a magnifying glass
+  "gpt2-small/7-res-jb/6592": `<svg viewBox="0 0 120 96" role="img" aria-label="A robot inspecting with a magnifying glass">
+    <line x1="50" y1="20" x2="50" y2="9" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="50" cy="6" r="3.5" fill="#f2ae33"/>
+    <rect x="24" y="20" width="52" height="40" rx="11" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+    <circle cx="40" cy="38" r="3.2" fill="#111"/>
+    <circle cx="60" cy="38" r="3.2" fill="#111"/>
+    <path d="M42 50 q8 4 16 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="30" y="60" width="40" height="26" rx="8" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+    <circle cx="92" cy="46" r="12" fill="rgba(242,174,51,0.25)" stroke="#111" stroke-width="2.5"/>
+    <line x1="101" y1="55" x2="110" y2="64" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+  // Misleading — puzzled robot with a question mark
+  "gpt2-small/7-res-jb/24310": `<svg viewBox="0 0 120 96" role="img" aria-label="A confused robot with a question mark">
+    <text x="84" y="26" font-family="Inter, sans-serif" font-size="24" font-weight="900" fill="#ff4057">?</text>
+    <line x1="50" y1="22" x2="50" y2="11" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="50" cy="8" r="3.5" fill="#ff4057"/>
+    <rect x="24" y="22" width="52" height="40" rx="11" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+    <circle cx="40" cy="40" r="3.5" fill="#111"/>
+    <circle cx="62" cy="40" r="6" fill="#ff4057" stroke="#111" stroke-width="1.5"/>
+    <path d="M40 52 q5 -4 9 0 q5 4 9 0" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="30" y="62" width="40" height="24" rx="8" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+  </svg>`,
+  // Too weak — robot asleep on the ground with Zzz
+  "gpt2-small/11-res-jb/14962": `<svg viewBox="0 0 120 96" role="img" aria-label="A robot sleeping on the ground">
+    <line x1="12" y1="80" x2="108" y2="80" stroke="#111" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+    <rect x="32" y="58" width="46" height="22" rx="10" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+    <rect x="13" y="54" width="30" height="26" rx="10" fill="#f4f3ee" stroke="#111" stroke-width="2.5"/>
+    <path d="M20 66 q3 3 6 0" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M30 66 q3 3 6 0" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="74" y="44" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#7a5cff">z</text>
+    <text x="83" y="33" font-family="Inter, sans-serif" font-size="17" font-weight="900" fill="#7a5cff">Z</text>
+    <text x="94" y="22" font-family="Inter, sans-serif" font-size="21" font-weight="900" fill="#7a5cff">Z</text>
+  </svg>`,
+};
+
 const TOKEN_EVIDENCE_PRIORITY = {
   misleading: 0,
   supports: 0,
@@ -173,20 +260,16 @@ Promise.all([d3.json(DATA_URL), d3.json(EXAMPLES_URL)])
     setupScrolly();
     renderFeature(activeId);
     renderAtlas();
-    renderPatternStats();
-    renderEvidenceMatrix();
     renderHeatmap();
-    renderHistogram();
-    renderAgreementStrip();
     setupAtlasInteraction();
+    setupSeaMap();
+    setupRarityViz();
     setupAtlasVisibility();
     setupResize();
     setupHashNavigation();
     setupSectionNav();
     setupScrollProgress();
     setupRevealMotion();
-    setupPatternScrollFocus();
-    setupCaseLegend();
     setupStageCaseRail();
     setupChartStoryMarks();
     restoreHashPosition();
@@ -194,8 +277,6 @@ Promise.all([d3.json(DATA_URL), d3.json(EXAMPLES_URL)])
   .catch((error) => {
     console.error(error);
     setDataStatus("error", "Could not load local data. Start the local server from the repo root, then reload.");
-    document.querySelector("#feature-title").textContent = "Could not load data.";
-    document.querySelector("#feature-meta").textContent = "Run the local server and reload the page.";
   });
 
 function setDataStatus(state, message) {
@@ -302,7 +383,6 @@ function setupHashNavigation() {
 
 function setupSectionNav() {
   const sections = [
-    { id: "test", href: "#story" },
     { id: "story", href: "#story" },
     { id: "patterns", href: "#patterns" },
     { id: "takeaway", href: "#takeaway" },
@@ -363,9 +443,10 @@ function setupScrollProgress() {
 
 function setupRevealMotion() {
   const targets = Array.from(document.querySelectorAll([
-    ".hero-demo",
+    ".hero-title",
+    ".hero-bots",
     ".plain-copy",
-    ".reaction-board",
+    ".brain-figure",
     ".arc-grid article",
     ".thesis p",
     ".test-rule-heading",
@@ -542,7 +623,7 @@ function setupChartStoryMarks() {
   patterns.addEventListener("click", (event) => {
     const mark = getStoryMark(event.target, event);
     if (!mark) return;
-    setCasePreview(mark.dataset.featureId);
+    clearCasePreview();
     scrollToFeatureCase(mark.dataset.featureId);
   });
 
@@ -571,9 +652,18 @@ function scrollToCase(item) {
 }
 
 function scrollToFeatureCase(featureId) {
-  const item = Array.from(document.querySelectorAll(".case-key [data-feature-id]"))
-    .find((node) => node.dataset.featureId === featureId);
-  if (item) scrollToCase(item);
+  const chapter = document.querySelector(`.chapter[data-feature-id="${featureId}"]`);
+  if (!chapter) return;
+  activeId = featureId;
+  renderFeature(activeId);
+  document.querySelectorAll(".chapter").forEach((c) =>
+    c.classList.toggle("is-active", c.dataset.featureId === activeId)
+  );
+  const previous = document.documentElement.style.scrollBehavior;
+  const block = window.matchMedia("(max-width: 1120px)").matches ? "start" : "center";
+  document.documentElement.style.scrollBehavior = "auto";
+  chapter.scrollIntoView({ block });
+  document.documentElement.style.scrollBehavior = previous;
 }
 
 function getStoryMark(target, event) {
@@ -657,34 +747,42 @@ function renderFeature(featureId) {
   }
   lastRenderedFeatureId = featureId;
 
-  document.querySelector("#feature-title").textContent = story.title;
-  document.querySelector("#case-step").textContent = story.step;
-  document.querySelector("#feature-meta").textContent =
-    `Label: ${story.publicName}. GPT-2 step ${row.layer_number}. Fires in ${formatPercent(row.activation_density)} of sampled text.`;
-  document.querySelector("#feature-link").href = neuronpediaUrl(row.feature_id);
-  document.querySelector("#feature-verdict").textContent = story.verdict;
-  document.querySelector("#stage-insight p").textContent = story.insight;
-  document.querySelector("#source-callout strong").textContent = story.sourceCheck;
+  const detail = CASE[featureId];
+  const link = document.querySelector("#feature-link");
+  if (link) link.href = neuronpediaUrl(row.feature_id);
 
-  ["label", "logit", "text"].forEach((kind, index) => {
-    const meter = document.querySelector(`#${kind}-meter`);
-    meter.value = story.scores[index];
-    meter.setAttribute("aria-valuetext", `${story.scoreLabels[index]}: ${story.notes[index]}`);
-    meter.closest("div").dataset.score = story.scores[index];
-    document.querySelector(`#${kind}-score`).textContent = story.scoreLabels[index];
-    document.querySelector(`#${kind}-note`).textContent = story.notes[index];
-  });
+  if (detail) {
+    setStageText("#case-label", detail.label);
+    applyMatchRow("#match-word", "#match-word-tag", detail.word);
+    applyMatchRow("#match-sentence", "#match-sentence-tag", detail.sentence);
+    const verdict = document.querySelector("#case-verdict");
+    if (verdict) {
+      verdict.textContent = detail.badge;
+      verdict.dataset.state = detail.badgeState;
+    }
+    const mascot = document.querySelector("#case-mascot");
+    if (mascot) mascot.innerHTML = MASCOTS[featureId] || "";
+  }
 
   const activationWindows = example?.activation_windows || [];
-  const exampleCount = document.querySelector("#example-count");
-  if (exampleCount) exampleCount.textContent = activationWindows.length > 1 ? `of ${activationWindows.length} saved` : "";
-  renderTokenPills(featureId, example?.top_positive_logits || []);
   renderActivationWindow(activationWindows[0], activationWindows.length);
   updateCaseRail(featureId);
   document.documentElement.style.setProperty("--active-color", story.color);
   atlasKeyboardIndex = Math.max(0, FEATURE_ORDER.indexOf(featureId));
   if (!atlasHoverRow) updateAtlasCaption(null);
   drawCurrentAtlasFrame();
+}
+
+function setStageText(selector, text) {
+  const node = document.querySelector(selector);
+  if (node) node.textContent = text;
+}
+
+function applyMatchRow(rowSelector, tagSelector, info) {
+  const row = document.querySelector(rowSelector);
+  const tag = document.querySelector(tagSelector);
+  if (row) row.dataset.state = info.state;
+  if (tag) tag.textContent = info.tag;
 }
 
 function updateCaseRail(featureId) {
@@ -1055,7 +1153,7 @@ function drawAtlasHover(ctx, width, height, row) {
   const py = atlasBase.y(row.y);
   const isCompact = width < 430 || height < 245;
   const label = story?.short || atlasProbeLabel(row);
-  const detail = `Step ${row.layer_number} | ${row.concept_category} | ${formatPercent(row.activation_density)}`;
+  const detail = `Layer ${row.layer_number} | ${row.concept_category} | ${formatPercent(row.activation_density)}`;
   const labelWidth = Math.min(isCompact ? 196 : 242, width - 18);
   const labelHeight = isCompact ? 48 : 56;
   let labelX = px + 16;
@@ -1467,7 +1565,7 @@ function renderHeatmap() {
     .attr("tabindex", 0)
     .attr("role", "img")
     .attr("aria-label", (row) =>
-      `${row.category}, GPT-2 step ${row.layer}: ${d3.format(",")(row.count)} saved moments, ${formatPercent(row.pct)} of that step`
+      `${row.category}, layer ${row.layer}: ${d3.format(",")(row.count)} features, ${formatPercent(row.pct)} of that layer`
     )
     .on("pointerenter pointermove", (event, row) => {
       showHeatmapTip(event.currentTarget, row, event);
@@ -1536,16 +1634,6 @@ function renderHeatmap() {
     .attr("fill", (item) => item.story.color)
     .attr("stroke", "#fbfbf7")
     .attr("stroke-width", 3);
-
-  svg
-    .append("text")
-    .attr("x", width - margin.right)
-    .attr("y", margin.top - 6)
-    .attr("text-anchor", "end")
-    .attr("fill", "#666762")
-    .attr("font-size", isCompact ? 11 : 12)
-    .attr("font-weight", 750)
-    .text(isCompact ? "Largest + story topics." : "Punctuation and grammar labels dominate most GPT-2 steps.");
 
   svg
     .append("g")
@@ -1803,8 +1891,10 @@ function renderAgreementStrip() {
     },
   ];
   const noMatchGroup = groups[0];
-  document.querySelector("#finding-no-match").textContent =
-    `${Math.round((noMatchGroup.rows.length / features.length) * 100)}%`;
+  const noMatchEl = document.querySelector("#finding-no-match");
+  if (noMatchEl) {
+    noMatchEl.textContent = `${Math.round((noMatchGroup.rows.length / features.length) * 100)}%`;
+  }
 
   const x = d3.scaleLinear().domain([0, features.length]).range([margin.left, width - margin.right]);
   const barY = margin.top + 36;
@@ -2009,11 +2099,11 @@ function showHeatmapTip(node, row, event) {
   holdPatternInteraction();
   const share = formatPercent(row.pct);
   showTooltip(
-    `${row.category}, GPT-2 step ${row.layer}\n${d3.format(",")(row.count)} saved moments\n${share} of this step\nDarker means a larger share.`,
+    `${row.category} · layer ${row.layer}\n${d3.format(",")(row.count)} features\n${share} of this layer`,
     event,
     node
   );
-  setPatternFocus(`${row.category} in GPT-2 step ${row.layer}: ${d3.format(",")(row.count)} saved moments, ${share} of that step.`);
+  setPatternFocus(`${row.category} in layer ${row.layer}: ${d3.format(",")(row.count)} features, ${share} of that layer.`);
   d3.select(node).attr("stroke", "#ff4057").attr("stroke-width", 3);
 }
 
@@ -2122,4 +2212,730 @@ function roundRect(ctx, x, y, width, height, radius) {
   ctx.lineTo(x, y + radius);
   ctx.quadraticCurveTo(x, y, x + radius, y);
   ctx.closePath();
+}
+
+/* =====================================================================
+   The Sea of Features: interactive, zoomable dot map (section #sea)
+   ===================================================================== */
+const SEA_TAU = Math.PI * 2;
+const SEA_FADE_MS = 700;
+const SEA_REVEAL_FIRST_MS = 550;
+const SEA_REVEAL_GAP_MS = 1500;
+let seaRevealAt = [];
+let seaCanvas = null;
+let seaCtx = null;
+let seaStage = null;
+let seaCssW = 0;
+let seaCssH = 0;
+let seaPoints = [];
+let seaQuadtree = null;
+let seaScaleX = null;
+let seaScaleY = null;
+let seaHoverRow = null;
+let seaZoomed = false;
+let seaInView = false;
+let seaPointerRAF = 0;
+let seaDrawRAF = 0;
+let seaRevealActive = false;
+let seaRevealCount = 0;
+let seaRevealTimer = 0;
+let seaAnimRAF = 0;
+let seaFrame = 0;
+
+function setupSeaMap() {
+  seaCanvas = document.querySelector("#sea-canvas");
+  seaStage = document.querySelector("#sea-stage");
+  if (!seaCanvas || !seaStage || !features.length) return;
+  seaCtx = seaCanvas.getContext("2d");
+
+  buildSeaLegends();
+
+  seaCanvas.addEventListener("pointermove", seaOnPointerMove);
+  seaCanvas.addEventListener("pointerdown", seaOnPointerMove);
+  seaCanvas.addEventListener("pointerleave", () => {
+    seaHoverRow = null;
+    hideSeaInfo();
+    seaRequestDraw();
+  });
+
+  const zoomBtn = document.querySelector("#sea-zoom-btn");
+  if (zoomBtn) zoomBtn.addEventListener("click", () => toggleSeaZoom());
+
+  const promptEl = document.querySelector("#sea-prompt");
+  if (promptEl) {
+    promptEl.addEventListener("click", () => {
+      if (seaRevealActive) stopSeaReveal();
+      else startSeaReveal();
+    });
+  }
+
+  window.addEventListener("keydown", seaOnKeydown);
+
+  if ("ResizeObserver" in window) {
+    const ro = new ResizeObserver(() => seaResize());
+    ro.observe(seaStage);
+  } else {
+    window.addEventListener("resize", seaResize);
+  }
+
+  const seaSection = document.querySelector("#sea");
+  if (seaSection && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        seaInView = entry.isIntersecting;
+      }),
+      { threshold: 0.3 }
+    );
+    io.observe(seaSection);
+  } else {
+    seaInView = true;
+  }
+
+  seaResize();
+}
+
+function seaCategoryCounts() {
+  const counts = new Map();
+  for (const row of features) {
+    const cat = row.concept_category || "Other / unclear";
+    counts.set(cat, (counts.get(cat) || 0) + 1);
+  }
+  return counts;
+}
+
+function buildSeaLegends() {
+  const counts = seaCategoryCounts();
+  const order = Array.from(CATEGORY_COLORS.keys()).sort(
+    (a, b) => (counts.get(b) || 0) - (counts.get(a) || 0)
+  );
+  const legendEl = document.querySelector("#sea-legend");
+  if (legendEl) {
+    legendEl.innerHTML = order
+      .map((cat) => {
+        const color = CATEGORY_COLORS.get(cat) || "#8e8f88";
+        return `<span style="--swatch:${color}"><i></i>${cat}</span>`;
+      })
+      .join("");
+  }
+  buildSeaPie(order, counts);
+}
+
+function buildSeaPie(order, counts) {
+  const svg = document.querySelector("#sea-pie-svg");
+  const legend = document.querySelector("#sea-pie-legend");
+  const center = document.querySelector("#sea-pie-center");
+  if (!svg || !legend || !center) return;
+
+  const data = order.map((cat) => ({
+    cat,
+    count: counts.get(cat) || 0,
+    color: CATEGORY_COLORS.get(cat) || "#8e8f88",
+  }));
+  const total = data.reduce((sum, d) => sum + d.count, 0);
+
+  const arc = d3.arc().innerRadius(58).outerRadius(100).padAngle(0.012).cornerRadius(2);
+  const arcs = d3.pie().sort(null).value((d) => d.count)(data);
+
+  svg.innerHTML = arcs
+    .map((a, i) => {
+      const d = arc(a);
+      const [cx, cy] = arc.centroid(a);
+      const len = Math.hypot(cx, cy) || 1;
+      const dx = ((cx / len) * 9).toFixed(1);
+      const dy = ((cy / len) * 9).toFixed(1);
+      const pct = Math.round((data[i].count / total) * 100);
+      return `<path class="sea-slice" data-i="${i}" d="${d}" fill="${data[i].color}" style="--dx:${dx}px;--dy:${dy}px"><title>${data[i].cat}: ${data[i].count.toLocaleString()} (${pct}%)</title></path>`;
+    })
+    .join("");
+
+  legend.innerHTML = data
+    .map(
+      (d, i) =>
+        `<li data-i="${i}" style="--swatch:${d.color}"><i></i>${d.cat}</li>`
+    )
+    .join("");
+
+  const defaultCenter = `<strong>6,000</strong><span>features</span>`;
+  const setActive = (i) => {
+    const slices = svg.querySelectorAll(".sea-slice");
+    const items = legend.querySelectorAll("li");
+    slices.forEach((s, j) => s.classList.toggle("is-active", j === i));
+    items.forEach((s, j) => s.classList.toggle("is-active", j === i));
+    if (i == null) {
+      center.innerHTML = defaultCenter;
+      center.style.removeProperty("--swatch");
+      return;
+    }
+    const d = data[i];
+    const pct = Math.round((d.count / total) * 100);
+    center.style.setProperty("--swatch", d.color);
+    center.innerHTML = `<strong style="color:${d.color}">${d.count.toLocaleString()}</strong><span>${d.cat} · ${pct}%</span>`;
+  };
+
+  const wire = (nodes) => {
+    nodes.forEach((node) => {
+      const i = Number(node.dataset.i);
+      node.addEventListener("pointerenter", () => setActive(i));
+      node.addEventListener("click", () => setActive(i));
+    });
+  };
+  wire(svg.querySelectorAll(".sea-slice"));
+  wire(legend.querySelectorAll("li"));
+  // Reset only when the pointer leaves the whole chart / legend, so moving
+  // across the gaps between slices (or into the donut hole) does not flicker.
+  svg.addEventListener("pointerleave", () => setActive(null));
+  legend.addEventListener("pointerleave", () => setActive(null));
+}
+
+function seaResize() {
+  if (!seaCanvas || !seaStage || !seaCtx) return;
+  const rect = seaStage.getBoundingClientRect();
+  const w = Math.max(320, Math.round(rect.width));
+  const h = Math.max(260, Math.round(rect.height));
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  seaCssW = w;
+  seaCssH = h;
+  seaCanvas.width = Math.round(w * dpr);
+  seaCanvas.height = Math.round(h * dpr);
+  seaCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const xExtent = d3.extent(features, (row) => row.x);
+  const yExtent = d3.extent(features, (row) => row.y);
+  const m = seaZoomed ? 64 : 30;
+  seaScaleX = d3.scaleLinear().domain(xExtent).range([m, w - m]);
+  seaScaleY = d3.scaleLinear().domain(yExtent).range([h - m, m]);
+  const rScale = d3
+    .scaleSqrt()
+    .domain(d3.extent(features, (row) => row.activation_density))
+    .range(seaZoomed ? [1.5, 6] : [1.1, 4.4]);
+
+  const storyIndex = new Map(FEATURE_ORDER.map((id, i) => [id, i]));
+  seaPoints = features.map((row) => {
+    const isStory = storyIndex.has(row.feature_id);
+    return {
+      row,
+      px: seaScaleX(row.x),
+      py: seaScaleY(row.y),
+      radius: isStory ? (seaZoomed ? 9 : 6.5) : rScale(row.activation_density),
+      isStory,
+      storyIndex: isStory ? storyIndex.get(row.feature_id) : -1,
+      color: isStory
+        ? STORY[row.feature_id].color
+        : CATEGORY_COLORS.get(row.concept_category) || "#8e8f88",
+    };
+  });
+  seaQuadtree = d3
+    .quadtree()
+    .x((p) => p.px)
+    .y((p) => p.py)
+    .addAll(seaPoints);
+  seaDraw();
+}
+
+function seaDraw() {
+  if (!seaCtx) return;
+  const ctx = seaCtx;
+  const w = seaCssW;
+  const h = seaCssH;
+  ctx.clearRect(0, 0, w, h);
+  const revealing = seaRevealActive;
+
+  for (const p of seaPoints) {
+    if (p.isStory) continue;
+    ctx.globalAlpha = revealing ? 0.09 : 0.5;
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.px, p.py, p.radius, 0, SEA_TAU);
+    ctx.fill();
+  }
+
+  const now = seaNow();
+  for (const p of seaPoints) {
+    if (!p.isStory) continue;
+    const lit = !revealing || p.storyIndex < seaRevealCount;
+    let fade = 1;
+    if (revealing && lit && !reduceMotion.matches) {
+      const t0 = seaRevealAt[p.storyIndex];
+      fade = t0 ? seaEaseOut((now - t0) / SEA_FADE_MS) : 1;
+    }
+    const rr = revealing && lit ? p.radius * (0.5 + 0.5 * fade) : p.radius;
+    ctx.globalAlpha = revealing ? (lit ? fade : 0.12) : 0.92;
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.px, p.py, rr, 0, SEA_TAU);
+    ctx.fill();
+    if (revealing && lit) {
+      const pulse = rr + 6 + Math.sin(seaFrame * 0.1 + p.storyIndex) * 2.5;
+      ctx.globalAlpha = fade;
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.px, p.py, pulse, 0, SEA_TAU);
+      ctx.stroke();
+      drawSeaExampleLabel(ctx, p, w, h, fade);
+    }
+  }
+
+  if (seaHoverRow && !revealing) {
+    const hp = seaPoints.find((p) => p.row === seaHoverRow);
+    if (hp) {
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "#080808";
+      ctx.beginPath();
+      ctx.arc(hp.px, hp.py, Math.max(hp.radius + 4, 7), 0, SEA_TAU);
+      ctx.stroke();
+    }
+  }
+  ctx.globalAlpha = 1;
+}
+
+function drawSeaExampleLabel(ctx, p, w, h, fade = 1) {
+  const story = STORY[p.row.feature_id];
+  const text = `${p.storyIndex + 1} · ${story.publicName}`;
+  ctx.font = "800 13px Inter, sans-serif";
+  const tw = ctx.measureText(text).width;
+  const padX = 10;
+  const chipH = 25;
+  const chipW = tw + padX * 2;
+  let cx = p.px + p.radius + 14;
+  let cy = p.py - chipH / 2 - (1 - fade) * 7;
+  if (cx + chipW > w - 8) cx = p.px - p.radius - 14 - chipW;
+  cy = Math.max(6, Math.min(h - chipH - 6, cy));
+  ctx.globalAlpha = fade;
+  ctx.strokeStyle = story.color;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(p.px, p.py);
+  ctx.lineTo(cx < p.px ? cx + chipW : cx, cy + chipH / 2);
+  ctx.stroke();
+  roundRect(ctx, cx, cy, chipW, chipH, 12);
+  ctx.fillStyle = story.color;
+  ctx.fill();
+  ctx.fillStyle = "#ffffff";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "left";
+  ctx.fillText(text, cx + padX, cy + chipH / 2 + 0.5);
+  ctx.textBaseline = "alphabetic";
+}
+
+function seaRequestDraw() {
+  if (seaDrawRAF) return;
+  seaDrawRAF = requestAnimationFrame(() => {
+    seaDrawRAF = 0;
+    seaDraw();
+  });
+}
+
+function seaOnPointerMove(event) {
+  if (seaPointerRAF) return;
+  seaPointerRAF = requestAnimationFrame(() => {
+    seaPointerRAF = 0;
+    if (!seaQuadtree) return;
+    const rect = seaCanvas.getBoundingClientRect();
+    const px = event.clientX - rect.left;
+    const py = event.clientY - rect.top;
+    const found = seaQuadtree.find(px, py, seaZoomed ? 18 : 14);
+    const row = found ? found.row : null;
+    if (row !== seaHoverRow) {
+      seaHoverRow = row;
+      if (row && !seaRevealActive) showSeaInfo(row);
+      else hideSeaInfo();
+      seaRequestDraw();
+    }
+  });
+}
+
+function showSeaInfo(row) {
+  const info = document.querySelector("#sea-info");
+  if (!info) return;
+  const story = STORY[row.feature_id];
+  const cat = row.concept_category || "Other / unclear";
+  const color = story ? story.color : CATEGORY_COLORS.get(cat) || "#8e8f88";
+  info.style.setProperty("--swatch", color);
+  document.querySelector("#sea-info-tag").textContent = story
+    ? `Example ${FEATURE_ORDER.indexOf(row.feature_id) + 1}`
+    : "Feature";
+  document.querySelector("#sea-info-id").textContent = story
+    ? `“${story.publicName}”`
+    : row.feature_id;
+  document.querySelector("#sea-info-cat").textContent = cat;
+  document.querySelector("#sea-info-layer").textContent = `layer ${row.layer_number} of 12`;
+  document.querySelector("#sea-info-density").textContent = `${seaFormatPct(
+    row.activation_density
+  )} of text`;
+  info.hidden = false;
+}
+
+function hideSeaInfo() {
+  const info = document.querySelector("#sea-info");
+  if (info) info.hidden = true;
+}
+
+function seaFormatPct(value) {
+  const pct = (value || 0) * 100;
+  if (pct === 0) return "0%";
+  if (pct < 0.001) return "<0.001%";
+  if (pct < 0.1) return `${pct.toFixed(3)}%`;
+  return `${pct.toFixed(2)}%`;
+}
+
+function toggleSeaZoom(force) {
+  seaZoomed = typeof force === "boolean" ? force : !seaZoomed;
+  seaStage.classList.toggle("is-zoomed", seaZoomed);
+  document.body.classList.toggle("sea-locked", seaZoomed);
+  const btn = document.querySelector("#sea-zoom-btn");
+  if (btn) btn.setAttribute("aria-pressed", String(seaZoomed));
+  hideSeaInfo();
+  seaHoverRow = null;
+  seaResize();
+}
+
+function seaOnKeydown(event) {
+  if (event.key === "Escape" && seaZoomed) {
+    toggleSeaZoom(false);
+    return;
+  }
+  if ((event.key === "x" || event.key === "X") && (seaInView || seaZoomed)) {
+    event.preventDefault();
+    if (seaRevealActive) stopSeaReveal();
+    else startSeaReveal();
+  }
+}
+
+function setSeaBanner(reveal) {
+  const banner = document.querySelector("#sea-banner");
+  if (!banner) return;
+  if (reveal) {
+    banner.textContent = "Here are the 4 example features we'll walk through.";
+    banner.classList.add("is-reveal");
+  } else {
+    banner.textContent = "Hover any dot to read a feature.";
+    banner.classList.remove("is-reveal");
+  }
+}
+
+function startSeaReveal() {
+  if (seaRevealActive) return;
+  seaRevealActive = true;
+  seaRevealCount = 0;
+  seaRevealAt = [];
+  seaHoverRow = null;
+  hideSeaInfo();
+  setSeaBanner(true);
+  const prompt = document.querySelector("#sea-prompt");
+  if (prompt) {
+    prompt.classList.add("is-done");
+    prompt.querySelector("span").textContent = "tracing the 4 examples… (X to reset)";
+  }
+  const step = () => {
+    seaRevealAt[seaRevealCount] = seaNow();
+    seaRevealCount += 1;
+    seaRequestDraw();
+    if (seaRevealCount < FEATURE_ORDER.length) {
+      seaRevealTimer = window.setTimeout(step, SEA_REVEAL_GAP_MS);
+    }
+  };
+  seaRevealTimer = window.setTimeout(step, SEA_REVEAL_FIRST_MS);
+  seaStartAnim();
+}
+
+function seaNow() {
+  return typeof performance !== "undefined" && performance.now
+    ? performance.now()
+    : Date.now();
+}
+
+function seaEaseOut(t) {
+  const c = Math.min(1, Math.max(0, t));
+  return 1 - Math.pow(1 - c, 3);
+}
+
+function stopSeaReveal() {
+  seaRevealActive = false;
+  seaRevealCount = 0;
+  if (seaRevealTimer) {
+    clearTimeout(seaRevealTimer);
+    seaRevealTimer = 0;
+  }
+  if (seaAnimRAF) {
+    cancelAnimationFrame(seaAnimRAF);
+    seaAnimRAF = 0;
+  }
+  setSeaBanner(false);
+  const prompt = document.querySelector("#sea-prompt");
+  if (prompt) {
+    prompt.classList.remove("is-done");
+    prompt.querySelector("span").textContent = "trace the 4 example features";
+  }
+  seaDraw();
+}
+
+function seaStartAnim() {
+  if (seaAnimRAF || reduceMotion.matches) {
+    seaDraw();
+    return;
+  }
+  const tick = () => {
+    seaFrame += 1;
+    seaDraw();
+    if (seaRevealActive) {
+      seaAnimRAF = requestAnimationFrame(tick);
+    } else {
+      seaAnimRAF = 0;
+    }
+  };
+  seaAnimRAF = requestAnimationFrame(tick);
+}
+
+/* =====================================================================
+   Zoom-out: rarity (0.038%) + matches (58%) interactive  (section #zoomout)
+   ===================================================================== */
+const RARE_TOTAL = 2632;     // 1 / 0.00038 ≈ 2632
+const RARE_COLS = 56;
+const RARE_ROWS = 47;        // 56 * 47 = 2632
+const RARE_S = 16;           // world spacing
+const MATCH_NO = 58;         // 58% share no words
+let rareCanvas = null;
+let rareCtx = null;
+let rareStage = null;
+let rareCssW = 0;
+let rareCssH = 0;
+let rareDots = [];
+let rareLitIndex = 0;
+let rarePhase = "rare";
+let rareT = 0;
+let rareTargetT = 0;
+let rareRAF = 0;
+let rareMatchProgress = 0;
+
+function rareClamp01(v) {
+  return Math.max(0, Math.min(1, v));
+}
+
+function setupRarityViz() {
+  rareCanvas = document.querySelector("#rare-canvas");
+  rareStage = document.querySelector("#rare-stage");
+  if (!rareCanvas || !rareStage) return;
+  rareCtx = rareCanvas.getContext("2d");
+  buildRareField();
+
+  const slider = document.querySelector("#rare-slider");
+  if (slider) {
+    slider.addEventListener("input", () => {
+      rareTargetT = Number(slider.value);
+      rareT = rareTargetT;
+      rareDraw();
+    });
+  }
+
+  // Intentionally no wheel-to-zoom: scrolling over this viz must scroll the
+  // page, not zoom. Zooming is driven only by the slider below.
+
+  document.querySelector("#rare-next")?.addEventListener("click", rareToMatch);
+  document.querySelector("#rare-back")?.addEventListener("click", rareToSea);
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(() => rareResize()).observe(rareStage);
+  } else {
+    window.addEventListener("resize", rareResize);
+  }
+
+  rareResize();
+}
+
+function buildRareField() {
+  rareDots = [];
+  for (let j = 0; j < RARE_ROWS; j++) {
+    for (let i = 0; i < RARE_COLS; i++) {
+      rareDots.push({
+        wx: (i - (RARE_COLS - 1) / 2) * RARE_S,
+        wy: (j - (RARE_ROWS - 1) / 2) * RARE_S,
+      });
+    }
+  }
+  rareLitIndex = Math.floor(RARE_ROWS / 2) * RARE_COLS + Math.floor(RARE_COLS / 2);
+}
+
+function rareResize() {
+  if (!rareCanvas || !rareStage || !rareCtx) return;
+  const rect = rareStage.getBoundingClientRect();
+  const w = Math.max(320, Math.round(rect.width));
+  const h = Math.max(240, Math.round(rect.height));
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  rareCssW = w;
+  rareCssH = h;
+  rareCanvas.width = Math.round(w * dpr);
+  rareCanvas.height = Math.round(h * dpr);
+  rareCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  rareDraw();
+}
+
+function rareScale(t) {
+  const worldW = RARE_COLS * RARE_S;
+  const worldH = RARE_ROWS * RARE_S;
+  const kOut = Math.min(rareCssW / worldW, rareCssH / worldH) * 0.9;
+  const kIn = rareCssW / (2.4 * RARE_S);
+  return kIn * Math.pow(kOut / kIn, t);
+}
+
+function rareDraw() {
+  if (!rareCtx) return;
+  const ctx = rareCtx;
+  const w = rareCssW;
+  const h = rareCssH;
+  ctx.clearRect(0, 0, w, h);
+  if (rarePhase === "match") {
+    rareDrawMatch(ctx, w, h);
+    return;
+  }
+
+  const cx = w / 2;
+  const cy = h / 2;
+  const k = rareScale(rareT);
+  const lit = rareDots[rareLitIndex];
+  let visible = 1; // include lit
+  const spacing = k * RARE_S;
+  const r = Math.max(1.2, Math.min(4.8, spacing * 0.22));
+  ctx.globalAlpha = 0.7;
+  ctx.fillStyle = "#9a9b91";
+  for (let idx = 0; idx < rareDots.length; idx++) {
+    if (idx === rareLitIndex) continue;
+    const d = rareDots[idx];
+    const sx = cx + (d.wx - lit.wx) * k;
+    const sy = cy + (d.wy - lit.wy) * k;
+    if (sx < -6 || sx > w + 6 || sy < -6 || sy > h + 6) continue;
+    visible++;
+    ctx.beginPath();
+    ctx.arc(sx, sy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  const litR = Math.max(3.5, Math.min(34, k * 0.5));
+  ctx.globalAlpha = 0.2;
+  ctx.fillStyle = "#ff4057";
+  ctx.beginPath();
+  ctx.arc(cx, cy, litR * 1.9, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = "#ff4057";
+  ctx.beginPath();
+  ctx.arc(cx, cy, litR, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.globalAlpha = 1;
+
+  rareUpdateReadout(visible);
+}
+
+function rareUpdateReadout(visible) {
+  const atEnd = rareT >= 0.985;
+  const atStart = rareT <= 0.04;
+  const N = atEnd ? RARE_TOTAL : Math.max(1, visible);
+  const numEl = document.querySelector("#rare-number");
+  const capEl = document.querySelector("#rare-caption");
+  const prompt = document.querySelector("#rare-prompt");
+  const next = document.querySelector("#rare-next");
+  if (numEl) {
+    numEl.textContent = atEnd ? "0.038%" : atStart ? "1" : `1 in ${N.toLocaleString()}`;
+  }
+  if (capEl) {
+    capEl.textContent = atEnd
+      ? "of all text triggers this feature — about 1 in 2,632"
+      : atStart
+        ? "feature is active here"
+        : "pieces of text trigger this feature";
+  }
+  if (prompt) prompt.style.opacity = rareT > 0.04 ? "0" : "1";
+  if (next) next.hidden = !atEnd;
+}
+
+function rareAnimateZoom() {
+  if (rareRAF) return;
+  const slider = document.querySelector("#rare-slider");
+  const step = () => {
+    const diff = rareTargetT - rareT;
+    if (Math.abs(diff) < 0.002) {
+      rareT = rareTargetT;
+      if (slider) slider.value = String(rareT);
+      rareDraw();
+      rareRAF = 0;
+      return;
+    }
+    rareT += diff * 0.2;
+    if (slider) slider.value = String(rareT);
+    rareDraw();
+    rareRAF = requestAnimationFrame(step);
+  };
+  rareRAF = requestAnimationFrame(step);
+}
+
+function rareToMatch() {
+  rarePhase = "match";
+  rareMatchProgress = 0;
+  document.querySelector("#rare-zoomrow")?.setAttribute("hidden", "");
+  document.querySelector("#rare-next")?.setAttribute("hidden", "");
+  document.querySelector("#rare-back")?.removeAttribute("hidden");
+  document.querySelector("#rare-legend")?.removeAttribute("hidden");
+  const prompt = document.querySelector("#rare-prompt");
+  if (prompt) prompt.style.opacity = "0";
+  if (reduceMotion.matches) {
+    rareMatchProgress = 1;
+    rareDraw();
+    return;
+  }
+  if (rareRAF) cancelAnimationFrame(rareRAF);
+  const step = () => {
+    rareMatchProgress = Math.min(1, rareMatchProgress + 0.018);
+    rareDraw();
+    if (rareMatchProgress < 1) rareRAF = requestAnimationFrame(step);
+    else rareRAF = 0;
+  };
+  rareRAF = requestAnimationFrame(step);
+}
+
+function rareToSea() {
+  rarePhase = "rare";
+  document.querySelector("#rare-zoomrow")?.removeAttribute("hidden");
+  document.querySelector("#rare-back")?.setAttribute("hidden", "");
+  document.querySelector("#rare-legend")?.setAttribute("hidden", "");
+  rareTargetT = 1;
+  rareT = 1;
+  const slider = document.querySelector("#rare-slider");
+  if (slider) slider.value = "1";
+  rareDraw();
+}
+
+function rareDrawMatch(ctx, w, h) {
+  const cols = 10;
+  const rows = 10;
+  const total = cols * rows;
+  const cell = Math.min(w / (cols + 2.5), h / (rows + 2.5));
+  const gridW = cols * cell;
+  const gridH = rows * cell;
+  const ox = (w - gridW) / 2 + cell / 2;
+  const oy = (h - gridH) / 2 + cell / 2;
+  const r = cell * 0.3;
+  for (let idx = 0; idx < total; idx++) {
+    const i = idx % cols;
+    const j = Math.floor(idx / cols);
+    const sx = ox + i * cell;
+    const sy = oy + j * cell;
+    const isNoMatch = idx < MATCH_NO;
+    const appear = rareClamp01(rareMatchProgress * 1.5 - idx / total);
+    ctx.globalAlpha = 0.08 + 0.92 * appear;
+    ctx.fillStyle = isNoMatch ? "#ff4057" : "#12a878";
+    ctx.beginPath();
+    ctx.arc(sx, sy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+
+  const shown = Math.round(MATCH_NO * rareClamp01(rareMatchProgress));
+  const numEl = document.querySelector("#rare-number");
+  const capEl = document.querySelector("#rare-caption");
+  if (numEl) numEl.textContent = `${shown}%`;
+  if (capEl) {
+    capEl.textContent =
+      "of features share no words between their label and the text that lit them up — a match is not enough";
+  }
 }
